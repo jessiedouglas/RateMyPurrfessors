@@ -1,0 +1,31 @@
+<form action="<%= search_professors_url %>" method="GET">
+  <label for="match">Search</label>
+  <input type="search" id="match" name="match">
+
+  <button>Search</button>
+</form>
+
+<section class="professors_list">
+  <p>
+    Can't find your professor?
+    <a href="<%= new_professor_url %>">Add a new one!</a>
+  </p>
+
+  <h1><%= @header_text %></h1>
+
+  <ul>
+    <% if @professors.length > 0 %>
+      <% @professors.each do |professor| %>
+        <li>
+          <a href="<%= professor_url(professor) %>">
+            <h3><%= professor.name %></h3>
+            <p> <%= professor.department %> Department at
+              <%= professor.college.name %></p>
+          </a>
+        </li>
+      <% end %>
+    <% else %>
+      <li>No professors to show :(</li>
+    <% end %>
+  </ul>
+</section>
