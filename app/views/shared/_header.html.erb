@@ -1,0 +1,19 @@
+<header>
+  <div class="logo"><img src="http://bit.ly/1waJoX9"></div>
+
+  <div>
+    <% if logged_in? %>
+      <button class="user_dropdown">Hi, <%= current_user.name %></button>
+      <ul class="user_dropdown">
+        <li>
+          <%= link_to "My Account", user_url(current_user) %>
+        </li>
+        <li>
+          <%= button_to "Log Out", session_url, method: :delete %>
+        </li>
+      </ul>
+    <% else %>
+      <%= link_to "Log In/Sign Up", new_session_url %>
+    <% end %>
+  </div>
+</header>

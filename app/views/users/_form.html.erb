@@ -1,0 +1,28 @@
+<% action = user.persisted? ? user_url(user) : users_url %>
+
+<form action="<%= action %>" method="POST">
+  <% if user.persisted? %>
+    <input type="hidden" name="_method" value="PUT">
+  <% end %>
+
+  <%= authenticity_token %>
+
+  <label for="user_name">Name</label>
+  <input type="text"
+      id="user_name"
+      name="user[name]"
+      value="<%= user.name %>">
+
+  <label for="user_email">Email</label>
+  <input type="text"
+      id="user_email"
+      name="user[email]"
+      value="<%= user.email %>">
+
+  <label for="user_password">Password</label>
+  <input type="password"
+      id="user_password"
+      name="user[password]">
+
+  <button><%= user.persisted? ? "Save" : "Sign Up" %></button>
+</form>

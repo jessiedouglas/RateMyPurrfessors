@@ -20,12 +20,9 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_session_token
-    allSessionTokens = User.select(:session_token)
-    p allSessionTokens
-
     loop do
       token = SecureRandom::urlsafe_base64(16)
-      if !allSessionTokens.include(token)
+      if !User.find_by_session_token(token)
         return token
       end
     end
