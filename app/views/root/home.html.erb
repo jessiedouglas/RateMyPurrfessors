@@ -1,0 +1,20 @@
+<section class="sidebar">
+  <ul>
+    <li><a href="<%= colleges_url %>">Colleges</a></li>
+  </ul>
+</section>
+
+<section class="content">
+  <div class="logo"><img src="http://bit.ly/1waJoX9"></div>
+  <p>Get started...</p>
+  <p>
+    <%= link_to "Log In/Sign Up" %>
+    or
+    <div>
+      <a href="#">Search</a>
+      <ul>
+        <li><%= link_to "...for colleges", colleges_url %></li>
+      </ul>
+    </div>
+  </p>
+</section>

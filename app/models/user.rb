@@ -1,11 +1,16 @@
 class User < ActiveRecord::Base
-  validates :name, :session_token, :password_digest, :email, presence: true
+  validates :name, :session_token, :password_digest, :college_id, :email, presence: true
   validates :email, :session_token, uniqueness: true
-  validate :password, length: { minimum: 6, allow_nil: true }
+  validates :password, length: { minimum: 6, allow_nil: true }
+  validate :check_email
 
   attr_reader :password
 
   after_initialize :ensure_session_token
+
+  belongs_to :college,
+    class_name: "College",
+    inverse_of: :students
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
@@ -39,11 +44,27 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
+    @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
 
   private
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def check_email
+    email_halves = self.email.split("@")
+    if email_halves.length != 2
+      errors.add(:email, "is not valid")
+    elsif email_halves[0].length == 0
+      errors.add(:email, "is not valid")
+    elsif email_halves[1].split(".").length != 2
+      errors.add(:email, "is not valid")
+    elsif email_halves[1].split(".")[0].length == 0
+      errors.add(:email, "is not valid")
+    elsif email_halves[1].split(".")[1].length == 0
+      errors.add(:email, "is not valid")
+    end
   end
 end

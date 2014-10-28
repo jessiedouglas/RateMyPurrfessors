@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new()
+    @colleges = College.all
 
     render :new
   end
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
       login_user(@user)
       redirect_to user_url(@user)
     else
+      @colleges = College.all
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @colleges = College.all
 
     render :edit
   end
@@ -40,6 +43,7 @@ class UsersController < ApplicationController
       flash[:notices] = ["User updated!"]
       redirect_to user_url(@user)
     else
+      @colleges = College.all
       flash.now[:errors] = @user.errors.full_messages
       render :edit
     end
@@ -47,6 +51,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :college_id)
   end
 end

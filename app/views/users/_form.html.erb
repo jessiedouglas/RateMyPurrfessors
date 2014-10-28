@@ -1,4 +1,5 @@
 <% action = user.persisted? ? user_url(user) : users_url %>
+<% default_selected = user.persisted? ? "" : "selected" %>
 
 <form action="<%= action %>" method="POST">
   <% if user.persisted? %>
@@ -14,10 +15,21 @@
       value="<%= user.name %>">
 
   <label for="user_email">Email</label>
-  <input type="text"
+  <input type="email"
       id="user_email"
       name="user[email]"
       value="<%= user.email %>">
+
+
+  <label for="user_college_id">College</label>
+  <select name="user[college_id]" id="user_college_id">
+    <option value="" <%= default_selected %>>--Select--</option>
+    <% colleges.each do |college| %>
+      <% selected = user.college_id == college.id ? "selected" : "" %>
+      <option value="<%= college.id %>" <%= selected %>>
+        <%= college.name %></option>
+    <% end %>
+  </select>
 
   <label for="user_password">Password</label>
   <input type="password"

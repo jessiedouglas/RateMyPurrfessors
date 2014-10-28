@@ -1,6 +1,7 @@
 <section class="info">
   <h1><%= @user.name %></h1>
   <p><%= @user.email %></p>
+  <p><%= @user.college.name %></p>
   <%= link_to "Edit my info", edit_user_url(@user) %>
 </section>
 

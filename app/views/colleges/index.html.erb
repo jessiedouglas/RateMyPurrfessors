@@ -1,0 +1,27 @@
+<form action="<%= search_colleges_url %>" method="GET">
+  <%= authenticity_token %>
+
+  <label for="match">Search</label>
+  <input type="search" id="match" name="match">
+
+  <button>Search</button>
+</form>
+
+<section class="colleges_list">
+  <h1><%= @header_text %></h1>
+
+  <ul>
+    <% if @colleges.length > 0 %>
+      <% @colleges.each do |college| %>
+        <li>
+          <a href="<%= college_url(college) %>">
+            <h3><%= college.name %></h3>
+            <p><%= college.location %></p>
+          </a>
+        </li>
+      <% end %>
+    <% else %>
+      <li>There are no colleges matching that search :(</li>
+    <% end %>
+  </ul>
+</section>
