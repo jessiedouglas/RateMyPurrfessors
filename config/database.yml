@@ -25,7 +25,7 @@ development:
   <<: *default
   database: RateMyPurrfessors_development
   host: localhost
-  username: appacademy
+  username: jessiedouglas
 
 test:
   <<: *default

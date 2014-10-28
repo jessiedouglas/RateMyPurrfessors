@@ -15,6 +15,7 @@ class ProfessorsController < ApplicationController
   def new
     @professor = Professor.new
     @departments = Professor::DEPARTMENTS
+    @colleges = College.all
 
     render :new
   end
@@ -27,6 +28,7 @@ class ProfessorsController < ApplicationController
       redirect_to professor_url(@professor)
     else
       @departments = Professor::DEPARTMENTS
+      @colleges = College.all
       flash.now[:notices] = @professor.errors.full_messages
       render :new
     end
