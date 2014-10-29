@@ -11,11 +11,17 @@ class CollegeRating < ActiveRecord::Base
     foreign_key: :rater_id,
     inverse_of: :college_ratings
     
+  has_many :up_down_votes, as: :votable
+    
   def self.grad_years
     this_year = Date.today.year
     start_year = this_year - 25
     end_year = this_year + 5
     
     (start_year..end_year).to_a
+  end
+  
+  def already_voted_on
+    
   end
 end

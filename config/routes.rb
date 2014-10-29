@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   
   resources :professor_ratings, only: [:edit, :update, :destroy]
   resources :college_ratings, only: [:edit, :update, :destroy]
+  resources :up_down_votes, only: [:create, :destroy]
 end

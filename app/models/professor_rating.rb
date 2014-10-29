@@ -34,4 +34,33 @@ class ProfessorRating < ActiveRecord::Base
     class_name: "User",
     foreign_key: :rater_id,
     inverse_of: :professor_ratings
+    
+  has_many :up_down_votes, as: :votable
+  
+  def possible_vote(voter_id)
+		vote = UpDownVote.where("voter_id = ? AND votable_id = ? AND votable_type = 'professor_rating'",
+															  voter_id, self.id)
+                                
+    return nil if vote.length == 0
+    
+    return vote.first
+  end
+  
+  def upvotes
+    all_votes = self.up_down_votes
+    a = all_votes.inject(0) do |accum, vote|
+      next if vote.vote_value == -1
+      accum + 1
+    end
+    
+    fail
+  end
+  
+  def downvotes
+    all_votes = self.up_down_votes
+    all_votes.inject(0) do |accum, vote|
+      next if vote.vote_value == 1
+      accum + 1
+    end
+  end
 end

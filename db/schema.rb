@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029181642) do
+ActiveRecord::Schema.define(version: 20141029203736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,18 @@ ActiveRecord::Schema.define(version: 20141029181642) do
   end
 
   add_index "professors", ["college_id"], name: "index_professors_on_college_id", using: :btree
+
+  create_table "up_down_votes", force: true do |t|
+    t.integer  "voter_id",     null: false
+    t.integer  "vote_value",   null: false
+    t.string   "votable_type", null: false
+    t.integer  "votable_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "up_down_votes", ["voter_id", "votable_type", "votable_id"], name: "index_up_down_votes_on_voter_id_and_votable_type_and_votable_id", unique: true, using: :btree
+  add_index "up_down_votes", ["voter_id"], name: "index_up_down_votes_on_voter_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "session_token",   null: false
