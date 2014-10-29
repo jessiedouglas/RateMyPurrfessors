@@ -1,8 +1,11 @@
 <footer>
   <div class="home_link">
-    <%= link_to "www.ratemypurrfessors.com", new_session_url %>
+    <%= link_to "www.ratemypurrfessors.com", root_url %>
   </div>
   <div class="places links">
-    <ul></ul>
+    <ul>
+    	<li><a href="<%= colleges_url %>">Colleges</a></li>
+		<li><a href="<%= professors_url %>">Professors</a></li>
+    </ul>
   </div>
 </footer>

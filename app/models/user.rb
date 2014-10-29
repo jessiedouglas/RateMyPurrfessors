@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   belongs_to :college,
     class_name: "College",
     inverse_of: :students
+  
+  has_many :professor_ratings,
+    foreign_key: :rater_id,
+    inverse_of: :rater
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  
+  resources :professor_ratings, only: [:new, :create, :edit, :update]
 end

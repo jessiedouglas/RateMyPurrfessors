@@ -4,6 +4,7 @@ class Professor < ActiveRecord::Base
                 "Astrophysics",
                 "Catfoodology",
                 "Catonese",
+                "Catstronomy",
                 "Engineering",
                 "Feline Studies",
                 "Felosophy",
@@ -30,6 +31,8 @@ class Professor < ActiveRecord::Base
                                             ]}
 
   belongs_to :college, inverse_of: :professors
+  
+  has_many :professor_ratings, inverse_of: :professor
 
   def name
     name = "#{self.first_name} "

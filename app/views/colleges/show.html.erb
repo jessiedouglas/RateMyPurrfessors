@@ -5,7 +5,18 @@
 
 <section class="professor_sidbar">
   <h3>Professors at <%= @college.name %></h3>
-  <p>There are no professors for this college :(</p>
+  <ul class="professors_list">
+		<% if @professors %>
+	  	<% @professors.each do |professor| %>
+		  	<li><a href="<%= professor_url(professor) %>">
+					<h4><%= professor.name %></h4>
+					<p><%= professor.department %> Department</p>
+				</a></li>
+			<% end %>
+		<% else %>
+			<li>There are no professors for this college :(</li>
+		<% end %>
+  </ul>
 </section>
 
 <section class="ratings">
