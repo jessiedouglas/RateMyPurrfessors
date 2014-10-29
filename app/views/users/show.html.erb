@@ -1,7 +1,7 @@
 <section class="info">
   <h1><%= @user.name %></h1>
   <p><%= @user.email %></p>
-  <p><%= @user.college.name %></p>
+  <p><a href="<%= college_url(@user.college_id) %>"><%= @user.college.name %></a></p>
   <%= link_to "Edit my info", edit_user_url(@user) %>
 </section>
 
@@ -12,12 +12,20 @@
 		<% if @all_ratings.length > 0 %>
 			<% @all_ratings.each do |rating| %>
 				<li>
-					<a href="<%= professor_url(rating.professor) %>">
-						<%= rating.professor.name %>, <%= rating.professor.department %> Department at 
-						<%= rating.professor.name %>
-					</a>
-					<%= link_to "Edit", edit_professor_rating_url(rating) %>
-					<%= button_to "Delete", professor_rating_url(rating), method: :delete %>
+					<% if defined? rating.professor %>
+						<a href="<%= professor_url(rating.professor) %>">
+							<%= rating.professor.name %>, <%= rating.professor.department %> Department at 
+							<%= rating.professor.college.name %>
+						</a>
+						<%= link_to "Edit", edit_professor_rating_url(rating) %>
+						<%= button_to "Delete", professor_rating_url(rating), method: :delete %>
+					<% else %>
+						<a href="<%= college_url(rating.college) %>">
+							<%= rating.college.name %>, <%= rating.college.location %>
+						</a>
+						<%= link_to "Edit", edit_college_rating_url(rating) %>
+						<%= button_to "Delete", college_rating_url(rating), method: :delete %>
+					<% end %>
 				</li>
 			<% end %>
 		<% else %>

@@ -9,6 +9,7 @@ class CollegesController < ApplicationController
   def show
     @college = College.find(params[:id])
     @professors = @college.professors
+    @ratings = @college.college_ratings
 
     render :show
   end

@@ -1,9 +1,10 @@
 <section class="college_info">
   <h1><%= @college.name %></h1>
   <p><%= @college.location %></p>
+	<%= link_to "Rate This College", new_college_college_rating_url(@college) %>
 </section>
 
-<section class="professor_sidbar">
+<section class="professor_sidebar">
   <h3>Professors at <%= @college.name %></h3>
   <ul class="professors_list">
 		<% if @professors %>
@@ -19,7 +20,24 @@
   </ul>
 </section>
 
+<% if @ratings.length > 0 %>
+	<section class="averages">
+		<%= render "college_ratings/averages", ratings: @ratings, college: @college %>
+	</section>
+<% end %>
+
 <section class="ratings">
   <h1>Ratings</h1>
-  <p>There are no ratings at this time :(</p>
+	<ul>
+		<% if @ratings.length > 0 %>
+			<% @ratings.each do |rating| %>
+				<li>
+					<%= render "college_ratings/show", rating: rating %>
+				</li>
+			<% end %>
+		<% else %>
+			<li>There are no ratings at this time :(</li>
+		<% end %>
+	</ul>
+  <%= link_to "Rate This College", new_college_college_rating_url(@college) %>
 </section>

@@ -1,0 +1,71 @@
+<% avg_reputation = college.avg_reputation(ratings) %>
+<% avg_location = college.avg_location(ratings) %>
+<% avg_opportunities = college.avg_opportunities(ratings) %>
+<% avg_library = college.avg_library(ratings) %>
+<% avg_grounds_and_common_areas = college.avg_grounds_and_common_areas(ratings) %>
+<% avg_internet = college.avg_internet(ratings) %>
+<% avg_food = college.avg_food(ratings) %>
+<% avg_clubs = college.avg_clubs(ratings) %>
+<% avg_social = college.avg_social(ratings) %>
+<% avg_happiness = college.avg_happiness(ratings) %>
+<% avg_overall = college.avg_overall(ratings) %>
+
+
+<h1>Average Ratings</h1>
+
+<div>
+	<h3 class="avg_heading">Reputation</h3>
+	<p><%= avg_reputation %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Location</h3>
+	<p><%= avg_location %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Opportunities</h3>
+	<p><%= avg_opportunities %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Library</h3>
+	<p><%= avg_library %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Grounds and Common Areas</h3>
+	<p><%= avg_grounds_and_common_areas %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Internet</h3>
+	<p><%= avg_internet %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Food</h3>
+	<p><%= avg_food %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Clubs</h3>
+	<p><%= avg_clubs %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Social</h3>
+	<p><%= avg_social %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Happiness</h3>
+	<p><%= avg_happiness %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Overall</h3>
+	<p><%= avg_overall %></p>
+</div>
+
+<h5>Total Ratings: <%= ratings.length %></h5>

@@ -1,0 +1,6 @@
+<div class="college_info">
+	<h1>Edit Rating for <%= @college.name %></h1>
+	<p><%= @college.location %></p>
+</div>
+
+<%= render "form", college: @college, rating: @rating, grad_years: @grad_years %>
