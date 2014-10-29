@@ -1,0 +1,195 @@
+<% action = rating.persisted? ? professor_rating_url(rating) : professor_professor_ratings_url(professor.id) %>
+
+<% online_checked = rating.online_class ? "checked" : "" %>
+<% credit_checked = rating.taken_for_credit ? "" : "checked" %>
+<% hotness_checked = rating.hotness ? "checked" : "" %>
+<% attendance_checked = rating.attendance_is_mandatory ? "checked" : "" %>
+
+<form action="<%= action %>" method="POST">
+	<% if rating.persisted? %>
+		<input type="hidden" name="_method" value="PUT">
+	<% end %>
+	
+	<%= authenticity_token %>
+	
+	<input type="hidden" name="professor_rating[professor_id]" value="<%= professor.id %>">
+	
+	<label for="course_code">Course Code</label>
+	<input type="text" 
+			name="professor_rating[course_code]"
+			id="course_code"
+			placeholder="e.g., ECON101"
+			value="<%= rating.course_code %>">
+			
+	<input type="checkbox"
+			name="professor_rating[online_class]"
+			id="online_class"
+			value="true"
+			<%= online_checked %>>
+	<label for="online_class">This class was online</label>
+	
+	<label>Helpfulness</label>
+		<input type="radio" 
+				name="professor_rating[helpfulness]" 
+				id="helpfulness_1" 
+				value="1">
+				<label for="helpfulness_1">no help at all</label>
+			
+			<input type="radio" 
+					name="professor_rating[helpfulness]"
+					value="2">
+					
+			<input type="radio" 
+					name="professor_rating[helpfulness]"
+					value="3">
+					
+			<input type="radio" 
+					name="professor_rating[helpfulness]" 
+					value="4">
+					
+			<input type="radio" 
+					name="professor_rating[helpfulness]" 
+					id="helpfulness_5" 
+					value="5">
+					<label for="helpfulness_5">goes out of the way to help</label>
+					
+	<label>Clarity</label>
+		<input type="radio" 
+				name="professor_rating[clarity]" 
+				id="clarity_1" 
+				value="1">
+				<label for="clarity_1">going to lectures was pointless</label>
+			
+			<input type="radio" 
+					name="professor_rating[clarity]"
+					value="2">
+					
+			<input type="radio" 
+					name="professor_rating[clarity]"
+					value="3">
+					
+			<input type="radio" 
+					name="professor_rating[clarity]" 
+					value="4">
+					
+			<input type="radio" 
+					name="professor_rating[clarity]" 
+					id="clarity_5" 
+					value="5">
+					<label for="clarity_5">perfectly clear</label>
+					
+	<label>Easiness</label>
+		<input type="radio" 
+				name="professor_rating[easiness]" 
+				id="easiness_1" 
+				value="1">
+				<label for="easiness_1">impossible to pass</label>
+			
+			<input type="radio" 
+					name="professor_rating[easiness]"
+					value="2">
+					
+			<input type="radio" 
+					name="professor_rating[easiness]"
+					value="3">
+					
+			<input type="radio" 
+					name="professor_rating[easiness]" 
+					value="4">
+					
+			<input type="radio" 
+					name="professor_rating[easiness]" 
+					id="easiness_5" 
+					value="5">
+					<label for="easiness_5">don't need to show up</label>
+					
+	<input type="checkbox" 
+			name="professor_rating[taken_for_credit]" 
+			id="taken_for_credit"
+			value="false"
+			<%= credit_checked %>>
+	<label for="taken_for_credit">I did not take this course for credit</label>
+	
+	<input type="checkbox" 
+			name="professor_rating[hotness]" 
+			id="hotness"
+			value="true"
+			<%= hotness_checked %>>
+	<label for="hotness">ME-OW</label>
+	
+	<label for="comments">Comments</label>
+	<textarea name="professor_ratings[comments]"
+				id="comments"
+				placeholder="Now's the time to be more specific with your experience!">
+			<%= rating.comments %>
+			</textarea>
+			
+	<input type="checkbox" 
+			name="professor_rating[attendance_is_mandatory]" 
+			id="attendance"
+			value="true"
+			<%= attendance_checked %>>
+	<label for="attendance">Attendance was STRICTLY ENFORCED (i.e., part of the grade)</label>
+	
+	<label>Interest</label>
+		<input type="radio" 
+				name="professor_rating[interest]" 
+				id="interest_1" 
+				value="1">
+				<label for="interest_1">completely boring</label>
+			
+			<input type="radio" 
+					name="professor_rating[interest]"
+					value="2">
+					
+			<input type="radio" 
+					name="professor_rating[interest]"
+					value="3">
+					
+			<input type="radio" 
+					name="professor_rating[interest]" 
+					value="4">
+					
+			<input type="radio" 
+					name="professor_rating[interest]" 
+					id="interest_5" 
+					value="5">
+					<label for="interest_5">RIVETING</label>
+					
+		<label>Textbook Use</label>
+			<input type="radio" 
+					name="professor_rating[textbook_use]" 
+					id="textbook_use_1" 
+					value="1">
+					<label for="textbook_use_1">what textbook?</label>
+			
+				<input type="radio" 
+						name="professor_rating[textbook_use]"
+						value="2">
+					
+				<input type="radio" 
+						name="professor_rating[textbook_use]"
+						value="3">
+					
+				<input type="radio" 
+						name="professor_rating[textbook_use]" 
+						value="4">
+					
+				<input type="radio" 
+						name="professor_rating[textbook_use]" 
+						id="textbook_use_5" 
+						value="5">
+						<label for="textbook_use_5">textbook essential to pass</label>
+						
+		<label for="grade_received">Grade Received</label>
+		<select name="professor_rating[grade_received]"
+		  		id="grade_received">
+			<option value="">--Select--</option>
+			<% grades.each do |grade| %>
+				<% selected = rating.grade_received == grade ? "selected" : "" %>
+				<option value="<%= grade %>" <%= selected %>><%= grade %></option>
+			<% end %>
+		</select>
+		
+		<button>Submit</button>
+</form>

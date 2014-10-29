@@ -1,7 +1,5 @@
 <h1>Add New Professor</h1>
 
-<% default_selected = @professor.department ? "" : "selected" %>
-
 <form action="<%= professors_url %>" method="POST">
   <%= authenticity_token %>
 
@@ -26,7 +24,7 @@
 
   <label for="professor_department">Department</label>
   <select name="professor[department]" id="professor_department">
-    <option value="" <%= default_selected %>>--Select--</option>
+    <option value="">--Select--</option>
     <% @departments.each do |department| %>
       <% selected = @professor.department == department ? "selected" : "" %>
       <option value="<%= department %>" <%= selected %>>
@@ -36,7 +34,7 @@
 
   <label for="professor_college_id">College</label>
   <select name="professor[college_id]" id="professor_college_id">
-    <option value="" <%= default_selected %>>--Select--</option>
+    <option value="">--Select--</option>
     <% @colleges.each do |college| %>
       <% selected = @professor.college_id == college.id ? "selected" : "" %>
       <option value="<%= college.id %>" <%= selected %>>

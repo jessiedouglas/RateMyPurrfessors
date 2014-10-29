@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   end
 
   resources :professors, only: [:index, :show, :new, :create] do
+    resources :professor_ratings, only: [:new, :create]
     collection do
       get 'search'
     end
   end
   
-  resources :professor_ratings, only: [:new, :create, :edit, :update]
+  resources :professor_ratings, only: [:edit, :update, :destroy]
 end

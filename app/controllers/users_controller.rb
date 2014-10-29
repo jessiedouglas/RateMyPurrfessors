@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @all_ratings = @user.all_ratings
 
     render :show
   end

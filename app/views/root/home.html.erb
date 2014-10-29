@@ -1,7 +1,14 @@
 <section class="sidebar">
   <ul>
     <li><a href="<%= colleges_url %>">Colleges</a></li>
-	<li><a href="<%= professors_url %>">Professors</a></li>
+		<li><a href="<%= professors_url %>">Professors</a></li>
+		<li>
+			<a href="">Rate</a>
+			<ul class="sidebar_dropdown">
+				<li><a href="<%= colleges_url %>">Colleges</a></li>
+				<li><a href="<%= professors_url %>">Professors</a></li>
+			</ul>
+		</li>
   </ul>
 </section>
 

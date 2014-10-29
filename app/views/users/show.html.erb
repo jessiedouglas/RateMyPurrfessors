@@ -8,5 +8,20 @@
 
 <section class="ratings">
   <h1>Ratings</h1>
-  <p>You have no ratings :(</p>
+	<ul>
+		<% if @all_ratings.length > 0 %>
+			<% @all_ratings.each do |rating| %>
+				<li>
+					<a href="<%= professor_url(rating.professor) %>">
+						<%= rating.professor.name %>, <%= rating.professor.department %> Department at 
+						<%= rating.professor.name %>
+					</a>
+					<%= link_to "Edit", edit_professor_rating_url(rating) %>
+					<%= button_to "Delete", professor_rating_url(rating), method: :delete %>
+				</li>
+			<% end %>
+		<% else %>
+			<li>You have no ratings :(</li>
+		<% end %>
+	</ul>
 </section>

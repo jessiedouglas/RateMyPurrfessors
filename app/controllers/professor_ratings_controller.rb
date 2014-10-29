@@ -4,6 +4,8 @@ class ProfessorRatingsController < ApplicationController
   
   def new
     @rating = current_user.professor_ratings.new
+    @professor = Professor.find(params[:professor_id])
+    @grades = ProfessorRating::GRADES
     
     render :new
   end
@@ -15,6 +17,8 @@ class ProfessorRatingsController < ApplicationController
       flash[:notices] = ["Rating saved!"]
       redirect_to professor_url(@rating.professor_id)
     else
+      @professor = Professor.find(params[:professor_id])
+      @grades = ProfessorRating::GRADES
       flash[:errors] = @rating.errors.full_messages
       render :new
     end
@@ -22,6 +26,8 @@ class ProfessorRatingsController < ApplicationController
   
   def edit
     @rating = ProfessorRating.find(params[:id])
+    @professor = @rating.professor
+    @grades = ProfessorRating::GRADES
     
     render :edit
   end
@@ -33,6 +39,8 @@ class ProfessorRatingsController < ApplicationController
       flash[:notices] = ["Rating updated!"]
       redirect_to professor_url(@rating.professor_id)
     else
+      @professor = @rating.professor
+      @grades = ProfessorRating::GRADES
       flash[:errors] = @rating.errors.full_messages
       render :edit
     end

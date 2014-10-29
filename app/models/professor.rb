@@ -32,7 +32,7 @@ class Professor < ActiveRecord::Base
 
   belongs_to :college, inverse_of: :professors
   
-  has_many :professor_ratings, inverse_of: :professor
+  has_many :professor_ratings, inverse_of: :professor, dependent: :destroy
 
   def name
     name = "#{self.first_name} "
@@ -40,5 +40,45 @@ class Professor < ActiveRecord::Base
     name += self.last_name
 
     name
+  end
+  
+  def avg_helpfulness(all_ratings)
+    return -1 if all_ratings.length === 0
+    
+    total = all_ratings.inject(0) do |accum, rating|
+      accum + rating.helpfulness
+    end
+    
+    (total * 10 / all_ratings.length).round / 10.0
+  end
+  
+  def avg_clarity(all_ratings)
+    return -1 if all_ratings.length === 0
+    
+    total = all_ratings.inject(0) do |accum, rating|
+      accum + rating.clarity
+    end
+    
+    (total * 10 / all_ratings.length).round / 10.0
+  end
+  
+  def avg_easiness(all_ratings)
+    return -1 if all_ratings.length === 0
+    
+    total = all_ratings.inject(0) do |accum, rating|
+      accum + rating.easiness
+    end
+    
+    (total * 10 / all_ratings.length).round / 10.0
+  end
+  
+  def avg_hotness(all_ratings)
+    return -1 if all_ratings.length === 0
+    
+    total = all_ratings.inject(0) do |accum, rating|
+      accum + (rating.hotness ? 1 : 0)
+    end
+    
+    total / all_ratings.length
   end
 end

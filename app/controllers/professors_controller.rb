@@ -7,7 +7,7 @@ class ProfessorsController < ApplicationController
   end
 
   def show
-    @professor = Professor.find(params[:id])
+    @professor = Professor.includes(:professor_ratings).find(params[:id])
 
     render :show
   end

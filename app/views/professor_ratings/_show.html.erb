@@ -1,0 +1,75 @@
+<div>
+	<h1 class="rating_label">Course Code</h1>
+	<p><%= rating.course_code %></p>
+	<% if rating.online_class %>
+		<p>&#x2713; Online</p>
+	<% end %>
+</div>
+
+<div>
+	<h1 class="rating_label">Helpfulness</h1>
+	<p class="number"><%= rating.helpfulness %></p>
+</div>
+
+<div>
+	<h1 class="rating_label">Clarity</h1>
+	<p class="number"><%= rating.clarity %></p>
+</div>
+
+<div>
+	<h1 class="rating_label">Easiness</h1>
+	<p class="number"><%= rating.easiness %></p>
+</div>
+
+<% if rating.comments %>
+	<div>
+		<h1 class="rating_label">Comments</h1>
+		<p><%= rating.comments %></p>
+	</div>
+<% end %>
+
+<div>
+	<h1 class="rating_label">Hotness</h1>
+	<% if rating.hotness %>
+		<p><%= image_tag "hot_thermometer.png" %></p>
+	<% else %>
+		<p><%= image_tag "cold_thermometer.png" %></p>
+	<% end %>
+</div>
+
+<% if rating.interest %>
+	<div>
+		<h1 class="rating_label">Interest</h1>
+		<p class="number"><%= rating.interest %></p>
+	</div>
+<% end %>
+
+<div>
+	<h1 class="rating_label">More</h1>
+	<% if rating.attendance_is_mandatory %>
+		<p>Attendance was MANDATORY (i.e., part of the grade)</p>
+	<% else %>
+		<p>Attendance was NOT mandatory (i.e., not part of the grade)</p>
+	<% end %>
+	<% if rating.textbook_use %>
+			<p>Textbook Use: <%= rating.textbook_use %> (1 -- never used, 5 -- essential)</p>
+	<% end %>
+</div>
+
+<div>
+	<h1 class="rating_label">Rater Info</h1>
+	<% if rating.grade_received == "prefer not to say" %>
+	<% elsif rating.grade_received == "Withdraw" %>
+		<p>Withdrew from course</p>
+	<% elsif rating.grade_received == "course not yet completed" %>
+		<p>This rating was posted before the rater finished the course.</p>
+	<% else %>
+		<p>Grade Received: <%= rating.grade_received %></p>
+	<% end %>
+	
+	<% if rating.taken_for_credit %>
+		<p>&#x2713; Course taken for credit</p>
+	<% else %>
+		<p>&#x2717; Course not taken for credit</p>
+	<% end %>
+</div>

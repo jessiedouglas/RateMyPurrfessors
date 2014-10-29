@@ -1,0 +1,34 @@
+<% avg_helpfulness = professor.avg_helpfulness(ratings) %>
+<% avg_clarity = professor.avg_clarity(ratings) %>
+<% avg_easiness = professor.avg_easiness(ratings) %>
+<% avg_hotness = professor.avg_hotness(ratings) %>
+
+<h1>Average Ratings</h1>
+
+<div>
+	<h3 class="avg_heading">Helpfulness</h3>
+	<p><%= avg_helpfulness %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Clarity</h3>
+	<p><%= avg_clarity %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Easiness</h3>
+	<p><%= avg_easiness %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Hotness</h3>
+	<% if avg_hotness < 0.333 %>
+		<p><%= image_tag "cold_thermometer.png" %></p>
+	<% elsif avg_hotness < 0.667 %>
+		<p><%= image_tag "warm_thermometer.png" %></p>
+	<% else %>
+		<p><%= image_tag "hot_thermometer.png" %></p>
+	<% end %>
+</div>
+
+<h5>Total Ratings: <%= ratings.length %></h5>
