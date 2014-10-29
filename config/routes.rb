@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :destroy]
 
   resources :colleges, only: [:index, :show] do
+    resources :college_ratings, only: [:new, :create]
     collection do
       get 'search'
     end
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   end
   
   resources :professor_ratings, only: [:edit, :update, :destroy]
+  resources :college_ratings, only: [:edit, :update, :destroy]
 end

@@ -6,4 +6,6 @@ class College < ActiveRecord::Base
     inverse_of: :college
 
   has_many :professors, inverse_of: :college
+  
+  has_many :professor_ratings, inverse_of: :college
 end

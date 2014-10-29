@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029134424) do
+ActiveRecord::Schema.define(version: 20141029181642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "college_ratings", force: true do |t|
+    t.integer  "college_id",               null: false
+    t.integer  "rater_id",                 null: false
+    t.integer  "reputation",               null: false
+    t.integer  "location",                 null: false
+    t.integer  "opportunities",            null: false
+    t.integer  "library",                  null: false
+    t.integer  "grounds_and_common_areas", null: false
+    t.integer  "internet",                 null: false
+    t.integer  "food",                     null: false
+    t.integer  "clubs",                    null: false
+    t.integer  "social",                   null: false
+    t.integer  "happiness",                null: false
+    t.integer  "graduation_year",          null: false
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "college_ratings", ["college_id", "rater_id"], name: "index_college_ratings_on_college_id_and_rater_id", unique: true, using: :btree
+  add_index "college_ratings", ["college_id"], name: "index_college_ratings_on_college_id", using: :btree
+  add_index "college_ratings", ["rater_id"], name: "index_college_ratings_on_rater_id", using: :btree
 
   create_table "colleges", force: true do |t|
     t.string   "name",       null: false
