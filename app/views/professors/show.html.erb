@@ -2,10 +2,10 @@
   <h1><%= @professor.name %></h1>
   <p><%= @professor.department %> Department</p>
   <p><%= @professor.college.name %></p>
-	<%= link_to "Rate This Professor", professor_professor_ratings_url(@professor) %>
+	<%= link_to "Rate This Professor", new_professor_professor_rating_url(@professor) %>
 </section>
 
-<% if @professor.professor_ratings %>
+<% if @professor.professor_ratings.length > 0 %>
 	<section class="avg_ratings">
 		<%= render "professor_ratings/averages", ratings: @professor.professor_ratings, professor: @professor %>
 	</section>
@@ -25,5 +25,5 @@
 		<% end %>
 	</ul>
 	
-	<%= link_to "Rate This Professor", professor_professor_ratings_url(@professor) %>
+	<%= link_to "Rate This Professor", new_professor_professor_rating_url(@professor) %>
 </section>

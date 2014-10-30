@@ -5,6 +5,16 @@ class UpDownVotesController < ApplicationController
   
   def create
     @vote = UpDownVote.new(vote_params.merge(voter_id: current_user.id))
+    type = params[:up_down_vote][:votable_type]
+    id = params[:up_down_vote][:votable_id]
+    
+    if type == "professor_rating"
+      votable = ProfessorRating.find(id)
+    else
+      votable = CollegeRating.find(id)
+    end
+    
+    @vote.votable = votable
     
     if @vote.save
       flash[:notices] = ["Vote registered!"]
@@ -26,19 +36,21 @@ class UpDownVotesController < ApplicationController
   
   private
   def vote_params
-    params.require(:up_down_vote).permit(:votable_id, :votable_type, :vote_value)
+    params.require(:up_down_vote).permit(:vote_value)
   end
   
   def redirect(type, id)
-    if type == "college_rating"
-      redirect_to college_url(id)
+    if type == "CollegeRating"
+      rating = CollegeRating.find(id)
+      redirect_to college_url(rating.college_id)
     else
-      redirect_to professor_url(id)
+      rating = ProfessorRating.find(id)
+      redirect_to professor_url(rating.professor_id)
     end
   end
   
   def require_different_user
-    if current_user.id == params[:rater_id]
+    if current_user.id == params[:rater_id].to_i
       flash[:errors] = ["You can't vote on your own post!"]
       redirect(params[:up_down_vote][:votable_type], params[:up_down_vote][:votable_id])
     end
