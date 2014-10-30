@@ -35,7 +35,7 @@ class ProfessorRating < ActiveRecord::Base
     foreign_key: :rater_id,
     inverse_of: :professor_ratings
     
-  has_many :up_down_votes, as: :votable
+  has_many :up_down_votes, as: :votable, dependent: :destroy
   
   def possible_vote(voter_id)
 		vote = UpDownVote.where("voter_id = ? AND votable_id = ? AND votable_type = 'ProfessorRating'",

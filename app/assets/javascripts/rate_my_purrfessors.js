@@ -9,5 +9,5 @@ window.RateMyPurrfessors = {
 };
 
 $(document).ready(function(){
-  RateMyPurrfessors.initialize();
+  // RateMyPurrfessors.initialize();
 });

@@ -1,4 +1,6 @@
 class Professor < ActiveRecord::Base
+  include PgSearch
+  
   DEPARTMENTS = [
                 "Agricatural Science",
                 "Astrophysics",
@@ -33,6 +35,21 @@ class Professor < ActiveRecord::Base
   belongs_to :college, inverse_of: :professors
   
   has_many :professor_ratings, inverse_of: :professor, dependent: :destroy
+  
+  multisearchable against: [:first_name, :middle_initial, :last_name, :department],
+                  associated_against: { college: :name },
+                  using: { tsearch: { 
+                                    prefix: true,
+                                    any_word: true 
+                                    } }
+                  
+  pg_search_scope :search_professors, 
+                      against: [:first_name, :middle_initial, :last_name, :department],
+                      associated_against: { college: :name },
+                      using: { tsearch: { 
+                                        prefix: true,
+                                        any_word: true 
+                                        } }
 
   def name
     name = "#{self.first_name} "

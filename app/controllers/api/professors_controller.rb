@@ -1,4 +1,4 @@
-class ProfessorsController < ApplicationController
+class Api::ProfessorsController < ApplicationController
   def index
     @professors = Professor.includes(:college).all
     @header_text = "All Professors"
@@ -25,7 +25,7 @@ class ProfessorsController < ApplicationController
 
     if @professor.save
       flash[:notices] = ["Professor created!"]
-      redirect_to professor_url(@professor)
+      redirect_to api_professor_url(@professor)
     else
       @departments = Professor::DEPARTMENTS
       @colleges = College.all
@@ -36,30 +36,27 @@ class ProfessorsController < ApplicationController
 
   def search
     match = params[:match]
-    @professors = Professor.search_professors(match).includes(:college)
-    
-    # match = params[:match]
-#     all_professors = Professor.all
-#
-#     # store proper noun version of professor name for later
-#     names = {}
-#     all_professors.each do |professor|
-#       cap = professor.name
-#       down = cap.downcase
-#       names[down] = cap
-#     end
-#
-#     @professors = []
-#     names.keys.each do |name|
-#       if Regexp.new(match).match(name)
-#         name = names[name]
-#         professor = all_professors.select do |professor|
-#           professor.name == name
-#         end
-#         @professors.push(professor.first)
-#       end
-#     end
-#
+    all_professors = Professor.all
+
+    # store proper noun version of professor name for later
+    names = {}
+    all_professors.each do |professor|
+      cap = professor.name
+      down = cap.downcase
+      names[down] = cap
+    end
+
+    @professors = []
+    names.keys.each do |name|
+      if Regexp.new(match).match(name)
+        name = names[name]
+        professor = all_professors.select do |professor|
+          professor.name == name
+        end
+        @professors.push(professor.first)
+      end
+    end
+
     @header_text = 'Professors that match "' + match.html_safe + '":'
 
     render :index

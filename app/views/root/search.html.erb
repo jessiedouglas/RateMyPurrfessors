@@ -1,0 +1,34 @@
+<form action="<%= search_url %>" method="GET">
+  <label for="match">Search</label>
+  <input type="search" id="match" name="match" placeholder="Search by college, professor, or department">
+
+  <button>Go!</button>
+</form>
+
+<section class="matches_list">
+  <h1><%= @header_text %></h1>
+
+  <ul>
+    <% if @matches.length > 0 %>
+      <% @matches.each do |match| %>
+        <li>
+					<%# match = match.searchable %>
+					<% if match.class == College %>
+	          <a href="<%= college_url(match) %>">
+	            <h3><%= match.name %></h3>
+	            <p><%= match.location %></p>
+	          </a>
+					<% else %>
+	          <a href="<%= professor_url(match) %>">
+	            <h3><%= match.name %></h3>
+	            <p> <%= match.department %> Department at
+	              <%= match.college.name %></p>
+	          </a>
+					<% end %>
+        </li>
+      <% end %>
+    <% else %>
+      <li>There are no colleges or professors matching that search :(</li>
+    <% end %>
+  </ul>
+</section>

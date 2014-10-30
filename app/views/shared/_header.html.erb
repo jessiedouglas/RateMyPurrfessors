@@ -1,5 +1,12 @@
 <header class="group">
   <div class="logo"><a href="<%= root_url %>"><%= image_tag "RMP_Logo.png" %></a></div>
+	
+	<div class="nav_search">
+		<form action="<%= search_url %>" method="GET">
+			<input type="search" name="match" placeholder="Search by college, professor, or department">
+			<button>Go!</button>
+		</form>
+	</div>
 
   <div class="right_nav">
     <% if logged_in? %>

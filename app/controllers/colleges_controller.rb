@@ -16,23 +16,26 @@ class CollegesController < ApplicationController
 
   def search
     match = params[:match]
-    all_colleges = College.all
-
-    # store proper noun version of college name for later
-    names = {}
-    all_colleges.each do |college|
-      names[college.name.downcase] = college.name
-    end
-
-    @colleges = []
-    names.keys.each do |name|
-      if Regexp.new(match).match(name)
-        name = names[name]
-        college = all_colleges.select { |college| college.name == name }
-        @colleges.push(college.first)
-      end
-    end
-
+    @colleges = College.search_colleges(match)
+    
+    # match = params[:match]
+#     all_colleges = College.all
+#
+#     # store proper noun version of college name for later
+#     names = {}
+#     all_colleges.each do |college|
+#       names[college.name.downcase] = college.name
+#     end
+#
+#     @colleges = []
+#     names.keys.each do |name|
+#       if Regexp.new(match).match(name)
+#         name = names[name]
+#         college = all_colleges.select { |college| college.name == name }
+#         @colleges.push(college.first)
+#       end
+#     end
+#
     @header_text = 'Colleges that match "' + match.html_safe + '":'
 
     render :index

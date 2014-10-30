@@ -56,6 +56,17 @@ header {
 	width: 100%;
 }
 
+.nav_search {
+	width: 400px;
+	float: left;
+	margin-top: 25px;
+	margin-left: 70px;
+}
+
+.nav_search input {
+	width: 90%;
+}
+
 .right_nav {
 	float: right;
 	position: relative;

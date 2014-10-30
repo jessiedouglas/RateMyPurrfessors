@@ -1,4 +1,6 @@
 class College < ActiveRecord::Base
+  include PgSearch
+  
   RATING_PROPS = [
                   "reputation", 
                   "location", 
@@ -21,6 +23,18 @@ class College < ActiveRecord::Base
   has_many :professors, inverse_of: :college
   
   has_many :college_ratings, inverse_of: :college
+  
+  multisearchable against: [:name, :location],
+                  using: { tsearch: { 
+                                    prefix: true,
+                                    any_word: true 
+                                    } }
+  
+  pg_search_scope :search_colleges, against: [:name, :location],
+                  using: { tsearch: { 
+                                    prefix: true,
+                                    any_word: true 
+                                    } }
   
   RATING_PROPS.each do |prop|
     define_method("avg_#{prop}") do |all_ratings|

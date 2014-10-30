@@ -45,3 +45,6 @@ gem 'figaro'
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'pg_search'
+gem 'kaminari'
