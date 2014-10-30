@@ -1,26 +1,28 @@
 class User < ActiveRecord::Base
-  validates :name, :session_token, :password_digest, :college_id, :email, presence: true
-  validates :email, :session_token, uniqueness: true
+  validates :name, :session_token, :password_digest, presence: true
+  validates :session_token, uniqueness: true
+  validates :email, uniqueness: true, allow_nil: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  validate :check_email
+  validate :email_presence
+  validate :check_if_valid_email
 
   attr_reader :password
 
   after_initialize :ensure_session_token
 
   belongs_to :college,
-    class_name: "College",
-    inverse_of: :students
+  class_name: "College",
+  inverse_of: :students
   
   has_many :professor_ratings,
-    foreign_key: :rater_id,
-    inverse_of: :rater,
-    dependent: :destroy
+  foreign_key: :rater_id,
+  inverse_of: :rater,
+  dependent: :destroy
     
   has_many :college_ratings,
-    foreign_key: :rater_id,
-    inverse_of: :rater,
-    dependent: :destroy
+  foreign_key: :rater_id,
+  inverse_of: :rater,
+  dependent: :destroy
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
@@ -42,6 +44,29 @@ class User < ActiveRecord::Base
       end
     end
   end
+  
+  def self.find_or_create_by_fb_auth_hash(auth_hash)
+    user = User.find_by_uid(auth_hash.uid)
+    
+    unless user
+      user = User.new(uid: auth_hash.uid, password: SecureRandom::urlsafe_base64(16))
+      if auth_hash.info.first_name
+        user.name = auth_hash.info.first_name
+      elsif auth_hash.info.name
+        user.name = auth_hash.info.name
+      else
+        user.name = "Facebook User"
+      end
+      
+      if auth_hash.info.email
+        user.email = auth_hash.info.email
+      end
+      
+      user.save!
+    end
+    
+    user
+  end
 
   def reset_session_token!
     self.session_token = User.generate_session_token
@@ -60,8 +85,8 @@ class User < ActiveRecord::Base
   
   def all_ratings
     professor_ratings = ProfessorRating.where("rater_id = ?", self.id)
-                            .joins(:professor)
-                            .joins("INNER JOIN colleges ON colleges.id = professors.college_id")
+    .joins(:professor)
+    .joins("INNER JOIN colleges ON colleges.id = professors.college_id")
     professor_ratings + self.college_ratings.includes(:college)
   end
 
@@ -70,18 +95,28 @@ class User < ActiveRecord::Base
     self.session_token ||= User.generate_session_token
   end
 
-  def check_email
-    email_halves = self.email.split("@")
-    if email_halves.length != 2
-      errors.add(:email, "is not valid")
-    elsif email_halves[0].length == 0
-      errors.add(:email, "is not valid")
-    elsif email_halves[1].split(".").length != 2
-      errors.add(:email, "is not valid")
-    elsif email_halves[1].split(".")[0].length == 0
-      errors.add(:email, "is not valid")
-    elsif email_halves[1].split(".")[1].length == 0
-      errors.add(:email, "is not valid")
+  def email_presence
+    unless self.uid
+      unless self.email
+        errors.add(:email, "is missing")
+      end
+    end
+  end
+  
+  def check_if_valid_email
+    if self.email
+      email_halves = self.email.split("@")
+      if email_halves.length != 2
+        errors.add(:email, "is not valid")
+      elsif email_halves[0].length == 0
+        errors.add(:email, "is not valid")
+      elsif email_halves[1].split(".").length != 2
+        errors.add(:email, "is not valid")
+      elsif email_halves[1].split(".")[0].length == 0
+        errors.add(:email, "is not valid")
+      elsif email_halves[1].split(".")[1].length == 0
+        errors.add(:email, "is not valid")
+      end
     end
   end
 end

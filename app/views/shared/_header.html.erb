@@ -1,9 +1,9 @@
-<header>
-  <div class="logo"><%= image_tag "RMP_Logo.png" %></div>
+<header class="group">
+  <div class="logo"><a href="<%= root_url %>"><%= image_tag "RMP_Logo.png" %></a></div>
 
-  <div>
+  <div class="right_nav">
     <% if logged_in? %>
-      <button class="user_dropdown">Hi, <%= current_user.name %></button>
+      <button class="user_nav">Hi, <%= current_user.name %></button>
       <ul class="user_dropdown">
         <li>
           <%= link_to "My Account", user_url(current_user) %>
@@ -13,7 +13,7 @@
         </li>
       </ul>
     <% else %>
-      <%= link_to "Log In/Sign Up", new_session_url %>
+      <%= link_to "Log In/Sign Up", new_session_url, class: "user_nav" %>
     <% end %>
   </div>
 </header>
