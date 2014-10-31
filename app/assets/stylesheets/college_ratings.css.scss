@@ -1,3 +1,25 @@
 // Place all the styles related to the CollegeRatings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// New/Edit
+
+div.college_info {
+	width: 500px;
+	margin: 20px auto;
+}
+
+div.college_info > h1 {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+form.college_rating {
+	width: 800px;
+	margin: 0 auto;
+}
+
+input {
+	float: left;
+}

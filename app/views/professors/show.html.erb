@@ -1,7 +1,7 @@
 <section class="professor_info">
   <h1><%= @professor.name %></h1>
   <p><%= @professor.department %> Department</p>
-  <p><%= @professor.college.name %></p>
+  <p><a href="<%= college_url(@professor.college) %>"><%= @professor.college.name %></a></p>
 	<%= link_to "Rate This Professor", new_professor_professor_rating_url(@professor) %>
 </section>
 

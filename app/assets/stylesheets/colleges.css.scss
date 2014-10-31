@@ -41,3 +41,77 @@ li.college > a {
 
 //Show
 
+nav.professor_sidebar {
+	width: 260px;
+	padding: 20px;
+	float: left;
+}
+
+.professors_list > li {
+	padding: 10px;
+}
+
+section.college_info {
+	width: 540px;
+	padding: 30px;
+	float: right;
+}
+
+section.college_averages {
+	width: 540px;
+	padding: 30px;
+	float: right;
+}
+
+section.college_averages > h1 {
+	font-weight: bold;
+	margin: 10px;
+}
+
+section.all_college_avg {
+	width: 544px;
+	margin: 0 auto;
+}
+
+section.all_college_avg > div {
+	float: left;
+	width: 200px;
+	border: 2px solid blue;
+	padding: 10px;
+}
+
+section.all_college_avg > div > h3 {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+section.all_college_avg > div > p {
+	font-size: 24px;
+	font-weight: bold;
+	textt-align: center;
+}
+
+section.all_college_avg > h5 {
+	clear: both;
+}
+
+section.ratings {
+	clear: both;
+	position: relative;
+}
+
+section.ratings li {
+	clear: both;
+	padding: 50px;
+}
+
+section.ratings li div {
+	float: left;
+	border: 2px solid orange;
+	padding: 5px;
+}
+
+.paginate {
+	clear: both;
+}
+

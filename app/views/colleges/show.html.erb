@@ -1,10 +1,4 @@
-<section class="college_info">
-  <h1><%= @college.name %></h1>
-  <p><%= @college.location %></p>
-	<%= link_to "Rate This College", new_college_college_rating_url(@college) %>
-</section>
-
-<section class="professor_sidebar">
+<nav class="professor_sidebar">
   <h3>Professors at <%= @college.name %></h3>
   <ul class="professors_list">
 		<% if @professors %>
@@ -18,22 +12,29 @@
 			<li>There are no professors for this college :(</li>
 		<% end %>
   </ul>
+</nav>
+
+
+<section class="college_info">
+  <h1><%= @college.name %></h1>
+  <p><%= @college.location %></p>
+	<%= link_to "Rate This College", new_college_college_rating_url(@college) %>
 </section>
 
 <% if @ratings.length > 0 %>
-	<section class="averages">
+	<section class="college_averages">
 		<%= render "college_ratings/averages", ratings: @ratings, college: @college %>
 	</section>
 <% end %>
 
 <section class="ratings">
   <h1>Ratings</h1>
-	
+
 	<div class="paginate">
 		<%= link_to_previous_page @ratings, 'Prev' %>
 		<%= link_to_next_page @ratings, 'Next' %>
 	</div>
-	
+
 	<ul>
 		<% if @ratings.length > 0 %>
 			<% @ratings.each do |rating| %>
@@ -45,11 +46,11 @@
 			<li>There are no ratings at this time :(</li>
 		<% end %>
 	</ul>
-	
+
 	<div class="paginate">
 		<%= link_to_previous_page @ratings, 'Prev' %>
 		<%= link_to_next_page @ratings, 'Next' %>
 	</div>
-	
+
   <%= link_to "Rate This College", new_college_college_rating_url(@college) %>
 </section>
