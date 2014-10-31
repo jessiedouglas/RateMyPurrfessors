@@ -20,6 +20,26 @@ form.college_rating {
 	margin: 0 auto;
 }
 
-input {
+form.college_rating > div {
 	float: left;
+	clear: both;
+	padding: 10px;
+}
+
+form.college_rating > div > label.radio {
+	display: block;
+	font-weight: bold;
+}
+//
+//form.college_rating > div > label:not(.radio) {
+//	float: left;
+//}
+
+form.college_rating > div > input {
+	display: block;
+	float: left;
+}
+
+form.college_rating button {
+	clear: both;
 }
