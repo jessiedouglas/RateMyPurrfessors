@@ -1,8 +1,10 @@
-<form action="<%= search_professors_url %>" method="GET">
-  <label for="match">Search</label>
-  <input type="search" id="match" name="match" placeholder="Search by name, college, or department">
-
-  <button>Search</button>
+<form action="<%= search_professors_url %>" method="GET" class="professor_search">
+  <label for="match">Professor Search</label>
+	
+	<div class="professor_search group">
+	  <input type="search" id="match" name="match" placeholder="Search by name, college, or department">
+	  <button>Go!</button>
+	</div>
 </form>
 
 <section class="professors_list">
@@ -13,10 +15,15 @@
 
   <h1><%= @header_text %></h1>
 
+	<div class="paginate">
+		<%= link_to_previous_page @professors, 'Prev' %>
+		<%= link_to_next_page @professors, 'Next' %>
+	</div>
+	
   <ul>
     <% if @professors.length > 0 %>
       <% @professors.each do |professor| %>
-        <li>
+        <li class="professor">
           <a href="<%= professor_url(professor) %>">
             <h3><%= professor.name %></h3>
             <p> <%= professor.department %> Department at
@@ -25,7 +32,12 @@
         </li>
       <% end %>
     <% else %>
-      <li>No professors to show :(</li>
+      <li class="no_professors">No professors to show :(</li>
     <% end %>
   </ul>
+	
+	<div class="paginate">
+		<%= link_to_previous_page @professors, 'Prev' %>
+		<%= link_to_next_page @professors, 'Next' %>
+	</div>
 </section>

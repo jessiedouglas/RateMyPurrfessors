@@ -12,6 +12,8 @@ class CollegeRating < ActiveRecord::Base
     inverse_of: :college_ratings
     
   has_many :up_down_votes, as: :votable, dependent: :destroy
+  
+  paginates_per 10
     
   def self.grad_years
     this_year = Date.today.year

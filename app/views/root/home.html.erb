@@ -1,9 +1,9 @@
 <section class="sidebar">
   <ul>
-    <li><a href="<%= colleges_url %>">Colleges</a></li>
-		<li><a href="<%= professors_url %>">Professors</a></li>
-		<li>
-			<a href="">Rate</a>
+    <li><a href="<%= colleges_url %>">COLLEGES</a></li>
+		<li><a href="<%= professors_url %>">PROFESSORS</a></li>
+		<li class="rate">
+			<a href="">RATE</a>
 			<ul class="sidebar_dropdown">
 				<li><a href="<%= colleges_url %>">Colleges</a></li>
 				<li><a href="<%= professors_url %>">Professors</a></li>
@@ -13,17 +13,29 @@
 </section>
 
 <section class="content">
-  <div class="logo"><%= image_tag "RMP_Logo.png" %></div>
-  <p>Get started...</p>
-  <p>
-    <%= link_to "Log In/Sign Up", new_session_url %>
-    or
-    <div>
-      <a href="">Search</a>
-      <ul>
-				<li><%= link_to "...for professors", professors_url %></li>
-        <li><%= link_to "...for colleges", colleges_url %></li>
-      </ul>
-    </div>
-  </p>
+  <div class="logo_main"><%= image_tag "RMP_Logo.png" %></div>
+  <p class="start">Get started...</p>
+	<article>
+		<div class="professor">
+			<a href="<%= professors_url %>">
+				<p>find a</p>
+				<strong>professor</strong>
+			</a>
+		</div>
+		
+		<div class="college">
+			<a href="<%= colleges_url %>">
+				<p>find a</p>
+				<strong>college</strong>
+			</a>
+		</div>
+		
+		<p class="main_label">
+			Find
+			<strong class="what">what</strong>
+			<strong class="professor">the professor</strong>
+			<strong class="college">the college</strong>
+			you're looking for
+		</p>
+	</article>
 </section>

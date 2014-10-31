@@ -48,3 +48,5 @@ end
 
 gem 'pg_search'
 gem 'kaminari'
+
+gem 'faker'

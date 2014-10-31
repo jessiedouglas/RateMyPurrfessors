@@ -21,6 +21,8 @@ html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, button, 
 	border: 0;
 	background: transparent;
 	font: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 body {
@@ -45,6 +47,7 @@ button {
 /* Header */
 header {
 	border: 2px solid purple;
+	min-width: 1100px;
 }
 
 .logo {
@@ -102,12 +105,16 @@ body {
 
 main {
 	min-height: 400px;
+	width: 900px;
+	margin: 0 auto;
+	border: 2px solid blue;
 }
 
 /* Footer */
 
 footer {
 	border: 2px solid purple;
+	min-width: 1100px;
 }
 
 .home_link {
@@ -140,19 +147,92 @@ footer {
 	display: none;
 }
 
-.rate:hover > .footer_dropdown {
-	display: block;
-}
-
 /* Home */
 
 .sidebar {
-	height: 100%;
-	border: 2px solid purple;
 	float: left;
+	width: 260px;
+	padding: 20px;
 }
 
 .content {
-	padding: 50px;
+	padding: 30px;
+	float: right;
+	width: 540px;
+}
+
+.logo_main {
+	margin-bottom: 30px;
+}
+
+.logo_main > img{
+	width: 100%;
+}
+
+.start {
+	margin-left: 90px;
+	font-size: 12px;
+}
+
+.content > article {
 	margin: 0 auto;
+	width: 400px;
+}
+
+strong.what {
+	display: inline-block;
+}
+
+p.main_label {
+	text-align: center;
+	clear: both;
+	font-size: 24px;
+}
+
+strong.professor, strong.college {
+	display: none;
+}
+
+div.professor {
+	text-align: center;
+	float: left;
+	margin: 20px;
+	margin: 20px 0 20px 100px;
+}
+
+div.college {
+	text-align: center;
+	float: right;
+	margin: 20px 100px 20px 0;
+}
+
+div.professor:hover ~ p.main_label > strong.professor {
+	display: inline-block;
+}
+
+div.professor:hover ~ p.main_label > strong.what {
+	display: none;
+}
+
+div.college:hover ~ p.main_label > strong.college {
+	display: inline-block;
+}
+
+div.college:hover ~ p.main_label > strong.what {
+	display: none;
+}
+
+.sidebar > ul > li > a {
+	display: block;
+	padding-bottom: 10px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.sidebar_dropdown {
+	display: none;
+}
+
+li.rate:hover > .sidebar_dropdown {
+	display: block;
 }

@@ -24,6 +24,8 @@ class College < ActiveRecord::Base
   
   has_many :college_ratings, inverse_of: :college
   
+  has_many :up_down_votes, through: :college_ratings, source: :up_down_votes
+  
   multisearchable against: [:name, :location],
                   using: { tsearch: { 
                                     prefix: true,
@@ -35,6 +37,8 @@ class College < ActiveRecord::Base
                                     prefix: true,
                                     any_word: true 
                                     } }
+                                    
+  paginates_per 25
   
   RATING_PROPS.each do |prop|
     define_method("avg_#{prop}") do |all_ratings|

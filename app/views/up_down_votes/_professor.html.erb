@@ -1,39 +1,41 @@
-<div class="vote_buttons">
-	<% vote = rating.possible_vote(current_user.id) %>
-	<% unless vote %>
-		<form action="<%= up_down_votes_url %>" method="POST">
-			<%= authenticity_token %>
+<% if logged_in? %>
+	<div class="vote_buttons">
+		<% vote = rating.possible_vote(current_user.id) %>
+		<% unless vote %>
+			<form action="<%= up_down_votes_url %>" method="POST">
+				<%= authenticity_token %>
 	
-			<input type="hidden" name="rater_id" value="<%= rating.rater_id %>">
+				<input type="hidden" name="rater_id" value="<%= rating.rater_id %>">
 	
-			<input type="hidden" name="up_down_vote[votable_type]" value="professor_rating">
+				<input type="hidden" name="up_down_vote[votable_type]" value="professor_rating">
 	
-			<input type="hidden" name="up_down_vote[votable_id]" value="<%= rating.id %>">
+				<input type="hidden" name="up_down_vote[votable_id]" value="<%= rating.id %>">
 	
-			<input type="hidden" name="up_down_vote[vote_value]" value="1">
+				<input type="hidden" name="up_down_vote[vote_value]" value="1">
 	
-			<button>UpVote</button>
-		</form>
+				<button>UpVote</button>
+			</form>
 
-		<form action="<%= up_down_votes_url %>" method="POST">
-			<%= authenticity_token %>
+			<form action="<%= up_down_votes_url %>" method="POST">
+				<%= authenticity_token %>
 	
-			<input type="hidden" name="rater_id" value="<%= rating.rater_id %>">
+				<input type="hidden" name="rater_id" value="<%= rating.rater_id %>">
 	
-			<input type="hidden" name="up_down_vote[votable_type]" value="professor_rating">
+				<input type="hidden" name="up_down_vote[votable_type]" value="professor_rating">
 	
-			<input type="hidden" name="up_down_vote[votable_id]" value="<%= rating.id %>">
+				<input type="hidden" name="up_down_vote[votable_id]" value="<%= rating.id %>">
 	
-			<input type="hidden" name="up_down_vote[vote_value]" value="-1">
+				<input type="hidden" name="up_down_vote[vote_value]" value="-1">
 	
-			<button>DownVote</button>
-		</form>
-	<% else %>
-		<% up_or_down = vote.vote_value == 1 ? "up" : "down" %>
-		You <%= up_or_down %>voted this rating.
-		<%= button_to "Undo", up_down_vote_url(vote), method: :delete %>
-	<% end %>
-</div>
+				<button>DownVote</button>
+			</form>
+		<% else %>
+			<% up_or_down = vote.vote_value == 1 ? "up" : "down" %>
+			You <%= up_or_down %>voted this rating.
+			<%= button_to "Undo", up_down_vote_url(vote), method: :delete %>
+		<% end %>
+	</div>
+<% end %>
 
 <div class="vote_info">
 	<p><%= rating.upvotes %> people found this helpful</p>

@@ -1,4 +1,4 @@
-<form action="<%= search_colleges_url %>" method="GET">
+<form action="<%= search_colleges_url %>" method="GET" class="college_search">
   <label for="match">Search</label>
   <input type="search" id="match" name="match" placeholder="Search by name or location">
 
@@ -8,10 +8,15 @@
 <section class="colleges_list">
   <h1><%= @header_text %></h1>
 
+	<div class="paginate">
+		<%= link_to_previous_page @colleges, 'Prev' %>
+		<%= link_to_next_page @colleges, 'Next' %>
+	</div>
+
   <ul>
     <% if @colleges.length > 0 %>
       <% @colleges.each do |college| %>
-        <li>
+        <li class="college">
           <a href="<%= college_url(college) %>">
             <h3><%= college.name %></h3>
             <p><%= college.location %></p>
@@ -19,7 +24,12 @@
         </li>
       <% end %>
     <% else %>
-      <li>There are no colleges matching that search :(</li>
+      <li class="no_college">There are no colleges matching that search :(</li>
     <% end %>
   </ul>
+	
+	<div class="paginate">
+		<%= link_to_previous_page @colleges, 'Prev' %>
+		<%= link_to_next_page @colleges, 'Next' %>
+	</div>
 </section>

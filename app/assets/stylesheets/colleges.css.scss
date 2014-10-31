@@ -1,3 +1,43 @@
 // Place all the styles related to the Colleges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Index
+
+form.college_search {
+	margin: 20px auto;
+	display: block;
+	width: 400px;
+}
+
+form.college_search > label {
+	text-align: center;
+	display: block;
+}
+
+form.college_search input {
+	float: left;
+	width: 300px;
+	margin-left: 40px;
+}
+
+form.college_search button {
+	float: left;
+}
+
+section.colleges_list {
+	padding: 20px 100px;
+}
+
+section.colleges_list > h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 20px;
+}
+
+li.college > a {
+	padding: 2px;
+}
+
+//Show
+

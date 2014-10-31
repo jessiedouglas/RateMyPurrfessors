@@ -36,6 +36,8 @@ class Professor < ActiveRecord::Base
   
   has_many :professor_ratings, inverse_of: :professor, dependent: :destroy
   
+  has_many :up_down_votes, through: :professor_ratings, source: :up_down_votes
+  
   multisearchable against: [:first_name, :middle_initial, :last_name, :department],
                   associated_against: { college: :name },
                   using: { tsearch: { 
@@ -50,6 +52,8 @@ class Professor < ActiveRecord::Base
                                         prefix: true,
                                         any_word: true 
                                         } }
+                                        
+  paginates_per 25
 
   def name
     name = "#{self.first_name} "

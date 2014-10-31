@@ -1,3 +1,49 @@
 // Place all the styles related to the Professors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Index
+
+form.professor_search {
+	margin: 20px auto;
+	display: block;
+	width: 400px;
+}
+
+form.professor_search > label {
+	text-align: center;
+	display: block;
+}
+
+form.professor_search input {
+	float: left;
+	width: 300px;
+	margin-left: 40px;
+}
+
+form.professor_search button {
+	float: left;
+}
+
+section.professors_list {
+	padding: 20px 100px;
+}
+
+section.professors_list > p {
+	font-size: 14px;
+	text-align: center;
+}
+
+section.professors_list > p > a {
+	text-decoration: underline;
+}
+
+section.professors_list > h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 20px;
+}
+
+li.professor > a {
+	padding: 2px;
+}

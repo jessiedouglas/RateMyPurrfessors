@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def current_user
+    return nil unless session[:token]
     @current_user ||= User.find_by_session_token(session[:token])
   end
 
@@ -14,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login_user(user)
+    @current_user = user
     session[:token] = user.reset_session_token!
   end
 
@@ -30,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_out
     if logged_in?
-      flash[:errors] = ["Must be logged in to do that"]
+      flash[:errors] = ["Must be logged out to do that"]
       redirect_to user_url(current_user)
     end
   end

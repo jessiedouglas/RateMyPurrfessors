@@ -37,6 +37,8 @@ class ProfessorRating < ActiveRecord::Base
     
   has_many :up_down_votes, as: :votable, dependent: :destroy
   
+  paginates_per 10
+  
   def possible_vote(voter_id)
 		vote = UpDownVote.where("voter_id = ? AND votable_id = ? AND votable_type = 'ProfessorRating'",
 															  voter_id, self.id)

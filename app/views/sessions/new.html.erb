@@ -20,3 +20,17 @@
 OR 
 
 <a href="/auth/facebook">LOGIN WITH FACEBOOK!</a>
+
+OR 
+
+<form action="<%= session_url %>" method="POST">
+  <%= authenticity_token %>
+
+  <input type="hidden"
+      name="user[email]"
+      value="demo@demo.com">
+
+  <input type="hidden" name="user[password]" value="demodemo">
+
+  <button>Log In with a Demo Account</button>
+</form>

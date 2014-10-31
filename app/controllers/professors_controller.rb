@@ -1,13 +1,14 @@
 class ProfessorsController < ApplicationController
   def index
-    @professors = Professor.includes(:college).all
+    @professors = Professor.includes(:college).order(:last_name).page(params[:page])
     @header_text = "All Professors"
 
     render :index
   end
 
   def show
-    @professor = Professor.includes(:professor_ratings).find(params[:id])
+    @professor = Professor.find(params[:id])
+    @ratings = @professor.professor_ratings.includes(:up_down_votes).page(params[:page])
 
     render :show
   end

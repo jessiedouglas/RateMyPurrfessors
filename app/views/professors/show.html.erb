@@ -13,6 +13,12 @@
 
 <section class="ratings">
   <h1>Ratings</h1>
+	
+	<div class="paginate">
+		<%= link_to_previous_page @ratings, 'Prev' %>
+		<%= link_to_next_page @ratings, 'Next' %>
+	</div>
+	
 	<ul>
 		<% if @professor.professor_ratings.length > 0 %>
 			<% @professor.professor_ratings.each do |rating| %>
@@ -24,6 +30,11 @@
 		  <li>There are no ratings for this professor :(</li>
 		<% end %>
 	</ul>
+	
+	<div class="paginate">
+		<%= link_to_previous_page @ratings, 'Prev' %>
+		<%= link_to_next_page @ratings, 'Next' %>
+	</div>
 	
 	<%= link_to "Rate This Professor", new_professor_professor_rating_url(@professor) %>
 </section>

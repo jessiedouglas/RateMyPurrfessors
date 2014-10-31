@@ -15,14 +15,14 @@ class User < ActiveRecord::Base
   inverse_of: :students
   
   has_many :professor_ratings,
-  foreign_key: :rater_id,
-  inverse_of: :rater,
-  dependent: :destroy
+    foreign_key: :rater_id,
+    inverse_of: :rater,
+    dependent: :destroy
     
   has_many :college_ratings,
-  foreign_key: :rater_id,
-  inverse_of: :rater,
-  dependent: :destroy
+    foreign_key: :rater_id,
+    inverse_of: :rater,
+    dependent: :destroy
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
