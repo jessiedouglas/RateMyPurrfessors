@@ -15,7 +15,7 @@
  */
 
 /* RESET */
-html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, button, img, main {
+html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, img, main, form {
 	padding: 0;
 	margin: 0;
 	border: 0;
@@ -28,6 +28,33 @@ html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, button, 
 body {
 	font-family: sans-serif;
 }
+
+div.background {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: image-url("RMP-background.png");
+	z-index: -1;
+}
+
+input[type="text"], input[type="search"], input[type="email"], input[type="email"], button, textarea {
+	-webkit-appearance: none;
+	display: inline-block;
+	box-sizing: content-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	width: auto;
+	font: inherit;
+	vertical-align: baseline;
+	background: transparent;
+	color: inherit;
+}
+
+/* Background pattern from subtlepatterns.com */
 
 ul {
 	list-style: none;
@@ -46,8 +73,8 @@ button {
 
 /* Header */
 header {
-	border: 2px solid purple;
 	min-width: 1100px;
+	background: #333335;
 }
 
 .logo {
@@ -79,19 +106,56 @@ header {
 .user_nav {
 	position: relative;
 	cursor: pointer;
-	border: 2px solid black;
-	padding: 5px;
+	padding: 7px 14px;
+	background: #161616;
+	color: #F527EC;
+	border-radius: 14px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.user_nav:hover {
+	background: #434446;
+	color: #fff;
 }
 
 ul.user_dropdown {
 	position: absolute;
 	display: none;
-	margin-top: -5px;
+	background: #9cc100;
+	color: #fff;
+	font-size: 12px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	width: 100px;
+	padding: 10px;
+	border-radius: 14px;
+}
+
+ul.user_dropdown > li > a {
+	padding-bottom: 10px;
+	display: block;
 }
 
 .right_nav:hover > ul.user_dropdown {
 	display: block;
-	border: 2px solid black;
+}
+
+div.nav_search > form {
+	background: #434446;
+	color: #fff;
+	border-radius: 10px;
+	padding: 2px 5px;
+}
+
+div.nav_search > form > button {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+div.nav_search > form > button:hover {
+	color: #F527EC;
 }
 
 /* Main */
@@ -104,17 +168,19 @@ body {
 }
 
 main {
-	min-height: 400px;
+	min-height: 550px;
 	width: 900px;
 	margin: 0 auto;
-	border: 2px solid blue;
+	background: rgba(206, 255, 199, .5)
 }
 
 /* Footer */
 
 footer {
-	border: 2px solid purple;
 	min-width: 1100px;
+	background: #333335;
+	color: #ccc;
+	font-size: 16px;
 }
 
 .home_link {
@@ -131,6 +197,7 @@ footer {
 	clear: both;
 	text-align: center;
 	font-size: 12px;
+	color: #777;
 }
 
 .places_links > ul > li {
@@ -147,6 +214,11 @@ footer {
 	display: none;
 }
 
+footer a:hover {
+	color: #9cc100;
+	text-decoration: underline;
+}
+
 /* Home */
 
 .sidebar {
@@ -159,14 +231,6 @@ footer {
 	padding: 30px;
 	float: right;
 	width: 540px;
-}
-
-.logo_main {
-	margin-bottom: 30px;
-}
-
-.logo_main > img{
-	width: 100%;
 }
 
 .start {
