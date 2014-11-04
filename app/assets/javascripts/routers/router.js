@@ -6,7 +6,8 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 	routes: {
 		"colleges": "collegesIndex",
 		"colleges/:id": "collegeShow",
-		"professors": "professorsIndex"
+		"professors": "professorsIndex",
+		"professors/:id": "professorShow"
 	},
 	
 	collegesIndex: function () {
@@ -18,7 +19,6 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 	},
 	
 	collegeShow: function (id) {
-		// var college = RateMyPurrfessors.colleges.getOrFetch(id);
 		var college = RateMyPurrfessors.colleges.get(id);
 		var that = this;
 		
@@ -39,6 +39,15 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 		});
 		
 		this._swapView(indexView);
+	},
+	
+	professorShow: function (id) {
+		var professor = RateMyPurrfessors.professors.getOrFetch(id);
+		var showView = new RateMyPurrfessors.Views.ProfessorShow({
+			model: professor
+		});
+		
+		this._swapView(showView);
 	},
 	
 	_swapView: function (view) {

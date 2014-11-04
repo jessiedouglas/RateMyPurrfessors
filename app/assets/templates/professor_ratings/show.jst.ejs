@@ -1,0 +1,77 @@
+<div>
+	<h1 class="rating_label">Course Code</h1>
+	<p><%= rating.escape("course_code") %></p>
+	<% if (rating.get("online_class")) { %>
+		<p>&#x2713; Online</p>
+	<% } %>
+</div>
+
+<div>
+	<h1 class="rating_label">Helpfulness</h1>
+	<p class="number"><%= rating.escape("helpfulness") %></p>
+</div>
+
+<div>
+	<h1 class="rating_label">Clarity</h1>
+	<p class="number"><%= rating.escape("clarity") %></p>
+</div>
+
+<div>
+	<h1 class="rating_label">Easiness</h1>
+	<p class="number"><%= rating.escape("easiness") %></p>
+</div>
+
+<% if (rating.get("comments")) { %>
+	<div>
+		<h1 class="rating_label">Comments</h1>
+		<p><%= rating.escape("comments") %></p>
+	</div>
+<% } %>
+
+<div>
+	<h1 class="rating_label">Hotness</h1>
+	<% if (rating.get("hotness")) { %>
+		<p class="hot_thermometer"></p>
+	<% } else { %>
+		<p class="cold_thermometer"></p>
+	<% } %>
+</div>
+
+<% if (rating.get("interest")) { %>
+	<div>
+		<h1 class="rating_label">Interest</h1>
+		<p class="number"><%= rating.escape("interest") %></p>
+	</div>
+<% } %>
+
+<div>
+	<h1 class="rating_label">More</h1>
+	<% if (rating.get("attendance_is_mandatory")) { %>
+		<p>Attendance was MANDATORY (i.e., part of the grade)</p>
+	<% } else { %>
+		<p>Attendance was NOT mandatory (i.e., not part of the grade)</p>
+	<% } %>
+	<% if (rating.get("textbook_use")) { %>
+			<p>Textbook Use: <%= rating.escape("textbook_use") %> (1 -- never used, 5 -- essential)</p>
+	<% } %>
+</div>
+
+<div>
+	<h1 class="rating_label">Rater Info</h1>
+	<% if (rating.get("grade_received") === "prefer not to say") { %>
+	<% } else if (rating.get("grade_received") === "Withdraw") { %>
+		<p>Withdrew from course</p>
+	<% } else if (rating.get("grade_received") === "course not yet completed") { %>
+		<p>This rating was posted before the rater finished the course.</p>
+	<% } else { %>
+		<p>Grade Received: <%= rating.escape("grade_received") %></p>
+	<% } %>
+	
+	<% if (rating.get("taken_for_credit")) { %>
+		<p>&#x2713; Course taken for credit</p>
+	<% } else { %>
+		<p>&#x2717; Course not taken for credit</p>
+	<% } %>
+</div>
+
+<div class="up_down_votes"></div>

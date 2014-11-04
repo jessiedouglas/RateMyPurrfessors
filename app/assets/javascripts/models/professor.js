@@ -12,7 +12,7 @@ RateMyPurrfessors.Models.Professor = Backbone.Model.extend({
 	
 	professorRatings: function () {
 		if (!this._professorRatings) {
-			this._professorRatings = new Backbone.Collections.ProfessorRatings( [], {
+			this._professorRatings = new RateMyPurrfessors.Collections.ProfessorRatings( [], {
 				professor: this
 			});
 		}

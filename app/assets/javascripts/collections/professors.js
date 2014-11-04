@@ -11,10 +11,10 @@ RateMyPurrfessors.Collections.Professors = Backbone.Collection.extend({
 	getOrFetch: function (id) {
 		var professor = this.get(id);
 		
-		if (professor) {
+		if (!professor) {
 			professor.fetch();
 		} else {
-			professor = new RateMyPurrfessors.Model.Professor({ id: id });
+			professor = new RateMyPurrfessors.Models.Professor({ id: id });
 			professor.fetch({
 				success: function () {
 					this.add(professor);

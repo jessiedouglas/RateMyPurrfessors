@@ -13,15 +13,17 @@ RateMyPurrfessors.Views.CollegeShow = Backbone.CompositeView.extend({
 		});
 		this.$el.html(renderedContent);
 		
-		this.renderAverages(ratings);
-		
-		ratings.each(function (rating) {
-			var ratingSubview = new RateMyPurrfessors.Views.CollegeRatingShow({
-				model: rating
-			});
+		if ( ratings.length > 0 ) {
+			this.renderAverages(ratings);
 			
-			this.addSubview("ul.all_ratings", ratingSubview);
-		}.bind(this));
+			ratings.each(function (rating) {
+				var ratingSubview = new RateMyPurrfessors.Views.CollegeRatingShow({
+					model: rating
+				});
+			
+				this.addSubview("ul.all_ratings", ratingSubview);
+			}.bind(this));
+		}
 		
 		return this;
 	},

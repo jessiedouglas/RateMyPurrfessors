@@ -1,0 +1,25 @@
+<section class="professor_info">
+  <h1><%= professor.escape("name") %></h1>
+  <p><%= professor.escape("department") %> Department</p>
+  <p><a href="#/colleges/<%= professor.get("college_id") %>"><%= professor.get("college").name %></a></p>
+	
+	<a href="/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
+</section>
+
+<% if (ratings.length > 0) { %>
+	<section class="professor_averages"></section>
+<% } %>
+
+<section class="ratings">
+  <h1>Ratings</h1>
+	
+	<div class="paginate">
+	</div>
+	
+	<ul class="all_ratings"></ul>
+	
+	<div class="paginate">
+	</div>
+	
+	<a href="/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
+</section>

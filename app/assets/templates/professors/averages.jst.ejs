@@ -1,0 +1,29 @@
+<h1>Average Ratings</h1>
+
+<div>
+	<h3 class="avg_heading">Helpfulness</h3>
+	<p><%= avg_helpfulness %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Clarity</h3>
+	<p><%= avg_clarity %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Easiness</h3>
+	<p><%= avg_easiness %></p>
+</div>
+
+<div>
+	<h3 class="avg_heading">Hotness</h3>
+	<% if (avg_hotness < 0.333) { %>
+		<p class="large_cold_thermometer"></p>
+	<% } else if (avg_hotness < 0.667) { %>
+		<p class="large_warm_thermometer"></p>
+	<% } else { %>
+		<p class="large_hot_thermometer"></p>
+	<% } %>
+</div>
+
+<h5>Total Ratings: <%= ratings.length %></h5>

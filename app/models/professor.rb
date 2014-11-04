@@ -63,43 +63,43 @@ class Professor < ActiveRecord::Base
     name
   end
   
-  def avg_helpfulness(all_ratings)
-    return -1 if all_ratings.length === 0
+  def avg_helpfulness
+    return -1 if self.professor_ratings.length === 0
     
-    total = all_ratings.inject(0) do |accum, rating|
+    total = self.professor_ratings.inject(0) do |accum, rating|
       accum + rating.helpfulness
     end
     
-    (total * 10 / all_ratings.length).round / 10.0
+    (total * 10 / self.professor_ratings.length).round / 10.0
   end
   
-  def avg_clarity(all_ratings)
-    return -1 if all_ratings.length === 0
+  def avg_clarity
+    return -1 if self.professor_ratings.length === 0
     
-    total = all_ratings.inject(0) do |accum, rating|
+    total = self.professor_ratings.inject(0) do |accum, rating|
       accum + rating.clarity
     end
     
-    (total * 10 / all_ratings.length).round / 10.0
+    (total * 10 / self.professor_ratings.length).round / 10.0
   end
   
-  def avg_easiness(all_ratings)
-    return -1 if all_ratings.length === 0
+  def avg_easiness
+    return -1 if self.professor_ratings.length === 0
     
-    total = all_ratings.inject(0) do |accum, rating|
+    total = self.professor_ratings.inject(0) do |accum, rating|
       accum + rating.easiness
     end
     
-    (total * 10 / all_ratings.length).round / 10.0
+    (total * 10 / self.professor_ratings.length).round / 10.0
   end
   
-  def avg_hotness(all_ratings)
-    return -1 if all_ratings.length === 0
+  def avg_hotness
+    return -1 if self.professor_ratings.length === 0
     
-    total = all_ratings.inject(0) do |accum, rating|
+    total = self.professor_ratings.inject(0) do |accum, rating|
       accum + (rating.hotness ? 1 : 0)
     end
     
-    total / all_ratings.length
+    total * 1.0 / self.professor_ratings.length
   end
 end
