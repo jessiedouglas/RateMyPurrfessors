@@ -28,7 +28,6 @@ RateMyPurrfessors.Views.CollegesIndex = Backbone.CompositeView.extend({
 		var that = this;
 		
 		if (match.length > 2) {
-			console.log("aldsjflasdkj");
 			$.ajax({
 				url: "api/colleges/search",
 				dataType: "json",
@@ -45,6 +44,7 @@ RateMyPurrfessors.Views.CollegesIndex = Backbone.CompositeView.extend({
 	renderSearchResults: function (colleges) {
 		var collection = new RateMyPurrfessors.Collections.Colleges(colleges);
 		var resultsView = new RateMyPurrfessors.Views.SearchResults({
+			type: "colleges",
 			collection: collection
 		})
 		

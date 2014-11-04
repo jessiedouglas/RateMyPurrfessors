@@ -1,0 +1,41 @@
+<form class="professor_search">
+  <label for="match">Professor Search</label>
+	
+	<div class="professor_search group">
+	  <input type="search" id="match" name="match" placeholder="Search by name, college, or department">
+	  <button>Go!</button>
+	</div>
+</form>
+
+<section class="professors_list">
+  <p>
+    Can't find your professor?
+    <a href="">Add a new one!</a>
+  </p>
+
+  <h1>All Professors</h1>
+
+	<div class="paginate">
+	</div>
+	
+	<article class="professors_list">
+	  <ul>
+	    <% if (professors.length > 0) { %>
+	      <% professors.each(function (professor) { %>
+	        <li class="professor">
+	          <a href="#/professors/<%= professor.get("id") %>">
+	            <h3><%= professor.escape("name") %></h3>
+	            <p> <%= professor.escape("department") %> Department at
+	              <%= professor.get("college").name %></p>
+	          </a>
+	        </li>
+	      <% }); %>
+	    <% } else { %>
+	      <li class="no_professors">No professors to show :(</li>
+	    <% } %>
+	  </ul>
+	</article>
+	
+	<div class="paginate">
+	</div>
+</section>

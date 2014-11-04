@@ -18,7 +18,7 @@
 <section class="college_info">
   <h1><%= college.escape("name") %></h1>
   <p><%= college.escape("location") %></p>
-	<a href="">Rate This College</a> 
+	<a href="#/colleges/<%= college.get("id") %>/college_ratings/new">Rate This College</a> 
 </section>
 
 <% if (ratings.length > 0) { %>
@@ -36,5 +36,5 @@
 	<div class="paginate">
 	</div>
 
-  <a href="">Rate This College</a> 
+  <a href="#/colleges/<%= college.get("id") %>/college_ratings/new">Rate This College</a> 
 </section>

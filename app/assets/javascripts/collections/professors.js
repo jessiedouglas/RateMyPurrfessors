@@ -3,7 +3,9 @@ RateMyPurrfessors.Collections.Professors = Backbone.Collection.extend({
 	model: RateMyPurrfessors.Models.Professor,
 	
 	initialize: function (options) {
-		this.college = options.college;
+		if (options["college"]) {
+			this.college = options.college;
+		}
 	},
 	
 	getOrFetch: function (id) {

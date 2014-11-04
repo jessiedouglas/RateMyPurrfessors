@@ -7,13 +7,13 @@ window.RateMyPurrfessors = {
     RateMyPurrfessors.colleges = new RateMyPurrfessors.Collections.Colleges();
 		RateMyPurrfessors.colleges.fetch({
 			success: function () {
-				RateMyPurrfessors.professors = new RateMyPurrfessors.Collections.Professors({
-					college: null
+				RateMyPurrfessors.professors = new RateMyPurrfessors.Collections.Professors({});
+				RateMyPurrfessors.professors.fetch({
+					success: function() {
+						new RateMyPurrfessors.Routers.Router();
+						Backbone.history.start();
+					}
 				});
-				RateMyPurrfessors.professors.fetch();
-		
-				new RateMyPurrfessors.Routers.Router();
-				Backbone.history.start();
 			}
 		});
   }

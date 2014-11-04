@@ -1,0 +1,14 @@
+<!--"items": professors -->
+<% if (items.length > 0) {%>
+  <% items.each(function (professor) { %>
+    <li class="professor">
+      <a href="#/professors/<%= professor.get("id") %>">
+        <h3><%= professor.escape("name") %></h3>
+        <p> <%= professor.escape("department") %> Department at
+          <%= professor.get("college").name %></p>
+      </a>
+    </li>
+  <% }); %>
+<% } else { %>
+  <li class="no_professor">There are no professors matching that search :(</li>
+<% } %>

@@ -1,7 +1,8 @@
-<% if (colleges.length > 0) {%>
-  <% colleges.each(function (college) { %>
+<!--"items": colleges -->
+<% if (items.length > 0) {%>
+  <% items.each(function (college) { %>
     <li class="college">
-      <a href="#/college/<%= college.get("id") %>">
+      <a href="#/colleges/<%= college.get("id") %>">
         <h3><%= college.escape("name") %></h3>
         <p><%= college.escape("location") %></p>
       </a>

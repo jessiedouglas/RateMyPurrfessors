@@ -3,7 +3,6 @@ class Api::ProfessorsController < ApplicationController
   
   def index
     @professors = Professor.includes(:college).all
-    @header_text = "All Professors"
 
     render :index
   end
@@ -58,8 +57,6 @@ class Api::ProfessorsController < ApplicationController
 #         @professors.push(professor.first)
 #       end
 #     end
-
-    @header_text = 'Professors that match "' + match.html_safe + '":'
 
     render :index
   end
