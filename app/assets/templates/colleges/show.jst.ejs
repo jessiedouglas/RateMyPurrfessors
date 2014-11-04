@@ -1,0 +1,40 @@
+<nav class="professor_sidebar">
+  <h3>Professors at <%= college.escape("name") %></h3>
+  <ul class="professors_list">
+		<% if (professors.length > 0) { %>
+	  	<% _.each(professors, function (professor) { %>
+		  	<li><a href="#/professors/<%= professor.get("id") %>">
+					<h4><%= professor.escape("name") %></h4>
+					<p><%= professor.escape("department") %> Department</p>
+				</a></li>
+			<% }); %>
+		<% } else { %>
+			<li>There are no professors for this college :(</li>
+		<% } %>
+  </ul>
+</nav>
+
+
+<section class="college_info">
+  <h1><%= college.escape("name") %></h1>
+  <p><%= college.escape("location") %></p>
+	<a href="">Rate This College</a> 
+</section>
+
+<% if (ratings.length > 0) { %>
+	<section class="college_averages"></section>
+<% } %>
+
+<section class="ratings">
+  <h1>Ratings</h1>
+
+	<div class="paginate">
+	</div>
+
+	<ul class="all_ratings"></ul>
+
+	<div class="paginate">
+	</div>
+
+  <a href="">Rate This College</a> 
+</section>

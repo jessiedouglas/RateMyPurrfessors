@@ -1,4 +1,6 @@
 class Api::ProfessorsController < ApplicationController
+  before_filter :require_logged_in, only: [:new, :create]
+  
   def index
     @professors = Professor.includes(:college).all
     @header_text = "All Professors"
@@ -17,7 +19,7 @@ class Api::ProfessorsController < ApplicationController
     @departments = Professor::DEPARTMENTS
     @colleges = College.all
 
-    render :new
+    render json: @professor
   end
 
   def create
@@ -30,32 +32,32 @@ class Api::ProfessorsController < ApplicationController
       @departments = Professor::DEPARTMENTS
       @colleges = College.all
       flash.now[:notices] = @professor.errors.full_messages
-      render :new
+      render json: @professor
     end
   end
 
   def search
     match = params[:match]
-    all_professors = Professor.all
+    @professors = Professor.search_professors(match).includes(:college)
 
     # store proper noun version of professor name for later
-    names = {}
-    all_professors.each do |professor|
-      cap = professor.name
-      down = cap.downcase
-      names[down] = cap
-    end
-
-    @professors = []
-    names.keys.each do |name|
-      if Regexp.new(match).match(name)
-        name = names[name]
-        professor = all_professors.select do |professor|
-          professor.name == name
-        end
-        @professors.push(professor.first)
-      end
-    end
+    # names = {}
+#     all_professors.each do |professor|
+#       cap = professor.name
+#       down = cap.downcase
+#       names[down] = cap
+#     end
+#
+#     @professors = []
+#     names.keys.each do |name|
+#       if Regexp.new(match).match(name)
+#         name = names[name]
+#         professor = all_professors.select do |professor|
+#           professor.name == name
+#         end
+#         @professors.push(professor.first)
+#       end
+#     end
 
     @header_text = 'Professors that match "' + match.html_safe + '":'
 

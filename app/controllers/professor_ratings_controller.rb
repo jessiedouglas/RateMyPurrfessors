@@ -7,7 +7,7 @@ class ProfessorRatingsController < ApplicationController
     @professor = Professor.find(params[:professor_id])
     @grades = ProfessorRating::GRADES
     
-    render :new
+    render :form
   end
   
   def create
@@ -20,7 +20,7 @@ class ProfessorRatingsController < ApplicationController
       @professor = Professor.find(params[:professor_id])
       @grades = ProfessorRating::GRADES
       flash[:errors] = @rating.errors.full_messages
-      render :new
+      render :form
     end
   end
   
@@ -29,7 +29,7 @@ class ProfessorRatingsController < ApplicationController
     @professor = @rating.professor
     @grades = ProfessorRating::GRADES
     
-    render :edit
+    render :form
   end
   
   def update
@@ -42,7 +42,7 @@ class ProfessorRatingsController < ApplicationController
       @professor = @rating.professor
       @grades = ProfessorRating::GRADES
       flash[:errors] = @rating.errors.full_messages
-      render :edit
+      render :form
     end
   end
   

@@ -1,0 +1,12 @@
+<% if (colleges.length > 0) {%>
+  <% colleges.each(function (college) { %>
+    <li class="college">
+      <a href="#/college/<%= college.get("id") %>">
+        <h3><%= college.escape("name") %></h3>
+        <p><%= college.escape("location") %></p>
+      </a>
+    </li>
+  <% }); %>
+<% } else { %>
+  <li class="no_college">There are no colleges matching that search :(</li>
+<% } %>

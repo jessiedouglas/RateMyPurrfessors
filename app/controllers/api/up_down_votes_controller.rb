@@ -22,7 +22,7 @@ class Api::UpDownVotesController < ApplicationController
       flash[:errors] = @vote.errors.full_messages
     end
     
-    redirect(@vote.votable_type, @vote.votable_id)
+    render json: @vote
   end
   
   def destroy
@@ -31,7 +31,7 @@ class Api::UpDownVotesController < ApplicationController
     id = @vote.votable_id
     @vote.destroy!
     
-    redirect(type, id)
+    render json: {}
   end
   
   private

@@ -41,18 +41,18 @@ class College < ActiveRecord::Base
   paginates_per 25
   
   RATING_PROPS.each do |prop|
-    define_method("avg_#{prop}") do |all_ratings|
-      total = all_ratings.inject(0) do |accum, rating|
+    define_method("avg_#{prop}") do
+      total = self.college_ratings.inject(0) do |accum, rating|
         accum + rating.send(prop)
       end
       
-      (total * 10 / all_ratings.length).round / 10.0
+      (total * 10 / self.college_ratings.length).round / 10.0
     end
   end
   
-  def avg_overall(all_ratings)
+  def avg_overall
     total = RATING_PROPS.inject(0) do |accum, prop|
-      accum + self.send("avg_#{prop}", all_ratings)
+      accum + self.send("avg_#{prop}")
     end
     
     (total).round / 10.0

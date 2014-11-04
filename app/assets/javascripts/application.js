@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require rate_my_purrfessors
+//= require_tree ./utils
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

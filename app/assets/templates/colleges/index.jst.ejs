@@ -1,0 +1,41 @@
+<form class="college_search">
+  <label for="match">Search</label>
+  <input type="search" id="match" name="match" placeholder="Search by name or location">
+
+  <button>Search</button>
+</form>
+
+<section class="colleges_list">
+  <h1>All Colleges</h1>
+
+	<div class="paginate">
+		<% if (colleges.length > 25) { %>
+			<a href="">Next</a>
+			<a href="">Prev</a>
+		<% } %>
+	</div>
+	
+	<article class="colleges_list">
+	  <ul>
+	    <% if (colleges.length > 0) {%>
+	      <% colleges.each(function (college) { %>
+	        <li class="college">
+	          <a href="#/colleges/<%= college.get("id") %>">
+	            <h3><%= college.escape("name") %></h3>
+	            <p><%= college.escape("location") %></p>
+	          </a>
+	        </li>
+	      <% }); %>
+	    <% } else { %>
+	      <li class="no_college">There are no colleges matching that search :(</li>
+	    <% } %>
+	  </ul>
+	</article>
+	
+	<div class="paginate">
+		<% if (colleges.length > 25) { %>
+			<a href="">Next</a>
+			<a href="">Prev</a>
+		<% } %>
+	</div>
+</section>

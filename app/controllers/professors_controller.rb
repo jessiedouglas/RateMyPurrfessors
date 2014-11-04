@@ -1,4 +1,6 @@
 class ProfessorsController < ApplicationController
+  before_filter :require_logged_in, only: [:new, :create]
+  
   def index
     @professors = Professor.includes(:college).order(:last_name).page(params[:page])
     @header_text = "All Professors"

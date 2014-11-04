@@ -1,40 +1,35 @@
 class Api::CollegesController < ApplicationController
   def index
-    @colleges = College.all
-    @header_text = "All Colleges"
+    @colleges = College.order(:name).page(params[:page])
 
-    render :index
+    render json: @colleges
   end
 
   def show
-    @college = College.find(params[:id])
-    @professors = @college.professors
-    @ratings = @college.college_ratings
+    @college = College.includes(:college_ratings).includes(:up_down_votes).find(params[:id])
 
     render :show
   end
 
   def search
     match = params[:match]
-    all_colleges = College.all
+    @colleges = College.search_colleges(match)
 
     # store proper noun version of college name for later
-    names = {}
-    all_colleges.each do |college|
-      names[college.name.downcase] = college.name
-    end
+    # names = {}
+ #    all_colleges.each do |college|
+ #      names[college.name.downcase] = college.name
+ #    end
+ #
+ #    @colleges = []
+ #    names.keys.each do |name|
+ #      if Regexp.new(match).match(name)
+ #        name = names[name]
+ #        college = all_colleges.select { |college| college.name == name }
+ #        @colleges.push(college.first)
+ #      end
+ #    end
 
-    @colleges = []
-    names.keys.each do |name|
-      if Regexp.new(match).match(name)
-        name = names[name]
-        college = all_colleges.select { |college| college.name == name }
-        @colleges.push(college.first)
-      end
-    end
-
-    @header_text = 'Colleges that match "' + match.html_safe + '":'
-
-    render :index
+    render json: @colleges
   end
 end
