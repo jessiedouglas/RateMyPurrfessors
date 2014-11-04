@@ -67,4 +67,12 @@ class ProfessorRating < ActiveRecord::Base
     
     a || 0
   end
+  
+  def already_voted_on?
+    current_user_votes = self.up_down_votes.where("voter_id = ?", current_user.id)
+    
+    return false if current_user_votes.length == 0
+    
+    current_user_votes.first.vote_value
+  end
 end

@@ -10,13 +10,11 @@ json.college_ratings @college.college_ratings do |rating|
   json.extract! rating, :id, :rater_id, :reputation, :location, :opportunities, :library,
               :grounds_and_common_areas, :internet, :food, :clubs, :social, :happiness,
               :graduation_year, :comments, :created_at, :updated_at
-  json.up_down_votes rating.up_down_votes do |vote|
-    json.extract! vote, :id, :vote_value, :voter_id
-  end
   
   json.vote_stats do 
     json.upvotes rating.upvotes
     json.downvotes rating.downvotes
+    json.has_already_voted_on rating.already_voted_on?(current_user)
   end
 end
 

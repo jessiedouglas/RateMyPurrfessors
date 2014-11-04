@@ -2,7 +2,7 @@
   <h3>Professors at <%= college.escape("name") %></h3>
   <ul class="professors_list">
 		<% if (professors.length > 0) { %>
-	  	<% _.each(professors, function (professor) { %>
+	  	<% professors.each(function (professor) { %>
 		  	<li><a href="#/professors/<%= professor.get("id") %>">
 					<h4><%= professor.escape("name") %></h4>
 					<p><%= professor.escape("department") %> Department</p>

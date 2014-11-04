@@ -5,15 +5,17 @@ window.RateMyPurrfessors = {
   Routers: {},
   initialize: function() {
     RateMyPurrfessors.colleges = new RateMyPurrfessors.Collections.Colleges();
-		RateMyPurrfessors.colleges.fetch();
+		RateMyPurrfessors.colleges.fetch({
+			success: function () {
+				RateMyPurrfessors.professors = new RateMyPurrfessors.Collections.Professors({
+					college: null
+				});
+				RateMyPurrfessors.professors.fetch();
 		
-		RateMyPurrfessors.professors = new RateMyPurrfessors.Collections.Professors({
-			college: null
+				new RateMyPurrfessors.Routers.Router();
+				Backbone.history.start();
+			}
 		});
-		RateMyPurrfessors.professors.fetch();
-		
-		new RateMyPurrfessors.Routers.Router();
-		Backbone.history.start();
   }
 };
 

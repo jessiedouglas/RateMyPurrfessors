@@ -3,10 +3,8 @@ RateMyPurrfessors.Views.CollegeShow = Backbone.CompositeView.extend({
 	
 	render: function () {
 		var professors = this.model.professors();
-		professors.fetch();
 		
 		var ratings = this.model.collegeRatings();
-		ratings.fetch();
 		
 		var renderedContent = this.template({
 			college: this.model,
@@ -15,7 +13,7 @@ RateMyPurrfessors.Views.CollegeShow = Backbone.CompositeView.extend({
 		});
 		this.$el.html(renderedContent);
 		
-		// this.renderAverages(ratings)
+		this.renderAverages(ratings);
 		
 		ratings.each(function (rating) {
 			var ratingSubview = new RateMyPurrfessors.Views.CollegeRatingShow({
@@ -30,7 +28,6 @@ RateMyPurrfessors.Views.CollegeShow = Backbone.CompositeView.extend({
 	
 	renderAverages: function (ratings) {
 		var avg_ratings = this.model.get("avg_college_ratings");
-		debugger
 	
 		var avgSubview = new RateMyPurrfessors.Views.CollegeAverages({
 			collection: ratings,

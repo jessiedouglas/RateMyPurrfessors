@@ -7,6 +7,7 @@ class Api::UpDownVotesController < ApplicationController
     @vote = UpDownVote.new(vote_params.merge(voter_id: current_user.id))
     type = params[:up_down_vote][:votable_type]
     id = params[:up_down_vote][:votable_id]
+    p type, id
     
     if type == "professor_rating"
       votable = ProfessorRating.find(id)
@@ -25,10 +26,16 @@ class Api::UpDownVotesController < ApplicationController
     render json: @vote
   end
   
+  def find_vote
+    id = params[:up_down_vote][:votable_id]
+    type = params[:up_down_vote][:votable_type].camelize
+    @vote = UpDownVote.where("votable_id = ? AND votable_type = ? AND voter_id = ?", id, type, current_user.id).first
+    
+    render json: @vote
+  end
+  
   def destroy
     @vote = UpDownVote.find(params[:id])
-    type = @vote.votable_type
-    id = @vote.votable_id
     @vote.destroy!
     
     render json: {}

@@ -1,6 +1,12 @@
 <div class="vote_buttons">
+<% if (has_already_voted_on) { %>
+	<% var vote_value = has_already_voted_on === 1 ? "upvoted" : "downvoted" %>
+	<p>You <%= vote_value %> this post</p>
+	<a href="" class="undo">Undo</a>
+<% } else { %>
 	<a href="" class="upvote">&#xff0b;</a>
 	<a href="" class="downvote">&minus;</a>
+<% } %>
 </div>
 
 <div class="vote_info">

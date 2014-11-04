@@ -6,7 +6,6 @@ RateMyPurrfessors.Views.CollegeAverages = Backbone.View.extend({
 	template: JST["colleges/averages"],
 	
 	render: function () {
-		debugger
 		var renderedContent = this.template({
 				ratings: this.collection,
 				avg_reputation: this.avg_ratings.avg_reputation,

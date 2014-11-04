@@ -17,12 +17,19 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 	},
 	
 	collegeShow: function (id) {
-		var college = RateMyPurrfessors.colleges.getOrFetch(id);
-		var showView = new RateMyPurrfessors.Views.CollegeShow({
-			model: college
-		});
+		// var college = RateMyPurrfessors.colleges.getOrFetch(id);
+		var college = RateMyPurrfessors.colleges.get(id);
+		var that = this;
 		
-		this._swapView(showView);
+		college.fetch({
+			success: function () { 
+				var showView = new RateMyPurrfessors.Views.CollegeShow({
+					model: college
+				});
+		
+				that._swapView(showView);
+			}
+		});
 	},
 	
 	_swapView: function (view) {

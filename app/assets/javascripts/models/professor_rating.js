@@ -1,5 +1,5 @@
 RateMyPurrfessors.Models.ProfessorRating = Backbone.Model.extend({
-	rootUrl: "api/professor_ratings",
+	urlRoot: "api/professor_ratings",
 	
 	parse: function (response) {
 		if (response.up_down_votes) {
