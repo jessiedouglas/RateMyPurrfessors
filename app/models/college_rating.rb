@@ -1,7 +1,7 @@
 class CollegeRating < ActiveRecord::Base
   validates :college, :rater, :reputation, :location, :opportunities, presence: true
   validates :library, :grounds_and_common_areas, :internet, :food, presence: true
-  validates :clubs, :social, :happiness, presence: true
+  validates :clubs, :social, :happiness, :graduation_year, presence: true
   validates :college_id, uniqueness: { scope: :rater_id, message: "has already been rated" }
   
   belongs_to :college, inverse_of: :college_ratings

@@ -32,7 +32,7 @@ class ProfessorsController < ApplicationController
     else
       @departments = Professor::DEPARTMENTS
       @colleges = College.all
-      flash.now[:notices] = @professor.errors.full_messages
+      flash.now[:errors] = @professor.errors.full_messages
       render :new
     end
   end

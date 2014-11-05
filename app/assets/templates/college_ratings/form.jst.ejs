@@ -1,0 +1,294 @@
+<form action="<%= action %>" method="POST" class="college_rating">
+	<input type="hidden" name="_method" value="<%= method %>">
+	
+	<input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
+	
+	<input type="hidden" name="college_rating[college_id]" value="<%= college.get("id") %>">
+	
+	<div>
+		<label class="radio">Reputation</label>
+			<input type="radio" 
+					name="college_rating[reputation]" 
+					id="reputation_1" 
+					value="1">
+					<label for="reputation_1">Poor</label>
+			
+			<input type="radio" 
+					name="college_rating[reputation]"
+					value="2">
+				
+			<input type="radio" 
+					name="college_rating[reputation]"
+					value="3">
+				
+			<input type="radio" 
+					name="college_rating[reputation]" 
+					value="4">
+					
+			<input type="radio" 
+					name="college_rating[reputation]" 
+					id="reputation_5" 
+					value="5">
+					<label for="reputation_5">Excellent</label>
+	</div>
+			
+	<div>
+		<label class="radio">Location</label>
+			<input type="radio" 
+					name="college_rating[location]" 
+					id="location_1" 
+					value="1">
+					<label for="location_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[location]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[location]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[location]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[location]" 
+					id="location_5" 
+					value="5">
+					<label for="location_5">Excellent</label>
+	</div>
+	
+	<div>					
+		<label class="radio">Opportunities</label>
+			<input type="radio" 
+					name="college_rating[opportunities]" 
+					id="opportunities_1" 
+					value="1">
+					<label for="opportunities_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[opportunities]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[opportunities]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[opportunities]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[opportunities]" 
+					id="opportunities_5" 
+					value="5">
+					<label for="opportunities_5">Excellent</label>
+	</div>
+				
+	<div>
+		<label class="radio">Library</label>
+			<input type="radio" 
+					name="college_rating[library]" 
+					id="library_1" 
+					value="1">
+					<label for="library_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[library]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[library]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[library]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[library]" 
+					id="library_5" 
+					value="5">
+					<label for="library_5">Excellent</label>
+	</div>
+	
+	<div>			
+		<label class="radio">Grounds and Common Areas</label>
+			<input type="radio" 
+					name="college_rating[grounds_and_common_areas]" 
+					id="grounds_and_common_areas_1" 
+					value="1">
+					<label for="grounds_and_common_areas_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[grounds_and_common_areas]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[grounds_and_common_areas]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[grounds_and_common_areas]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[grounds_and_common_areas]" 
+					id="grounds_and_common_areas_5" 
+					value="5">
+					<label for="grounds_and_common_areas_5">Excellent</label>
+	</div>
+				
+	<div>			
+		<label class="radio">Internet</label>
+			<input type="radio" 
+					name="college_rating[internet]" 
+					id="internet_1" 
+					value="1">
+					<label for="internet_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[internet]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[internet]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[internet]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[internet]" 
+					id="internet_5" 
+					value="5">
+					<label for="internet_5">Excellent</label>
+	</div>
+	
+	<div>			
+		<label class="radio">Food</label>
+			<input type="radio" 
+					name="college_rating[food]" 
+					id="food_1" 
+					value="1">
+					<label for="food_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[food]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[food]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[food]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[food]" 
+					id="food_5" 
+					value="5">
+					<label for="food_5">Excellent</label>
+	</div>
+				
+	<div>			
+		<label class="radio">Clubs</label>
+			<input type="radio" 
+					name="college_rating[clubs]" 
+					id="clubs_1" 
+					value="1">
+					<label for="clubs_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[clubs]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[clubs]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[clubs]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[clubs]" 
+					id="clubs_5" 
+					value="5">
+					<label for="clubs_5">Excellent</label>
+	</div>
+				
+	<div>			
+		<label class="radio">Social</label>
+			<input type="radio" 
+					name="college_rating[social]" 
+					id="social_1" 
+					value="1">
+					<label for="social_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[social]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[social]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[social]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[social]" 
+					id="social_5" 
+					value="5">
+					<label for="social_5">Excellent</label>
+	</div>
+		
+	<div>			
+		<label class="radio">Happiness</label>
+			<input type="radio" 
+					name="college_rating[happiness]" 
+					id="happiness_1" 
+					value="1">
+					<label for="happiness_1">Poor</label>
+
+			<input type="radio" 
+					name="college_rating[happiness]"
+					value="2">
+
+			<input type="radio" 
+					name="college_rating[happiness]"
+					value="3">
+
+			<input type="radio" 
+					name="college_rating[happiness]" 
+					value="4">
+
+			<input type="radio" 
+					name="college_rating[happiness]" 
+					id="happiness_5" 
+					value="5">
+					<label for="happiness_5">Excellent</label>
+	</div>
+	
+	<div>			
+		<label for="comments">Comments</label>
+		<textarea id="comments" name="college_rating[comments]"></textarea>
+	</div>
+	
+	<div>			
+		<label for="graduation_year">Graduation Year</p>
+		<select id="graduation_year" name="college_rating[graduation_year]">
+			<option value="">--Select--</option>
+			<% gradYears.forEach(function (year) { %>
+				<option value="<%= year %>"><%= year %></option>
+			<% }); %>
+		</select>
+	</div>
+	
+	<button>Submit</button>
+</form>

@@ -13,25 +13,23 @@ class Api::ProfessorsController < ApplicationController
     render :show
   end
 
-  def new
-    @professor = Professor.new
-    @departments = Professor::DEPARTMENTS
-    @colleges = College.all
-
-    render json: @professor
-  end
+  # def new
+#     @professor = Professor.new
+#     @departments = Professor::DEPARTMENTS
+#     @colleges = College.all
+#
+#     render json: @professor
+#   end
 
   def create
     @professor = Professor.new(professor_params)
 
     if @professor.save
       flash[:notices] = ["Professor created!"]
-      redirect_to api_professor_url(@professor)
+      redirect_to root_url + "#" + professor_path(@professor)
     else
-      @departments = Professor::DEPARTMENTS
-      @colleges = College.all
-      flash.now[:notices] = @professor.errors.full_messages
-      render json: @professor
+      flash[:errors] = @professor.errors.full_messages
+      redirect_to root_url + "#/professors/new"
     end
   end
 
@@ -39,28 +37,9 @@ class Api::ProfessorsController < ApplicationController
     match = params[:match]
     @professors = Professor.search_professors(match).includes(:college)
 
-    # store proper noun version of professor name for later
-    # names = {}
-#     all_professors.each do |professor|
-#       cap = professor.name
-#       down = cap.downcase
-#       names[down] = cap
-#     end
-#
-#     @professors = []
-#     names.keys.each do |name|
-#       if Regexp.new(match).match(name)
-#         name = names[name]
-#         professor = all_professors.select do |professor|
-#           professor.name == name
-#         end
-#         @professors.push(professor.first)
-#       end
-#     end
-
     render :index
   end
-
+  
   private
   def professor_params
     params.require(:professor).permit(

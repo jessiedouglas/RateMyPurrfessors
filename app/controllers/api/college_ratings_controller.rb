@@ -2,12 +2,10 @@ class Api::CollegeRatingsController < ApplicationController
   before_filter :require_logged_in
   before_filter :require_same_user, only: [:edit, :update, :destroy]
   
-  def new
-    @rating = current_user.college_ratings.new
-    @college = College.find(params[:college_id])
-    @grad_years = CollegeRating.grad_years
+  def show
+    @rating = CollegeRating.find(params[:id])
     
-    render :new
+    render :form
   end
   
   def create
@@ -15,21 +13,11 @@ class Api::CollegeRatingsController < ApplicationController
     
     if @rating.save
       flash[:notices] = ["Rating saved!"]
-      redirect_to api_college_url(@rating.college_id)
+      redirect_to root_url + "#" + college_path(@rating.college_id)
     else
-      @college = College.find(params[:college_id])
-      @grad_years = CollegeRating.grad_years
       flash[:errors] = @rating.errors.full_messages
-      render :new
+      redirect_to root_url + "#" + new_college_college_rating_path(@rating.college_id)
     end
-  end
-  
-  def edit
-    @rating = CollegeRating.find(params[:id])
-    @college = @rating.college
-    @grad_years = CollegeRating.grad_years
-    
-    render :edit
   end
   
   def update
@@ -37,12 +25,10 @@ class Api::CollegeRatingsController < ApplicationController
     
     if @rating.update(college_rating_params)
       flash[:notices] = ["Rating updated!"]
-      redirect_to api_college_url(@rating.college_id)
+      redirect_to root_url + "#" + college_path(@rating.college_id)
     else
-      @college = @rating.college
-      @grad_years = CollegeRating.grad_years
       flash[:errors] = @rating.errors.full_messages
-      render :edit
+      redirect_to root_url + "#" + edit_college_rating_path(@rating)
     end
   end
   

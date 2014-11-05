@@ -1,0 +1,21 @@
+<!--items: colleges or professors -->
+<% if (items.length > 0) { %>
+  <% items.each( function (result) { %>
+    <li>
+			<% if (result.get("type") === "college") { %>
+        <a href="#/colleges/<%= result.get("id") %>">
+          <h3><%= result.escape("name") %></h3>
+          <p><%= result.escape("location") %></p>
+        </a>
+			<% } else { %>
+        <a href="#/professors/<%= result.get("id") %>">
+          <h3><%= result.escape("name") %></h3>
+          <p> <%= result.escape("department") %> Department at
+            <%= result.get("college").name %></p>
+        </a>
+			<% } %>
+    </li>
+  <% }); %>
+<% } else { %>
+  <li>There are no colleges or professors matching that search :(</li>
+<% } %>

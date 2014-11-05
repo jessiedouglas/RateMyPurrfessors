@@ -2,14 +2,14 @@
   <p class="start">Get started...</p>
 	<article>
 		<div class="professor">
-			<a href="<%= professors_url %>">
+			<a href="#/professors">
 				<p>find a</p>
 				<strong>professor</strong>
 			</a>
 		</div>
 		
 		<div class="college">
-			<a href="<%= colleges_url %>">
+			<a href="#/colleges">
 				<p>find a</p>
 				<strong>college</strong>
 			</a>
@@ -24,15 +24,3 @@
 		</p>
 	</article>
 </section>
-
-<script id="departments">
-	<%= Professor::DEPARTMENTS.to_json.html_safe %>
-</script>
-
-<script id="grad_years">
-	<%= CollegeRating.grad_years.to_json.html_safe %>
-</script>
-
-<script id="grades">
-	<%= ProfessorRating::GRADES.to_json.html_safe %>
-</script>

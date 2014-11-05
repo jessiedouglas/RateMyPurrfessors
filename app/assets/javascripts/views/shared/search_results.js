@@ -8,6 +8,8 @@ RateMyPurrfessors.Views.SearchResults = Backbone.View.extend({
 			return JST["colleges/search_results"];
 		} else if (this.type === "professors"){
 			return JST["professors/search_results"];
+		} else if (this.type === "mixed") {
+			return JST["root/search_results"]
 		} else {
 			alert("OH NO");
 		}

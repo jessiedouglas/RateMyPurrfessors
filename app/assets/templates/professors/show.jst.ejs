@@ -3,7 +3,7 @@
   <p><%= professor.escape("department") %> Department</p>
   <p><a href="#/colleges/<%= professor.get("college_id") %>"><%= professor.get("college").name %></a></p>
 	
-	<a href="/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
+	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
 </section>
 
 <% if (ratings.length > 0) { %>
@@ -16,10 +16,14 @@
 	<div class="paginate">
 	</div>
 	
-	<ul class="all_ratings"></ul>
+	<ul class="all_ratings">
+		<% if (ratings.length === 0) { %>
+			<li class="no_ratings">There are no ratings for this professor :(</li>
+		<% } %>
+	</ul>
 	
 	<div class="paginate">
 	</div>
 	
-	<a href="/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
+	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
 </section>

@@ -2,12 +2,10 @@ class Api::ProfessorRatingsController < ApplicationController
   before_filter :require_logged_in
   before_filter :require_same_user, only: [:edit, :update, :destroy]
   
-  def new
-    @rating = current_user.professor_ratings.new
-    @professor = Professor.find(params[:professor_id])
-    @grades = ProfessorRating::GRADES
+  def show
+    @rating = ProfessorRating.find(params[:id])
     
-    render :new
+    render :form
   end
   
   def create
@@ -15,21 +13,11 @@ class Api::ProfessorRatingsController < ApplicationController
     
     if @rating.save
       flash[:notices] = ["Rating saved!"]
-      redirect_to api_professor_url(@rating.professor_id)
+      redirect_to root_url + "#" + professor_path(@rating.professor_id)
     else
-      @professor = Professor.find(params[:professor_id])
-      @grades = ProfessorRating::GRADES
       flash[:errors] = @rating.errors.full_messages
-      render :new
+      redirect_to root_url + "#" + new_professor_professor_rating_path(@rating.professor_id)
     end
-  end
-  
-  def edit
-    @rating = ProfessorRating.find(params[:id])
-    @professor = @rating.professor
-    @grades = ProfessorRating::GRADES
-    
-    render :edit
   end
   
   def update
@@ -37,12 +25,10 @@ class Api::ProfessorRatingsController < ApplicationController
     
     if @rating.update(professor_rating_params)
       flash[:notices] = ["Rating updated!"]
-      redirect_to api_professor_url(@rating.professor_id)
+      redirect_to root_url + "#" + professor_path(@rating.professor_id)
     else
-      @professor = @rating.professor
-      @grades = ProfessorRating::GRADES
       flash[:errors] = @rating.errors.full_messages
-      render :edit
+      redirect_to root_url + "#" + edit_professor_rating_path(@rating)
     end
   end
   

@@ -4,6 +4,10 @@ window.RateMyPurrfessors = {
   Views: {},
   Routers: {},
   initialize: function() {
+		RateMyPurrfessors.departments = JSON.parse($("script#departments").html());
+		RateMyPurrfessors.gradYears = JSON.parse($("script#grad_years").html());
+		RateMyPurrfessors.grades = JSON.parse($("script#grades").html());
+		
     RateMyPurrfessors.colleges = new RateMyPurrfessors.Collections.Colleges();
 		RateMyPurrfessors.colleges.fetch({
 			success: function () {

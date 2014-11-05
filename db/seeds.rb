@@ -8,9 +8,9 @@
 
 User.destroy_all
 
-users = [
-  User.create!({ name: "demo", email: "demo@demo.com", password: "demodemo" })
-]
+User.create!({ name: "demo", email: "demo@demo.com", password: "demodemo" })
+
+users = []
 
 20.times do 
   u = User.create!({

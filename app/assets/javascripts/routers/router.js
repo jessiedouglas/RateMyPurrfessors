@@ -1,13 +1,32 @@
 RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 	initialize: function () {
-		this.$rootEl = $("main")
+		this.$rootEl = $("main");
 	},
 	
 	routes: {
+		"": "home",
+		"search": "search",
 		"colleges": "collegesIndex",
 		"colleges/:id": "collegeShow",
+		"colleges/:id/college_ratings/new": "collegeRatingsNew",
+		"college_ratings/:id/edit": "collegeRatingsEdit",
 		"professors": "professorsIndex",
-		"professors/:id": "professorShow"
+		"professors/new": "professorsNew",
+		"professors/:id": "professorShow",
+		"professors/:id/professor_ratings/new": "professorRatingsNew",
+		"professor_ratings/:id/edit": "professorRatingEdit"
+	},
+	
+	home: function () {
+		var homeView = new RateMyPurrfessors.Views.Home();
+		
+		this._swapView(homeView);
+	},
+	
+	search: function () {
+		var searchView = new RateMyPurrfessors.Views.Search();
+		
+		this._swapView(searchView);
 	},
 	
 	collegesIndex: function () {
@@ -33,12 +52,41 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 		});
 	},
 	
+	collegeRatingsNew: function (id) {
+		var college = RateMyPurrfessors.colleges.get(id);
+		var newView = new RateMyPurrfessors.Views.CollegeRatingsNew({
+			model: college
+		});
+		
+		this._swapView(newView);
+	},
+	
+	collegeRatingsEdit: function (id) {
+		var collegeRating = new RateMyPurrfessors.Models.CollegeRating({ id: id });
+		collegeRating.fetch();
+		
+		var editView = new RateMyPurrfessors.Views.CollegeRatingEdit({
+			model: collegeRating
+		});
+		
+		this._swapView(editView);
+	},
+	
 	professorsIndex: function () {
 		var indexView = new RateMyPurrfessors.Views.ProfessorsIndex({
 			collection: RateMyPurrfessors.professors
 		});
 		
 		this._swapView(indexView);
+	},
+	
+	professorsNew: function () {
+		var professor = new RateMyPurrfessors.Models.Professor();
+		var newView = new RateMyPurrfessors.Views.ProfessorsNew({
+			model: professor
+		});
+		
+		this._swapView(newView);
 	},
 	
 	professorShow: function (id) {
@@ -48,6 +96,26 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 		});
 		
 		this._swapView(showView);
+	},
+	
+	professorRatingsNew: function (id) {
+		var professor = RateMyPurrfessors.professors.getOrFetch(id);
+		var newView = new RateMyPurrfessors.Views.ProfessorRatingsNew({
+			model: professor
+		});
+		
+		this._swapView(newView);
+	},
+	
+	professorRatingEdit: function (id) {
+		var professorRating = new RateMyPurrfessors.Models.ProfessorRating({ id: id });
+		professorRating.fetch();
+		
+		var editView = new RateMyPurrfessors.Views.ProfessorRatingEdit({
+			model: professorRating
+		});
+		
+		this._swapView(editView);
 	},
 	
 	_swapView: function (view) {
