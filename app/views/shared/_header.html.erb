@@ -13,14 +13,14 @@
       <button class="user_nav">Hi, <%= current_user.name %></button>
       <ul class="user_dropdown">
         <li>
-          <%= link_to "My Account", user_url(current_user) %>
+					<a href="#<%= user_path(current_user) %>">My Account</a>
         </li>
         <li>
           <%= button_to "Log Out", session_url, method: :delete %>
         </li>
       </ul>
     <% else %>
-      <%= link_to "Log In/Sign Up", new_session_url, class: "user_nav" %>
+      <%= link_to "Log In/Sign Up", "#" + new_session_path, class: "user_nav" %>
     <% end %>
   </div>
 </header>

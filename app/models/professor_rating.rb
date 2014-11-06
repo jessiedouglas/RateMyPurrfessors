@@ -37,6 +37,8 @@ class ProfessorRating < ActiveRecord::Base
     
   has_many :up_down_votes, as: :votable, dependent: :destroy
   
+  has_many :colleges, through: :professor, source: :college
+  
   paginates_per 10
   
   def possible_vote(voter_id)

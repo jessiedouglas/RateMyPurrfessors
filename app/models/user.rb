@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     inverse_of: :rater,
     dependent: :destroy
     
+  has_many :professors,
+    through: :professor_ratings,
+    source: :professor
+    
   has_many :college_ratings,
     foreign_key: :rater_id,
     inverse_of: :rater,
@@ -84,10 +88,8 @@ class User < ActiveRecord::Base
   end
   
   def all_ratings
-    professor_ratings = ProfessorRating.where("rater_id = ?", self.id)
-        .joins(:professor)
-        .joins("INNER JOIN colleges ON colleges.id = professors.college_id")
-        
+    professor_ratings = self.professor_ratings.includes(:professor).includes(:colleges)
+ 
     professor_ratings + self.college_ratings.includes(:college)
   end
 

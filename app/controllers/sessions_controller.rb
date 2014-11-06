@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(email, password)
     
     if @user
-      p @user
       login_user(@user)
       redirect_to user_url(@user)
     else
@@ -27,6 +26,6 @@ class SessionsController < ApplicationController
   def destroy
     logout_user
 
-    redirect_to new_session_url
+    redirect_to root_url + "#" + new_session_path
   end
 end

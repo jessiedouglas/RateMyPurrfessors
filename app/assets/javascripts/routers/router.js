@@ -6,6 +6,7 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 	routes: {
 		"": "home",
 		"search": "search",
+		"session/new": "sessionNew",
 		"users/new": "usersNew",
 		"users/:id": "userShow",
 		"colleges": "collegesIndex",
@@ -29,6 +30,12 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 		var searchView = new RateMyPurrfessors.Views.Search();
 		
 		this._swapView(searchView);
+	},
+	
+	sessionNew: function () {
+		var newView = new RateMyPurrfessors.Views.SessionNew();
+		
+		this._swapView(newView);
 	},
 	
 	usersNew: function () {
