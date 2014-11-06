@@ -6,6 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+pictures = [
+            "https://www.filepicker.io/api/file/Ny0m5RwBRleIgGWrkw6n",
+            "https://www.filepicker.io/api/file/7vOoOZOgTamITb2SbniW",
+            "https://www.filepicker.io/api/file/aKEpOxUkQmp4HYnGzqlW",
+            "https://www.filepicker.io/api/file/Y8jNsrKBQs2wyhQ2vl8A",
+            "https://www.filepicker.io/api/file/7VofZ1FtRuH988uW180j",
+            "https://www.filepicker.io/api/file/og9AilErSucVCx3ztYjR",
+            "https://www.filepicker.io/api/file/9MR0nCaCSVmGT7spOfD0",
+            "https://www.filepicker.io/api/file/RQGPvW7nS1m53K15MSLh",
+            "https://www.filepicker.io/api/file/mgFXorc8RXOSMhtjeMTN",
+            "https://www.filepicker.io/api/file/9j4dUjVzQNOqeo4zh0sc",
+            "https://www.filepicker.io/api/file/7cLZNlc1TpCxQQQ4ddiw",
+            "https://www.filepicker.io/api/file/u8uQ9ugTaic9SDhocH1C",
+            "https://www.filepicker.io/api/file/caxWwVTOR4CAuBU9m5kb",
+            "https://www.filepicker.io/api/file/OOgUvrkDQJC2BkXhi8RG"
+          ]
+
 User.destroy_all
 
 demo = User.create!({ name: "demo", email: "demo@demo.com", password: "demodemo" })
@@ -58,7 +75,8 @@ Professor.create!({
                   middle_initial: "M", 
                   last_name: "Whiskers", 
                   college_id: colleges[rand(colleges.length)].id,
-                  department: departments[rand(departments.length)]
+                  department: departments[rand(departments.length)],
+                  filepicker_url: pictures[rand(pictures.length)]
                   })
 
 professors = []

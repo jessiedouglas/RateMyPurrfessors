@@ -15,7 +15,7 @@
  */
 
 /* RESET */
-html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, img, main, form {
+html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, img, main, form, article {
 	padding: 0;
 	margin: 0;
 	border: 0;
@@ -40,7 +40,7 @@ div.background {
 }
 /* Background pattern from subtlepatterns.com */
 
-input[type="text"], input[type="search"], input[type="email"], input[type="email"], button, textarea {
+input[type="text"], input[type="search"], input[type="email"], button, textarea {
 	-webkit-appearance: none;
 	display: inline-block;
 	box-sizing: content-box;
@@ -176,6 +176,7 @@ main {
 	margin: 0 auto;
 	background: rgba(206, 255, 199, .5);
 	position: relative;
+	color: #333;
 }
 
 /* Footer */
@@ -224,27 +225,49 @@ footer a:hover {
 }
 
 /* Home */
+.filler {
+	height: 90px;
+}
 
-.sidebar {
-	float: left;
-	width: 260px;
-	padding: 20px;
+div.background_image {
+	background: image-url("oie_IcPSkd3ICTRo.png") no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;
 }
 
 .content {
-	padding: 30px;
-	float: right;
-	width: 540px;
+	padding: 30px 0 40px 0;
+	width: 600px;
+	border-radius: 10px;
+	margin: 0 auto;
+	background: #333;
+	color: white;
 }
 
 .start {
 	margin-left: 90px;
-	font-size: 12px;
+	margin-bottom: 50px;
+	letter-spacing: 2px;
 }
 
 .content > article {
 	margin: 0 auto;
-	width: 400px;
+	width: 500px;
+}
+
+.content > article > div {
+	background: #DB9BE0;
+	color: #333;
+	padding: 20px;
+}
+
+.content > article > div:hover {
+	background: #9cc100;
 }
 
 strong.what {
@@ -254,7 +277,8 @@ strong.what {
 p.main_label {
 	text-align: center;
 	clear: both;
-	font-size: 24px;
+	font-size: 48px;
+	width: 450px;
 }
 
 strong.professor, strong.college {
@@ -262,16 +286,23 @@ strong.professor, strong.college {
 }
 
 div.professor {
+	font-size: 24px;
 	text-align: center;
 	float: left;
-	margin: 20px;
-	margin: 20px 0 20px 100px;
+	margin-left: 30px;
+	margin-bottom: 30px;
 }
 
 div.college {
+	font-size: 24px;
 	text-align: center;
 	float: right;
-	margin: 20px 100px 20px 0;
+	margin-right: 35px;
+	margin-bottom: 30px;
+}
+
+p.main_label > strong {
+	color: #9cc100;
 }
 
 div.professor:hover ~ p.main_label > strong.professor {
@@ -288,21 +319,6 @@ div.college:hover ~ p.main_label > strong.college {
 
 div.college:hover ~ p.main_label > strong.what {
 	display: none;
-}
-
-.sidebar > ul > li > a {
-	display: block;
-	padding-bottom: 10px;
-	font-weight: bold;
-	font-size: 20px;
-}
-
-.sidebar_dropdown {
-	display: none;
-}
-
-li.rate:hover > .sidebar_dropdown {
-	display: block;
 }
 
 // LOADING

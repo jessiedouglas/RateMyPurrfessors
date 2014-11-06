@@ -3,7 +3,7 @@ RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 	
 	events: {
 		"click a#photo": "filepicker",
-		"click form > button": "createProfessor"
+		"click button": "createProfessor"
 	},
 	
 	render: function () {
@@ -13,14 +13,11 @@ RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 			departments: RateMyPurrfessors.departments
 		});
 		this.$el.html(renderedContent);
-		
-		// filepicker.constructWidget(this.$("input#constructed-widget"));
-		
+				
 		return this;
 	},
 	
 	filepicker: function (event) {
-		console.log("hi");
 		event.preventDefault();
 		var that = this;
 		
@@ -29,19 +26,61 @@ RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 			that.photo_url = blob.url;
 		});
 	}, 
-	
+	//
+	// confirmCreate: function (event) {
+	// 	console.log("hi")
+	// 	event.preventDefault();
+	// 	this.$el.prepend('<div class="confirm_modal">');
+	// 	this.$("div.confirm_modal").append('<p> Are you sure you want to create this professor? Once created, it cannot be edited.');
+	// 	this.$("div.confirm_modal").append('<button class="cancel">Cancel');
+	// 	this.$("div.confirm_modal").append('<button class="confirm">Yes, ' + "I'm sure!");
+	// },
+	//
 	createProfessor: function (event) {
 		event.preventDefault();
+		this.$("ul.errors").remove();
+		
 		var form_attrs = this.$("form").serializeJSON();
 		if (this.photo_url) {
 			form_attrs.filepicker_url = this.photo_url;
 		}
 		
-		console.log(form_attrs);
-		
 		var professor = new RateMyPurrfessors.Models.Professor();
+		var that = this;
 		
 		professor.set(form_attrs);
-		professor.save();
+		if (professor.save()) {
+			professor.fetch({
+				success: function () {
+					RateMyPurrfessors.router.navigate("/professors/" + professor.get("id")); //do validations
+				}
+			});
+		} else {
+			alert("OH NO")
+		}
+			// success: function () {
+// 				console.log("we did it")
+// 				RateMyPurrfessors.Routers.Router.navigate("/show/" + professor.get("id"));
+// 			},
+			// error: function (resp) {
+// 				debugger
+// 				that.$el.prepend('<ul class="errors">');
+//
+// 				if (!resp.attributes.first_name) {
+// 					that.$("ul.errors").append("<li>First Name can't be blank.");
+// 				}
+//
+// 				if (!resp.attributes.last_name) {
+// 					that.$("ul.errors").append("<li>Last Name can't be blank.");
+// 				}
+//
+// 				if (!resp.attributes.department) {
+// 					that.$("ul.errors").append("<li>Please select a department.");
+// 				}
+//
+// 				if (!resp.attributes.college_id) {
+// 					that.$("ul.errors").append("<li>Please select a college.");
+// 				}
+		// );
 	}
 });

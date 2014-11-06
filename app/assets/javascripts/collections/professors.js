@@ -2,16 +2,10 @@ RateMyPurrfessors.Collections.Professors = Backbone.Collection.extend({
 	url: "api/professors",
 	model: RateMyPurrfessors.Models.Professor,
 	
-	initialize: function (options) {
-		if (options["college"]) {
-			this.college = options.college;
-		}
-	},
-	
 	getOrFetch: function (id) {
 		var professor = this.get(id);
 		
-		if (!professor) {
+		if (professor) {
 			professor.fetch();
 		} else {
 			professor = new RateMyPurrfessors.Models.Professor({ id: id });

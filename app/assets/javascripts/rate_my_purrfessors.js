@@ -14,7 +14,7 @@ window.RateMyPurrfessors = {
 				RateMyPurrfessors.professors = new RateMyPurrfessors.Collections.Professors({});
 				RateMyPurrfessors.professors.fetch({
 					success: function() {
-						new RateMyPurrfessors.Routers.Router();
+						RateMyPurrfessors.router = new RateMyPurrfessors.Routers.Router();
 						Backbone.history.start();
 					}
 				});
