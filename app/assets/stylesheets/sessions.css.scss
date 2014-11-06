@@ -1,3 +1,96 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+section.content > h1 {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+section.content > form:not(.demo) {
+	width: 400px;
+	margin: 0 auto;
+	background: #DB9BE0;
+	color: #333;
+	padding: 20px;
+	position: relative;
+}
+
+section.content > form:not(.demo) > label {
+	font-weight: bold;
+	display: block;
+}
+
+section.content > form:not(.demo) > input {
+	background: rgba(255, 255, 255, 0.5);
+	padding: 3px;
+	margin-bottom: 5px;
+}
+
+section.content > form:not(.demo) > button {
+	display: block;
+	background: #9cc100;
+	padding: 7px 10px;
+	color: #fff;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+section.content > form:not(.demo) > button:hover {
+	background: #8CAE00;
+}
+
+section.content > form:not(.demo) > button:active {
+	color: #ccc;
+}
+
+a[href="/auth/facebook"] {
+	background: image_url("facebook.png") no-repeat;
+	height: 50px;
+	background-size: auto 100%;
+	background-position: 50%;
+	display: block;
+	width: 200px;
+	position: absolute;
+	right: 100px;
+	bottom: 10px;
+}
+
+a[href="#/users/new"] {
+	display: block;
+	float: left;
+	padding: 20px 40px;
+	background: #ec26e5;
+	border-radius: 5px;
+	margin-left: 100px;
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+a[href="#/users/new"]:hover {
+	background: #D422CE;
+}
+
+a[href="#/users/new"]:active, form.demo:active {
+	color: #ccc;
+}
+
+form.demo {
+	width: 150px;
+	display: block;
+	float: right;
+	padding: 11px 10px;
+	background: #9cc100;
+	border-radius: 5px;
+	margin-right: 100px;
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+form.demo:hover {
+	background: #8CAE00;
+}

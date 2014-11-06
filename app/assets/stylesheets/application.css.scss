@@ -15,7 +15,7 @@
  */
 
 /* RESET */
-html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, img, main, form, article {
+html, body, ul, li, header, h1, h3, h4, h5, p, div, a, section, footer, img, main, form, article, label {
 	padding: 0;
 	margin: 0;
 	border: 0;
@@ -40,7 +40,7 @@ div.background {
 }
 /* Background pattern from subtlepatterns.com */
 
-input[type="text"], input[type="search"], input[type="email"], button, textarea {
+input[type="text"], input[type="search"], input[type="email"], input[type="password"], input[type="submit"], button, textarea {
 	-webkit-appearance: none;
 	display: inline-block;
 	box-sizing: content-box;
@@ -59,7 +59,7 @@ ul {
 	list-style: none;
 }
 
-button {
+button, input[type="submit"] {
 	cursor: pointer;
 }
 
@@ -123,22 +123,29 @@ ul.user_dropdown {
 	position: absolute;
 	display: none;
 	background: #9cc100;
-	color: #fff;
-	font-size: 12px;
-	letter-spacing: 2px;
-	font-weight: bold;
 	width: 100px;
 	padding: 10px;
 	border-radius: 14px;
 }
 
-ul.user_dropdown > li > a {
-	padding-bottom: 10px;
+ul.user_dropdown > li > a, ul.user_dropdown > li input {
 	display: block;
+	letter-spacing: 2px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
 }
 
-ul.user_dropdown > li > a:hover {
+ul.user_dropdown > li > a:hover, ul.user_dropdown > li input:hover {
 	color: #F527EC;
+}
+
+ul.user_dropdown > li > a {
+	padding-bottom: 10px;
+}
+
+ul.user_dropdown > li input {
+	padding-bottom: 3px;
 }
 
 .right_nav:hover > ul.user_dropdown {

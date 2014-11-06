@@ -1,35 +1,35 @@
-<h1>Log In</h1>
+<div class="filler"></div>
 
-<form action="/api/session" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
+<section class="content group">
+	<h1>Log In</h1>
 
-  <label for="user_email">Email</label>
-  <input type="email"
-      id="user_email"
-      name="user[email]">
+	<form action="/api/session" method="POST">
+	  <input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
 
-  <label for="user_password">Password</label>
-  <input type="password" id="user_password" name="user[password]">
+	  <label for="user_email">Email</label>
+	  <input type="email"
+	      id="user_email"
+	      name="user[email]">
 
-  <button>Log In</button>
-</form>
+	  <label for="user_password">Password</label>
+	  <input type="password" id="user_password" name="user[password]">
 
-<a href="#/users/new">Sign Up</a>
+	  <button>Log In</button>
+		
+		<a href="/auth/facebook"></a>
+	</form>
 
-OR 
+	<a href="#/users/new">Sign Up</a>
 
-<a href="/auth/facebook">LOGIN WITH FACEBOOK!</a>
+	<form action="/api/session" method="POST" class="demo">
+	  <input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
 
-OR 
+	  <input type="hidden"
+	      name="user[email]"
+	      value="demo@demo.com">
 
-<form action="/api/session" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
+	  <input type="hidden" name="user[password]" value="demodemo">
 
-  <input type="hidden"
-      name="user[email]"
-      value="demo@demo.com">
-
-  <input type="hidden" name="user[password]" value="demodemo">
-
-  <button>Log In with a Demo Account</button>
-</form>
+	  <button>Log In with a Demo Account</button>
+	</form>
+</section>
