@@ -7,21 +7,30 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 		this.collection = new RateMyPurrfessors.Collections.MixedRatings(this.model.get("all_ratings"));
 		this.listenTo(this.model, "sync change update", this.render);
 		this.listenTo(this.collection, "delete remove", this.render);
+		this.page = 0;
 	},
 	
 	events: {
 		"click a.edit_user": "userEdit",
 		"click a.delete_rating": "ratingDestroy",
-		"click a.update_user": "userUpdate"
+		"click a.update_user": "userUpdate",
+		"click a.next": "nextPage",
+		"click a.previous": "previousPage"
 	},
 	
 	render: function () {
+		if (!this.allPages) {
+			this.ratingsPages(this.collection.models);
+		}
+		
 		var renderedContent = this.template({
 			user: this.model,
-			all_ratings: this.collection
+			all_ratings: this.allPages[this.page]
 		});
 		
 		this.$el.html(renderedContent);
+		
+		this.paginate();
 		
 		return this;
 	},
@@ -115,5 +124,48 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 				}
 			});
 		}	
+	},
+	
+	ratingsPages: function (ratings) {
+		this.allPages = [];
+		var arrayPages = [];
+		
+		while (ratings.length > 20) {
+			arrayPages.push(ratings.slice(0, 20));
+			ratings = ratings.slice(20);
+		}
+		
+		arrayPages.push(ratings);
+		var that = this
+		
+		arrayPages.forEach(function (page) {
+			var newCollection = new RateMyPurrfessors.Collections.MixedRatings();
+			newCollection.set(page);
+			that.allPages.push(newCollection);
+		});
+	},
+	
+	paginate: function () {
+		if (this.page !== this.allPages.length - 1) {
+			this.$("div.paginate").prepend('<a class="next" href="">Next')
+		}
+		
+		if (this.page !== 0) {
+			this.$("div.paginate").prepend('<a class="previous" href="">Prev')
+		}
+	},
+	
+	nextPage: function (event) {
+		event.preventDefault();
+		
+		this.page += 1;
+		this.render();
+	},
+	
+	previousPage: function (event) {
+		event.preventDefault();
+		
+		this.page -= 1;
+		this.render();
 	}
 });

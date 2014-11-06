@@ -15,6 +15,9 @@
 
 <section class="ratings">
   <h1>Ratings</h1>
+	
+	<div class="paginate"></div>
+	
 	<ul>
 		<% if (all_ratings.length > 0) { %>
 			<% all_ratings.each(function (rating) { %>
@@ -39,4 +42,6 @@
 			<li>You have no ratings :(</li>
 		<% } %>
 	</ul>
+	
+	<div class="paginate"></div>
 </section>
