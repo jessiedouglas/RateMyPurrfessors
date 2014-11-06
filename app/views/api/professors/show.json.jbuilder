@@ -1,4 +1,4 @@
-json.extract! @professor, :id, :first_name, :middle_initial, :last_name, :department, :college_id
+json.extract! @professor, :id, :first_name, :middle_initial, :last_name, :department, :college_id, :filepicker_url
 json.name @professor.name
 
 json.college do 
@@ -13,7 +13,11 @@ json.professor_ratings @professor.professor_ratings do |rating|
   json.vote_stats do
     json.upvotes rating.upvotes
     json.downvotes rating.downvotes
-    json.has_already_voted_on rating.already_voted_on?(current_user)
+    if logged_in?
+      json.has_already_voted_on rating.already_voted_on?(current_user)
+    else
+      json.has_already_voted_on false
+    end
   end
 end
 

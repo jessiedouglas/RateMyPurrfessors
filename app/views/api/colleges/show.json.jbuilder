@@ -14,7 +14,11 @@ json.college_ratings @college.college_ratings do |rating|
   json.vote_stats do 
     json.upvotes rating.upvotes
     json.downvotes rating.downvotes
-    json.has_already_voted_on rating.already_voted_on?(current_user)
+    if logged_in?
+      json.has_already_voted_on rating.already_voted_on?(current_user)
+    else
+      json.has_already_voted_on false
+    end
   end
 end
 

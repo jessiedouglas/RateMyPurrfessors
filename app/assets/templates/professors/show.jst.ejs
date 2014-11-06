@@ -1,4 +1,7 @@
 <section class="professor_info">
+	<div class="professor_picture">
+		<img src="<%= professor.get("filepicker_url") %>">
+	</div>
   <h1><%= professor.escape("name") %></h1>
   <p><%= professor.escape("department") %> Department</p>
   <p><a href="#/colleges/<%= professor.get("college_id") %>"><%= professor.get("college").name %></a></p>

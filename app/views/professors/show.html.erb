@@ -1,4 +1,5 @@
 <section class="professor_info">
+	<%= filepicker_image_tag @professor.filepicker_url, w: 160, h: 160, fit: 'clip' %>
   <h1><%= @professor.name %></h1>
   <p><%= @professor.department %> Department</p>
   <p><a href="<%= college_url(@professor.college) %>"><%= @professor.college.name %></a></p>

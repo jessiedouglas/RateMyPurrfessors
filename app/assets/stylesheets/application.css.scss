@@ -38,6 +38,7 @@ div.background {
 	background: image-url("RMP-background.png");
 	z-index: -1;
 }
+/* Background pattern from subtlepatterns.com */
 
 input[type="text"], input[type="search"], input[type="email"], input[type="email"], button, textarea {
 	-webkit-appearance: none;
@@ -53,8 +54,6 @@ input[type="text"], input[type="search"], input[type="email"], input[type="email
 	background: transparent;
 	color: inherit;
 }
-
-/* Background pattern from subtlepatterns.com */
 
 ul {
 	list-style: none;
@@ -175,7 +174,8 @@ main {
 	min-height: 550px;
 	width: 900px;
 	margin: 0 auto;
-	background: rgba(206, 255, 199, .5)
+	background: rgba(206, 255, 199, .5);
+	position: relative;
 }
 
 /* Footer */
@@ -303,4 +303,16 @@ div.college:hover ~ p.main_label > strong.what {
 
 li.rate:hover > .sidebar_dropdown {
 	display: block;
+}
+
+// LOADING
+
+div.loading {
+	background: image-url("SpaceCat.jpg"), no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 1;
 }

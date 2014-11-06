@@ -46,7 +46,8 @@ class Api::ProfessorsController < ApplicationController
                                   :middle_initial,
                                   :last_name,
                                   :department,
-                                  :college_id
+                                  :college_id,
+                                  :filepicker_url
                                   )
   end
 end
