@@ -14,22 +14,7 @@ class Api::CollegesController < ApplicationController
   def search
     match = params[:match]
     @colleges = College.search_colleges(match)
-
-    # store proper noun version of college name for later
-    # names = {}
- #    all_colleges.each do |college|
- #      names[college.name.downcase] = college.name
- #    end
- #
- #    @colleges = []
- #    names.keys.each do |name|
- #      if Regexp.new(match).match(name)
- #        name = names[name]
- #        college = all_colleges.select { |college| college.name == name }
- #        @colleges.push(college.first)
- #      end
- #    end
-
+    
     render json: @colleges
   end
 end

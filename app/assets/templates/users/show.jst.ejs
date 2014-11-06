@@ -1,0 +1,42 @@
+<section class="info">
+  <h1><%= user.escape("name") %></h1>
+	
+	<% if (user.get("email")) { %>
+	  <p><%= user.escape("email") %></p>
+	<% } %>
+	
+	<% if (user.get("college")) { %>
+  	<p><a href="#/colleges/<%= user.get("college_id") %>"><%= RateMyPurrfessors.colleges.get(user.get("college_id")).get("name") %></a></p>
+	<% } %>
+	
+	<a href="" class="edit_user">Edit my info</a>
+</section>
+
+
+<section class="ratings">
+  <h1>Ratings</h1>
+	<ul>
+		<% if (all_ratings.length > 0) { %>
+			<% all_ratings.each(function (rating) { %>
+				<li>
+					<% if (rating.get("type") === "professor_rating") { %>
+						<a href="#/professors/<%= rating.get("id") %>">
+							<%= rating.get("professor").name %>, <%= rating.get("professor").department %> Department at 
+							<%= rating.get("professor").college.name %>
+						</a>
+						<a href="#/professor_ratings/<%= rating.get("id") %>/edit">Edit</a>
+						<a href="" class="delete_rating" data-id="<%= rating.get("id") %>" data-type="professor_rating">Delete</a>
+					<% } else { %>
+						<a href="#/colleges/<%= rating.get("college_id") %>">
+							<%= rating.get("college").name %>, <%= rating.get("college").location %>
+						</a>
+						<a href="#/college_ratings/<%= rating.get("id") %>/edit">
+						<a href="" class="delete_rating" data-id="<%= rating.get("id") %>" data-type="college_rating">Delete</a>
+					<% } %>
+				</li>
+			<% }); %>
+		<% } else { %>
+			<li>You have no ratings :(</li>
+		<% } %>
+	</ul>
+</section>

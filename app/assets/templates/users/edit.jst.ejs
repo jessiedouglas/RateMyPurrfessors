@@ -1,0 +1,40 @@
+<ul class="errors"></ul>
+
+<h1>Edit my info</h1>
+
+<form>
+  <label for="user_name">Name</label>
+  <input type="text"
+      id="user_name"
+      name="user[name]"
+      value="<%= user.get("name") %>">
+
+  <label for="user_email">Email</label>
+  <input type="email"
+      id="user_email"
+      name="user[email]"
+      value="<%= user.get("email") %>">
+
+
+  <label for="user_college_id">College</label>
+  <select name="user[college_id]" id="user_college_id">
+    <option value="">--Select--</option>
+    <% colleges.each( function (college) { %>
+      <% selected = user.get("college_id") === college.get("id") ? "selected" : "" %>
+      <option value="<%= college.get("id") %>" <%= selected %>>
+        <%= college.escape("name") %></option>
+    <% }); %>
+  </select>
+
+  <label for="user_password">Password</label>
+  <input type="password"
+      id="user_password"
+      name="user[password]">
+			
+  <label for="user_password">Confirm Password</label>
+  <input type="password"
+      id="user_password"
+      name="user[password]">
+
+  <a href="" class="update_user">Save</a>
+</form>

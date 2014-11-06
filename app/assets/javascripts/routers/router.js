@@ -6,6 +6,8 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 	routes: {
 		"": "home",
 		"search": "search",
+		"users/new": "usersNew",
+		"users/:id": "userShow",
 		"colleges": "collegesIndex",
 		"colleges/:id": "collegeShow",
 		"colleges/:id/college_ratings/new": "collegeRatingsNew",
@@ -27,6 +29,30 @@ RateMyPurrfessors.Routers.Router = Backbone.Router.extend({
 		var searchView = new RateMyPurrfessors.Views.Search();
 		
 		this._swapView(searchView);
+	},
+	
+	usersNew: function () {
+		var user = new RateMyPurrfessors.Models.User();
+		var newView = new RateMyPurrfessors.Views.UsersNew({
+			model: user
+		});
+		
+		this._swapView(newView);
+	},
+	
+	userShow: function (id) {
+		var user = new RateMyPurrfessors.Models.User({ id: id });
+		var that = this;
+		
+		user.fetch({
+			success: function () {
+				var showView = new RateMyPurrfessors.Views.UserShow({
+					model: user
+				});
+				
+				that._swapView(showView);
+			}
+		}); 
 	},
 	
 	collegesIndex: function () {

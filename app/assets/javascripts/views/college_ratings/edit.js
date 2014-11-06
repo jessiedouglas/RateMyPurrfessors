@@ -45,7 +45,7 @@ RateMyPurrfessors.Views.CollegeRatingEdit = Backbone.CompositeView.extend({
 		this.$('input[name="college_rating[clubs]"][value="' + rating.get("clubs") + '"]').attr("checked", "checked");
 		this.$('input[name="college_rating[social]"][value="' + rating.get("social") + '"]').attr("checked", "checked");
 		this.$('input[name="college_rating[happiness]"][value="' + rating.get("happiness") + '"]').attr("checked", "checked");
-		this.$("textarea#comments").val(rating.get("comments"));
+		this.$("textarea#comments").text(rating.get("comments"));
 		this.$('option[value="' + rating.get("graduation_year") + '"]').attr("selected", "selected");
 	}
 });

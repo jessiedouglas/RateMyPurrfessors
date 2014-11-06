@@ -85,8 +85,9 @@ class User < ActiveRecord::Base
   
   def all_ratings
     professor_ratings = ProfessorRating.where("rater_id = ?", self.id)
-    .joins(:professor)
-    .joins("INNER JOIN colleges ON colleges.id = professors.college_id")
+        .joins(:professor)
+        .joins("INNER JOIN colleges ON colleges.id = professors.college_id")
+        
     professor_ratings + self.college_ratings.includes(:college)
   end
 

@@ -62,7 +62,7 @@ RateMyPurrfessors.Views.ProfessorRatingEdit = Backbone.CompositeView.extend({
 			this.$("input#hotness").attr("checked", "checked");
 		}
 		
-		this.$('textarea#comments').val(rating.escape("comments"));
+		this.$('textarea#comments').text(rating.escape("comments"));
 		
 		if (rating.get("attendance_is_mandatory")) {
 			this.$("input#attendance").attr("checked", "checked");

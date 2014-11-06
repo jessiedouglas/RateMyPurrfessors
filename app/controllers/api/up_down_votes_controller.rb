@@ -1,5 +1,5 @@
 class Api::UpDownVotesController < ApplicationController
-  before_filter :require_logged_in
+  before_filter :require_logged_in, except: :find_vote
   before_filter :require_different_user, only: :create
   before_filter :require_same_user, only: :destroy
   
@@ -46,13 +46,20 @@ class Api::UpDownVotesController < ApplicationController
     params.require(:up_down_vote).permit(:vote_value)
   end
   
+  def require_logged_in
+    unless logged_in?
+      flash[:errors] = ["Must be logged in to create, edit, or delete ratings"]
+      redirect_to root_url + "#" + new_session_path
+    end
+  end
+  
   def redirect(type, id)
     if type == "CollegeRating"
       rating = CollegeRating.find(id)
-      redirect_to api_college_url(rating.college_id)
+      redirect_to root_url + "#" + college_path(rating.college_id)
     else
       rating = ProfessorRating.find(id)
-      redirect_to api_professor_url(rating.professor_id)
+      redirect_to root_url + "#" + professor_path(rating.professor_id)
     end
   end
   

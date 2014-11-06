@@ -1,5 +1,5 @@
 class Api::ProfessorsController < ApplicationController
-  before_filter :require_logged_in, only: [:new, :create]
+  before_filter :require_logged_in, only: :create
   
   def index
     @professors = Professor.includes(:college).all
@@ -12,14 +12,6 @@ class Api::ProfessorsController < ApplicationController
 
     render :show
   end
-
-  # def new
-#     @professor = Professor.new
-#     @departments = Professor::DEPARTMENTS
-#     @colleges = College.all
-#
-#     render json: @professor
-#   end
 
   def create
     @professor = Professor.new(professor_params)
@@ -41,6 +33,13 @@ class Api::ProfessorsController < ApplicationController
   end
   
   private
+  def require_logged_in
+    unless logged_in?
+      flash[:errors] = ["Must be logged in to create a professor ratings"]
+      redirect_to root_url + "#" + new_session_path
+    end
+  end
+  
   def professor_params
     params.require(:professor).permit(
                                   :first_name,

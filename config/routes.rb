@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   namespace 'api', defaults: { format: :json } do
     get "search", as: "search", to: "root#search"
     
+    resources :users, only: [:create, :show, :update]
+    
     resources :colleges, only: [:index, :show] do
       resources :college_ratings, only: [:create]
       collection do
@@ -34,15 +36,15 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :professors, only: [:index, :show, :new, :create] do
+    resources :professors, only: [:index, :show, :create] do
       resources :professor_ratings, only: [:create]
       collection do
         get 'search'
       end
     end
   
-    resources :professor_ratings, only: [:show, :update, :destroy]
-    resources :college_ratings, only: [:show, :update, :destroy]
+    resources :professor_ratings, only: [:index, :show, :update, :destroy]
+    resources :college_ratings, only: [:index, :show, :update, :destroy]
     resources :up_down_votes, only: [:create, :destroy] do 
       collection do 
         get 'find_vote'
