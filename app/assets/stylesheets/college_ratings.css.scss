@@ -7,7 +7,7 @@
 
 div.college_info {
 	width: 500px;
-	margin: 20px auto;
+	margin: 0 auto;
 }
 
 div.college_info > h1 {
@@ -18,28 +18,71 @@ div.college_info > h1 {
 form.college_rating {
 	width: 800px;
 	margin: 0 auto;
+	position: relative;
 }
 
 form.college_rating > div {
 	float: left;
 	clear: both;
 	padding: 10px;
+	position: relative;
+	overflow: hidden;
+	width: 300px;
 }
 
-form.college_rating > div > label.radio {
+form.college_rating > div.radio > label.radio {
 	display: block;
 	font-weight: bold;
 }
-//
-//form.college_rating > div > label:not(.radio) {
-//	float: left;
-//}
 
-form.college_rating > div > input {
+form.college_rating > div.radio > input:not(.hidden) {
 	display: block;
 	float: left;
 }
 
+form.college_rating > div.radio > input.hidden {
+	position: absolute;
+	left: -200px;
+}
+
+form.college_rating > div.radio > label:not(.radio) {
+	position: absolute;
+	display: block;
+	background: orange;
+	width: 20px;
+	height: 20px;
+	border: 1px solid blue;
+	cursor: pointer;
+}
+
+form.college_rating > div.radio > label:nth-child(6) {
+	left: 30px;
+}
+
+form.college_rating > div.radio > label:nth-child(8) {
+	left: 50px;
+}
+
+form.college_rating > div.radio > label:nth-child(10) {
+	left: 70px;
+}
+
+form.college_rating > div.radio > label:nth-child(12) {
+	left: 90px;
+}
+
+//div.radio > input:checked ~ label {
+//	background: red;
+//}
+
+form.college_rating > div.radio > input:checked ~ label:not(.radio) {
+	background: #ddd;
+}
+
+form.college_rating > div.radio > input:checked + label:not(.radio) {
+	background: orange;
+}
+
 form.college_rating button {
-	clear: both;
+	
 }
