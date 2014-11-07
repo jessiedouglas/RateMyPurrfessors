@@ -42,6 +42,7 @@ section.info > a.edit_user {
 //Edit Info
 form.user_edit {
 	width: 400px;
+	position: relative;
 }
 
 form.user_edit > label {
@@ -67,7 +68,19 @@ form.user_edit > a.update_user {
 	background: #ddd;
 }
 
-form.user_edit > a.update_user:hover {
+form.user_edit > a.cancel_update {
+	display: block;
+	padding: 7px 10px;
+	width: 53px;
+	border-radius: 5px;
+	font-weight: bold;
+	position: absolute;
+	background: #ddd;
+	bottom: 0px;
+	left: 100px;
+}
+
+form.user_edit > a.update_user:hover, form.user_edit > a.cancel_update:hover {
 	background: #ccc;
 }
 
@@ -104,4 +117,44 @@ li.user_rating > a.delete_rating, li.user_rating > a.edit_rating {
 
 li.user_rating:hover > a.delete_rating, li.user_rating:hover > a.edit_rating {
 	display: block;
+}
+
+li.no_ratings {
+	padding: 20px 30px;
+	display: block;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+
+li.no_ratings > a {
+	position: absolute;
+	padding: 5px 10px;
+	color: #fff;
+	display: block;
+	border-radius: 10px;
+	font-weight: bold;
+	width: 100px;
+	letter-spacing: 1px;
+	text-align: center;
+	font-size: 14px;
+	top: 7px;
+}
+
+li.no_ratings > a.user_college_search {
+	background: #ec26e5;
+	right: 230px;
+}
+
+li.no_ratings > a.user_college_search:hover {
+	background: #D422CE;
+}
+
+li.no_ratings > a.user_professor_search {
+	background: #9cc100;
+	right: 50px;
+}
+
+li.no_ratings > a.user_professor_search:hover {
+	background: #8CAE00;
 }

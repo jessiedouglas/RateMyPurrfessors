@@ -15,7 +15,8 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 		"click a.delete_rating": "ratingDestroy",
 		"click a.update_user": "userUpdate",
 		"click a.next": "nextPage",
-		"click a.previous": "previousPage"
+		"click a.previous": "previousPage",
+		"click a.cancel_update": "cancelUpdate"
 	},
 	
 	render: function () {
@@ -79,6 +80,24 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 			}
 		}
 	},
+	
+	cancelUpdate: function (event) {
+		event.preventDefault();
+		this.$("section.info").empty();
+		this.$("section.info").append("<h1>" + this.model.escape("name"));
+		
+		if (this.model.get("email")) {
+			this.$("section.info").append("<p>" + this.model.escape("email"));
+		}
+		
+		if (this.model.get("college")) {
+			this.$("section.info").append('<p><a href="#/colleges/' + this.model.get("college_id") + '"');
+			this.$('section.info > p > a').text(RateMyPurrfessors.colleges.get(user.get("college_id")).get("name"))
+		}
+		
+		this.$("section.info").append('<a href="" class="edit_user">Edit my info');
+		
+	}, 
 	
 	hasUpdateErrors: function (attrs) {
 		var errors = [];

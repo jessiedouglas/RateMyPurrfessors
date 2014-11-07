@@ -5,7 +5,7 @@ class OauthController < ApplicationController
     login_user(user)
 
     flash[:success] = "Logged in with facebook!"
-    redirect_to user_url(user)
+    redirect_to "#" + user_path(user)
   end
 
 end

@@ -17,10 +17,10 @@ class Api::ProfessorRatingsController < ApplicationController
     
     if @rating.save
       flash[:notices] = ["Rating saved!"]
-      redirect_to root_url + "#" + professor_path(@rating.professor_id)
+      redirect_to "#" + professor_path(@rating.professor_id)
     else
       flash[:errors] = @rating.errors.full_messages
-      redirect_to root_url + "#" + new_professor_professor_rating_path(@rating.professor_id)
+      redirect_to "#" + new_professor_professor_rating_path(@rating.professor_id)
     end
   end
   
@@ -29,10 +29,10 @@ class Api::ProfessorRatingsController < ApplicationController
     
     if @rating.update(professor_rating_params)
       flash[:notices] = ["Rating updated!"]
-      redirect_to root_url + "#" + professor_path(@rating.professor_id)
+      redirect_to "#" + professor_path(@rating.professor_id)
     else
       flash[:errors] = @rating.errors.full_messages
-      redirect_to root_url + "#" + edit_professor_rating_path(@rating)
+      redirect_to "#" + edit_professor_rating_path(@rating)
     end
   end
   
@@ -48,7 +48,7 @@ class Api::ProfessorRatingsController < ApplicationController
   def require_logged_in
     unless logged_in?
       flash[:errors] = ["Must be logged in to create, edit, or delete ratings"]
-      redirect_to root_url + "#" + new_session_path
+      redirect_to "#" + new_session_path
     end
   end
   
@@ -57,7 +57,7 @@ class Api::ProfessorRatingsController < ApplicationController
     
     if current_user.id != rating.rater_id
       flash[:errors] = ["You may not edit or destroy another user's rating."]
-      redirect_to root_url + "#" + user_path(current_user)
+      redirect_to "#" + user_path(current_user)
     end
   end
   

@@ -49,17 +49,17 @@ class Api::UpDownVotesController < ApplicationController
   def require_logged_in
     unless logged_in?
       flash[:errors] = ["Must be logged in to create, edit, or delete ratings"]
-      redirect_to root_url + "#" + new_session_path
+      redirect_to "#" + new_session_path
     end
   end
   
   def redirect(type, id)
     if type == "CollegeRating"
       rating = CollegeRating.find(id)
-      redirect_to root_url + "#" + college_path(rating.college_id)
+      redirect_to "#" + college_path(rating.college_id)
     else
       rating = ProfessorRating.find(id)
-      redirect_to root_url + "#" + professor_path(rating.professor_id)
+      redirect_to "#" + professor_path(rating.professor_id)
     end
   end
   

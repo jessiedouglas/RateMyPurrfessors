@@ -8,7 +8,11 @@
 	<% } %>
 	
 	<% if (user.get("college")) { %>
-  	<p><a href="#/colleges/<%= user.get("college_id") %>"><%= RateMyPurrfessors.colleges.get(user.get("college_id")).get("name") %></a></p>
+  	<p>
+			<a href="#/colleges/<%= user.get("college_id") %>">
+				<%= RateMyPurrfessors.colleges.get(user.get("college_id")).get("name") %>
+			</a>
+		</p>
 	<% } %>
 	
 	<a href="" class="edit_user">Edit my info</a>
@@ -42,7 +46,11 @@
 				</li>
 			<% }); %>
 		<% } else { %>
-			<li>You have no ratings :(</li>
+			<li class="no_ratings">
+				You have no ratings :(
+				<a class="user_college_search" href="#/colleges">Search Colleges</a>
+				<a class="user_professor_search" href="#/professors">Search Professors</a>
+			</li>
 		<% } %>
 	</ul>
 	

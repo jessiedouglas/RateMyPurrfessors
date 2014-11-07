@@ -18,10 +18,10 @@ class Api::ProfessorsController < ApplicationController
 
     if @professor.save
       flash[:notices] = ["Professor created!"]
-      redirect_to root_url + "#" + professor_path(@professor)
+      redirect_to "#" + professor_path(@professor)
     else
       flash[:errors] = @professor.errors.full_messages
-      redirect_to root_url + "#/professors/new"
+      redirect_to "#/professors/new"
     end
   end
 
@@ -36,7 +36,7 @@ class Api::ProfessorsController < ApplicationController
   def require_logged_in
     unless logged_in?
       flash[:errors] = ["Must be logged in to create a professor ratings"]
-      redirect_to root_url + "#" + new_session_path
+      redirect_to "#" + new_session_path
     end
   end
   

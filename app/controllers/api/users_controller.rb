@@ -9,10 +9,10 @@ class Api::UsersController < ApplicationController
       flash[:notices] = ["User created!"]
       login_user(@user)
       
-      redirect_to root_url + "#" + user_path(current_user)
+      redirect_to "#" + user_path(current_user)
     else
       flash.now[:errors] = @user.errors.full_messages
-      redirect_to root_url + "#" + new_user_path
+      redirect_to "#" + new_user_path
     end
   end
 
@@ -44,10 +44,10 @@ class Api::UsersController < ApplicationController
   end
   
   def require_logged_in
-    redirect_to root_url + "#" + new_session_path unless logged_in?
+    redirect_to "#" + new_session_path unless logged_in?
   end
   
   def require_logged_out
-    redirect_to root_url + "#" + user_path(current_user) if logged_in?
+    redirect_to "#" + user_path(current_user) if logged_in?
   end
 end
