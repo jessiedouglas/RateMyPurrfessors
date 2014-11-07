@@ -4,28 +4,24 @@
   <label for="professor_first_name">First Name</label>
   <input type="text" 
   		name="first_name" 
-  		id="professor_first_name"
-  		value="<%= professor.escape("first_name") %>">
+  		id="professor_first_name">
 
-  <label for="professor_middle_initial">Middle Initial</label>
+  <label for="professor_middle_initial">Middle Initial <span class="optional">(optional)</span></label>
   <input type="text" 
   		name="middle_initial" 
   		id="professor_middle_initial"
-  		size="1"
-  		value="<%= professor.escape("middle_initial") %>">
+  		size="1">
 
   <label for="professor_last_name">Last Name</label>
   <input type="text" 
   		name="last_name" 
-  		id="professor_last_name"
-  		value="<%= professor.escape("last_name") %>">
+  		id="professor_last_name">
 
   <label for="professor_department">Department</label>
   <select name="department" id="professor_department">
     <option value="">--Select--</option>
     <% departments.forEach( function (department) { %>
-      <% selected = professor.get("department") == department ? "selected" : "" %>
-      <option value="<%= department %>" <%= selected %>>
+      <option value="<%= department %>">
         <%= department %></option>
     <% }); %>
   </select>
@@ -34,16 +30,16 @@
   <select name="college_id" id="professor_college_id">
     <option value="">--Select--</option>
     <% colleges.each( function (college) { %>
-      <% selected = professor.get("college_id") == college.get("id") ? "selected" : "" %>
-      <option value="<%= college.get("id") %>" <%= selected %>>
+      <option value="<%= college.get("id") %>">
         <%= college.escape("name") %></option>
     <% }); %>
   </select>
 	
 	<div class="filepicker">
-		<a href="" id="photo">Upload a Photo</a>
+		<a href="" id="photo">Upload a Photo <span class="optional">(optional)</span></a>
 	</div>
-	<!-- <input type="filepicker-dragdrop" id="constructed-widget" name="professor[filepicker_url]"> -->
 
   <button class="add_professor">Add Professor</button>
+	
+	<button class="cancel_new">Cancel</button>
 </form>

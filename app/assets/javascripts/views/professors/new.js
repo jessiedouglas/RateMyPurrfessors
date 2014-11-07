@@ -3,12 +3,13 @@ RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 	
 	events: {
 		"click a#photo": "filepicker",
-		"click button": "createProfessor"
+		"click button.add_professor": "confirmCreate",
+		"click button.confirm": "createProfessor",
+		"click button.cancel": "cancelCreate"
 	},
 	
 	render: function () {
 		var renderedContent = this.template({
-			professor: this.model,
 			colleges: RateMyPurrfessors.colleges,
 			departments: RateMyPurrfessors.departments
 		});
@@ -22,20 +23,29 @@ RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 		var that = this;
 		
 		filepicker.pick(function (blob) {
-			this.$("div.filepicker").append("<p>" + blob.url + "</p>");
+			debugger
+			this.$("div.filepicker").append("<p>" + blob.filename + "</p>");
 			that.photo_url = blob.url;
 		});
 	}, 
-	//
-	// confirmCreate: function (event) {
-	// 	console.log("hi")
-	// 	event.preventDefault();
-	// 	this.$el.prepend('<div class="confirm_modal">');
-	// 	this.$("div.confirm_modal").append('<p> Are you sure you want to create this professor? Once created, it cannot be edited.');
-	// 	this.$("div.confirm_modal").append('<button class="cancel">Cancel');
-	// 	this.$("div.confirm_modal").append('<button class="confirm">Yes, ' + "I'm sure!");
-	// },
-	//
+
+	confirmCreate: function (event) {
+		event.preventDefault();
+		
+		this.$el.prepend('<div class="modal_background">');
+		this.$el.prepend('<div class="confirm_modal">');
+		this.$("div.confirm_modal").append('<p> Are you sure you want to create this professor?</p> <p>Once created, it cannot be edited.');
+		this.$("div.confirm_modal").append('<button class="cancel">Cancel');
+		this.$("div.confirm_modal").append('<button class="cancel modal_close">&times;');
+		this.$("div.confirm_modal").append('<button class="confirm">Yes, ' + "I'm sure!");
+	},
+	
+	cancelCreate: function (event) {
+		event.preventDefault();
+		this.$("div.modal_background").remove();
+		this.$("div.confirm_modal").remove();
+	},
+
 	createProfessor: function (event) {
 		event.preventDefault();
 		this.$("ul.errors").remove();
@@ -45,14 +55,15 @@ RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 			form_attrs.filepicker_url = this.photo_url;
 		}
 		
-		var professor = new RateMyPurrfessors.Models.Professor();
+		var professor = new RateMyPurrfessors.professors.model();
 		var that = this;
 		
 		professor.set(form_attrs);
 		if (professor.save()) {
 			professor.fetch({
-				success: function () {
-					RateMyPurrfessors.router.navigate("/professors/" + professor.get("id")); //do validations
+				success: function (resp) {
+					that.$el.empty();
+					that.$el.append("<p>Professor added!");
 				}
 			});
 		} else {

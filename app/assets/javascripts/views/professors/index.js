@@ -8,7 +8,9 @@ RateMyPurrfessors.Views.ProfessorsIndex = Backbone.CompositeView.extend({
 	events: {
 		"keyup #match": "search",
 		"click a.next": "nextPage",
-		"click a.previous": "previousPage"
+		"click a.previous": "previousPage",
+		'click a[href="#/professors/new"]': "newProfessor",
+		"click button.cancel_new": "cancelNew"
 	},
 	
 	render: function () {
@@ -122,5 +124,24 @@ RateMyPurrfessors.Views.ProfessorsIndex = Backbone.CompositeView.extend({
 		} else {
 			this.render();
 		}
-	} 
+	}, 
+	
+	newProfessor: function (event) {
+		event.preventDefault();
+		
+		this.newProfessorSubview = new RateMyPurrfessors.Views.ProfessorsNew();
+		
+		this.$("div.new_professor").empty();
+		
+		this.addSubview("div.new_professor", this.newProfessorSubview);
+	},
+	
+	cancelNew: function (event) {
+		event.preventDefault();
+		
+		this.newProfessorSubview.remove();
+		
+		this.$("div.new_professor").append("<p>Can't find your professor?");
+		this.$("div.new_professor > p").append('<a href="#/professors/new">Add a new one!</a>');
+	}
 });

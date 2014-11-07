@@ -15,7 +15,7 @@ form.professor_search {
 	margin-bottom: 20px;
 }
 
-form.professor_search > input, form.general_search > input {
+form.professor_search > input {
 	float: left;
 	width: 320px;
 	background: rgba(255, 255, 255, 0.7);
@@ -23,12 +23,12 @@ form.professor_search > input, form.general_search > input {
 	border-radius: 10px;
 }
 
-section.professors_list > p {
+section.professors_list > div.new_professor p {
 	font-size: 14px;
 	text-align: center;
 }
 
-section.professors_list > p > a {
+section.professors_list > div.new_professor p > a {
 	text-decoration: underline;
 }
 
@@ -52,4 +52,126 @@ div.paginate > a {
 
 div.paginate > a:hover {
 	color: 	#657D00;
+}
+
+//New Professor Subview
+section.professors_list > div.new_professor > div {
+	background: #C3CE94;
+	border-radius: 10px;
+	width: 400px;
+	padding: 30px;
+	margin-left: 100px;
+	margin-bottom: 20px;
+}
+
+div.new_professor > div > h1 {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+div.new_professor > div > form {
+	width: 300px;
+}
+
+div.new_professor > div > form > label {
+	font-weight: bold;
+	display: block;
+	clear: both;
+}
+
+div.new_professor > div > form > input:not(#professor_middle_initial) {
+	float: left;
+	width: 320px;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 3px 1px;
+	margin-bottom: 5px;
+}
+
+div.new_professor > div > form > input#professor_middle_initial {
+	float: left;
+	width: 30px;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 3px 1px;
+	margin-bottom: 5px;
+}
+
+div.filepicker > a {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+div.filepicker > p {
+	text-align: left;
+	margin-left: 10px;
+}
+
+div.new_professor > div > form > button {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 7px 10px;
+	background: #E8EDD4;
+	border-radius: 5px;
+	margin: 10px 10px 0 10px;
+}
+
+div.new_professor > div > form > button:hover {
+	background: #4C7F4C;
+	color: #fff;
+}
+
+//Confirmation Modal
+div.modal_background {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: #000;
+	opacity: .1;
+	z-index: 1000;
+}
+
+div.confirm_modal {
+	z-index: 2000;
+	background: #fff;
+	border-radius: 10px;
+	padding: 30px;
+	position: absolute;
+	width: 300px;
+	left: 230px;
+	box-shadow: 5px 5px 5px gray;
+}
+
+div.confirm_modal > p {
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	padding-bottom: 10px;
+}
+
+div.confirm_modal > button:not(.modal_close) {
+	font-size: 14px;
+	text-decoration: underline;
+	padding-left: 50px;
+	padding-top: 10px;
+}
+
+div.confirm_modal > button:not(.modal_close):hover {
+	color: #7D9A00;
+}
+
+div.confirm_modal > button.modal_close {
+	position: absolute;
+	border-radius: 50%;
+	padding: 0 5px;
+	top: 7px;
+	right: 10px;
+	color: #777;
+}
+
+div.confirm_modal > button.modal_close:hover {
+	background: #ccc;
+	color: #fff;
 }
