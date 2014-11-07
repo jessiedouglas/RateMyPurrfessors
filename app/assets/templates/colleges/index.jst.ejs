@@ -1,19 +1,12 @@
-<form class="college_search">
-  <label for="match">Search</label>
-  <input type="search" id="match" name="match" placeholder="Search by name or location">
+<div class="filler_small"></div>
 
-  <button>Search</button>
+<form class="college_search group">
+  <label for="match">Search Colleges</label>
+  <input type="search" id="match" name="match" placeholder="Search by name or location">
 </form>
 
 <section class="colleges_list">
   <h1>All Colleges</h1>
-
-	<div class="paginate">
-		<% if (colleges.length > 25) { %>
-			<a href="">Next</a>
-			<a href="">Prev</a>
-		<% } %>
-	</div>
 	
 	<article class="colleges_list">
 	  <ul>
@@ -32,10 +25,6 @@
 	  </ul>
 	</article>
 	
-	<div class="paginate">
-		<% if (colleges.length > 25) { %>
-			<a href="">Next</a>
-			<a href="">Prev</a>
-		<% } %>
-	</div>
 </section>
+
+<div class="filler_small"></div>

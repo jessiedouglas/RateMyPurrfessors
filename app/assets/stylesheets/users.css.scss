@@ -1,3 +1,107 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//SIGN UP
+span.optional {
+	font-size: 12px;
+	font-weight: normal;
+	vertical-align: 10%;
+	display: inline;
+}
+
+select {
+	margin-bottom: 7px;
+}
+
+
+//SHOW
+
+//Info
+section.info {
+	background: #A9B966;
+	width: 500px;
+	margin-left: 100px;
+	border-radius: 10px;
+	margin-bottom: 50px;
+	padding: 30px 50px;
+}
+
+section.info > h1 {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+section.info > a.edit_user {
+	font-size: 14px;
+	text-decoration: underline;
+	display: block;
+	padding-top: 10px;
+}
+
+//Edit Info
+form.user_edit {
+	width: 400px;
+}
+
+form.user_edit > label {
+	display: block;
+	font-weight: bold;
+}
+
+form.user_edit > input {
+	width: 300px;
+	margin-bottom: 7px;
+	background: rgba(255, 255, 255, 0.5);
+	padding: 3px;
+}
+
+form.user_edit > a.update_user {
+	display: block;
+	padding: 7px 10px;
+	width: 37px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-left: 10px;
+	background: #ddd;
+}
+
+form.user_edit > a.update_user:hover {
+	background: #ccc;
+}
+
+//Ratings
+li.user_rating {
+	position: relative;
+}
+
+li.user_rating > a.delete_rating {
+	right: 20px;
+}
+
+li.user_rating > a.delete_rating:hover {
+	color: #EC26E5;
+	display: block;
+}
+
+li.user_rating > a.edit_rating {
+	right: 90px;
+}
+
+li.user_rating > a.edit_rating:hover {
+	color: #9CC100;
+	display: block;
+}
+
+li.user_rating > a.delete_rating, li.user_rating > a.edit_rating {
+	position: absolute;
+	top: 20px;
+	font-weight: bold;
+	font-size: 14px;
+	display: none;
+}
+
+li.user_rating:hover > a.delete_rating, li.user_rating:hover > a.edit_rating {
+	display: block;
+}

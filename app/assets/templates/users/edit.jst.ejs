@@ -2,7 +2,7 @@
 
 <h1>Edit my info</h1>
 
-<form>
+<form class="user_edit">
   <label for="user_name">Name</label>
   <input type="text"
       id="user_name"
@@ -16,7 +16,7 @@
       value="<%= user.get("email") %>">
 
 
-  <label for="user_college_id">College</label>
+  <label for="user_college_id">College <span class="optional">(optional)</span></label>
   <select name="user[college_id]" id="user_college_id">
     <option value="">--Select--</option>
     <% colleges.each( function (college) { %>

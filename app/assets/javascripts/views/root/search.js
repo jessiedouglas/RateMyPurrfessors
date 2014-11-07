@@ -20,7 +20,7 @@ RateMyPurrfessors.Views.Search = Backbone.CompositeView.extend({
 			method: "GET",
 			data: { match: match },
 			success: function (resp) {
-				that.$("section.matches_list > h1").text("Colleges and Professors matching " + match + ":");
+				that.$("section.matches_list > h1").text("Colleges and Professors matching '" + match + "':");
 				that.renderSearchResults(resp, true);
 			}
 		});
@@ -43,7 +43,7 @@ RateMyPurrfessors.Views.Search = Backbone.CompositeView.extend({
 				method: "GET",
 				data: { match: match },
 				success: function (resp) {
-					that.$("section.matches_list > h1").text("Colleges and Professors matching " + match + ":");
+					that.$("section.matches_list > h1").text("Colleges and Professors matching '" + match + "':");
 					that.renderSearchResults(resp, true);
 				}
 			});
@@ -92,11 +92,11 @@ RateMyPurrfessors.Views.Search = Backbone.CompositeView.extend({
 		this.$("div.paginate").empty();
 		
 		if (this.page !== this.allPages.length - 1) {
-			this.$("div.paginate").prepend('<a class="next" href="">Next')
+			this.$("div.paginate").prepend('<a class="next" href="">Next &#9654;')
 		}
 		
 		if (this.page !== 0) {
-			this.$("div.paginate").prepend('<a class="previous" href="">Prev')
+			this.$("div.paginate").prepend('<a class="previous" href="">&#9664; Prev')
 		}
 	},
 	

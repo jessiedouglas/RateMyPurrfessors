@@ -5,28 +5,22 @@
 // Index
 
 form.professor_search {
-	margin: 20px auto;
+	margin: 0 auto;
 	display: block;
-	width: 400px;
+	width: 500px;
+	background: #7D9A00;
+	color: #fff;
+	padding: 13px 20px;
+	border-radius: 10px;
+	margin-bottom: 20px;
 }
 
-form.professor_search > label {
-	text-align: center;
-	display: block;
-}
-
-form.professor_search input {
+form.professor_search > input, form.general_search > input {
 	float: left;
-	width: 300px;
-	margin-left: 40px;
-}
-
-form.professor_search button {
-	float: left;
-}
-
-section.professors_list {
-	padding: 20px 100px;
+	width: 320px;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 3px 1px;
+	border-radius: 10px;
 }
 
 section.professors_list > p {
@@ -38,12 +32,24 @@ section.professors_list > p > a {
 	text-decoration: underline;
 }
 
-section.professors_list > h1 {
-	font-size: 24px;
-	font-weight: bold;
-	margin: 20px;
+div.paginate {
+	padding: 10px 50px;
 }
 
-li.professor > a {
-	padding: 2px;
+div.paginate > a.next {
+	float: right;
+}
+
+div.paginate > a.previous {
+	float: left;
+}
+
+div.paginate > a {
+	font-size: 14px;
+	display: block;
+	color: #7D9A00;
+}
+
+div.paginate > a:hover {
+	color: 	#657D00;
 }

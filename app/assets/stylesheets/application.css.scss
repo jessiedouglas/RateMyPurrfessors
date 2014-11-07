@@ -186,6 +186,14 @@ main {
 	color: #333;
 }
 
+.filler {
+	height: 90px;
+}
+
+.filler_small {
+	height: 50px;
+}
+
 /* Footer */
 
 footer {
@@ -232,10 +240,6 @@ footer a:hover {
 }
 
 /* Home */
-.filler {
-	height: 90px;
-}
-
 div.background_image {
 	background: image-url("oie_IcPSkd3ICTRo.png") no-repeat;
 	background-size: 100% 100%;
@@ -338,4 +342,13 @@ div.loading {
 	bottom: 0;
 	width: 100%;
 	z-index: 1;
+}
+
+// SEARCH
+form.general_search > input {
+	float: left;
+	width: 340px;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 3px 1px;
+	border-radius: 10px;
 }

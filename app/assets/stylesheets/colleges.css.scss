@@ -3,40 +3,95 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //Index
-
-form.college_search {
-	margin: 20px auto;
+form.college_search, form.general_search {
+	margin: 0 auto;
 	display: block;
-	width: 400px;
+	width: 500px;
+	background: #7D9A00;
+	color: #fff;
+	padding: 13px 20px;
+	border-radius: 10px;
+	margin-bottom: 20px;
 }
 
-form.college_search > label {
-	text-align: center;
+form.college_search > label, form.professor_search > label, form.general_search > label {
+	float: left;
 	display: block;
+	font-weight: bold;
+	letter-spacing: 1px;
+	margin-top: 3px;
+	margin-right: 5px;
 }
 
-form.college_search input {
+form.college_search > input {
 	float: left;
 	width: 300px;
-	margin-left: 40px;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 3px 1px;
+	border-radius: 10px;
 }
 
-form.college_search button {
-	float: left;
+section.colleges_list, section.professors_list, section.matches_list, section.user_ratings {
+	padding: 10px 0 30px 0;
+	margin: 0 100px;
+	background: #FFF7F7;
 }
 
-section.colleges_list {
-	padding: 20px 100px;
-}
-
-section.colleges_list > h1 {
-	font-size: 24px;
+section.colleges_list > h1, 
+section.professors_list > h1, 
+section.matches_list > h1, 
+section.user_ratings > h1 {
+	font-size: 32px;
 	font-weight: bold;
-	margin: 20px;
+	margin: 10px 0 20px 0;
+	text-align: center;
 }
 
-li.college > a {
-	padding: 2px;
+article.colleges_list, 
+article.professors_list, 
+article.matches_list, 
+section.user_ratings > ul {
+	padding: 0 40px;
+}
+
+li.college > a, 
+li.professor > a, 
+li.match > a, 
+li.user_rating > a.rating_link {
+	padding: 10px 30px;
+	display: block;
+	border-top: 1px solid #ccc;
+}
+
+li.college:last-child > a, 
+li.professor:last-child > a, 
+li.match:last-child > a, 
+li.user_rating > a.rating_link:last-child {
+	border-bottom: 1px solid #ccc;
+}
+
+li.college > a:hover, 
+li.professor > a:hover, 
+li.match > a:hover, 
+li.user_rating > a.rating_link:hover {
+	background: #eee;
+}
+
+li.college > a > h3, 
+li.professor > a > h3, 
+li.match > a > h3,
+li.user_rating > a.rating_link > h3 {
+	font-weight: bold;
+	padding-bottom: 2px;
+}
+
+li.college > a > p, 
+li.professor > a > p, 
+li.match > a > p,
+li.user_rating > a.rating_link > p {
+	font-size: 14px;
+	padding-left: 10px;
+	color: #777;
 }
 
 //Show
@@ -88,7 +143,7 @@ section.all_college_avg > div > h3 {
 section.all_college_avg > div > p {
 	font-size: 24px;
 	font-weight: bold;
-	textt-align: center;
+	text-align: center;
 }
 
 section.all_college_avg > h5 {

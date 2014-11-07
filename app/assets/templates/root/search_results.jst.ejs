@@ -1,7 +1,7 @@
 <!--items: colleges or professors -->
 <% if (items.length > 0) { %>
   <% items.each( function (result) { %>
-    <li>
+    <li class="match">
 			<% if (result.get("type") === "college") { %>
         <a href="#/colleges/<%= result.get("id") %>">
           <h3><%= result.escape("name") %></h3>

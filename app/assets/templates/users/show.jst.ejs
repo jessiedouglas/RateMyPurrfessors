@@ -1,3 +1,5 @@
+<div class="filler_small"></div>
+
 <section class="info">
   <h1><%= user.escape("name") %></h1>
 	
@@ -13,27 +15,28 @@
 </section>
 
 
-<section class="ratings">
-  <h1>Ratings</h1>
+<section class="user_ratings">
+  <h1>My Ratings</h1>
 	
-	<div class="paginate"></div>
+	<div class="paginate group"></div>
 	
 	<ul>
 		<% if (all_ratings.length > 0) { %>
 			<% all_ratings.each(function (rating) { %>
-				<li>
+				<li class="user_rating">
 					<% if (rating.get("type") === "professor_rating") { %>
-						<a href="#/professors/<%= rating.get("id") %>">
-							<%= rating.get("professor").name %>, <%= rating.get("professor").department %> Department at 
-							<%= rating.get("professor").college.name %>
+						<a href="#/professors/<%= rating.get("professor_id") %>" class="rating_link">
+							<h3><%= rating.get("professor").name %></h3>
+							<p><%= rating.get("professor").department %> Department at <%= rating.get("professor").college.name %></p>
 						</a>
-						<a href="#/professor_ratings/<%= rating.get("id") %>/edit">Edit</a>
+						<a href="#/professor_ratings/<%= rating.get("id") %>/edit" class="edit_rating">Edit</a>
 						<a href="" class="delete_rating" data-id="<%= rating.get("id") %>" data-type="professor_rating">Delete</a>
 					<% } else { %>
-						<a href="#/colleges/<%= rating.get("college_id") %>">
-							<%= rating.get("college").name %>, <%= rating.get("college").location %>
+						<a href="#/colleges/<%= rating.get("college_id") %>" class="rating_link">
+							<h3><%= rating.get("college").name %></h3> 
+							<p><%= rating.get("college").location %></p>
 						</a>
-						<a href="#/college_ratings/<%= rating.get("id") %>/edit">
+						<a href="#/college_ratings/<%= rating.get("id") %>/edit" class="edit_rating">
 						<a href="" class="delete_rating" data-id="<%= rating.get("id") %>" data-type="college_rating">Delete</a>
 					<% } %>
 				</li>
@@ -43,5 +46,7 @@
 		<% } %>
 	</ul>
 	
-	<div class="paginate"></div>
+	<div class="paginate group"></div>
 </section>
+
+<div class="filler_small"></div>

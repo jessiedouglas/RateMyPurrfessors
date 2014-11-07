@@ -147,11 +147,11 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 	
 	paginate: function () {
 		if (this.page !== this.allPages.length - 1) {
-			this.$("div.paginate").prepend('<a class="next" href="">Next')
+			this.$("div.paginate").prepend('<a class="next" href="">Next &#9654;')
 		}
 		
 		if (this.page !== 0) {
-			this.$("div.paginate").prepend('<a class="previous" href="">Prev')
+			this.$("div.paginate").prepend('<a class="previous" href="">&#9664; Prev')
 		}
 	},
 	
