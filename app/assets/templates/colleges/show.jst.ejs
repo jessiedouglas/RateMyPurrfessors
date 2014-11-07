@@ -1,5 +1,7 @@
+<div class="filler_small"></div>
+
 <nav class="professor_sidebar">
-  <h3>Professors at <%= college.escape("name") %></h3>
+  <h3> <p>Professors at</p> <p><%= college.escape("name") %></p></h3>
   <ul class="professors_list">
 		<% if (professors.length > 0) { %>
 	  	<% professors.each(function (professor) { %>
@@ -14,16 +16,17 @@
   </ul>
 </nav>
 
-
 <section class="college_info">
   <h1><%= college.escape("name") %></h1>
   <p><%= college.escape("location") %></p>
 	<a href="#/colleges/<%= college.get("id") %>/college_ratings/new">Rate This College</a> 
-</section>
 
-<% if (ratings.length > 0) { %>
-	<section class="college_averages"></section>
-<% } %>
+
+	<% if (ratings.length > 0) { %>
+		<section class="college_averages"></section>
+	<% } %>
+
+</section>
 
 <section class="ratings">
   <h1>Ratings</h1>
@@ -38,3 +41,5 @@
 
   <a href="#/colleges/<%= college.get("id") %>/college_ratings/new">Rate This College</a> 
 </section>
+
+<div class="filler_small"></div>

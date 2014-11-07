@@ -175,3 +175,142 @@ div.confirm_modal > button.modal_close:hover {
 	background: #ccc;
 	color: #fff;
 }
+
+
+//SHOW
+
+//Info
+
+section.professor_info {
+	width: 640px;
+	margin: 0 auto;
+	background: #A9B966;
+	margin-bottom: 50px;
+	padding: 30px;
+	border-radius: 10px;
+	position: relative;
+}
+
+section.professor_info > div.professor_picture {
+	width: 200px;
+	border: 5px solid black;
+	float: left;
+}
+
+div.professor_picture > img {
+	display: block;
+	width: 100%;
+}
+
+section.professor_info > h1 {
+	font-weight: bold;
+	font-size: 48px;
+	display: block;
+	float: right;
+}
+
+section.professor_info > p {
+	clear: right;
+	font-weight: bold;
+	font-size: 24px;
+	text-align: right;
+}
+
+section.professor_info > a {
+	padding: 20px 20px;
+	background: #ec26e5;
+	font-weight: bold;
+	color: #eee;
+	display: block;
+	border-radius: 5px;
+	width: 172px;
+	position: absolute;
+	letter-spacing: 1px;
+	right: 100px;
+	top: 160px;
+}
+
+a.bottom_link {
+	padding: 20px 20px;
+	background: #ec26e5;
+	font-weight: bold;
+	color: #fff;
+	display: block;
+	border-radius: 5px;
+	width: 172px;
+	letter-spacing: 1px;
+}
+
+section.professor_info > a:hover, a.bottom_link:hover, section.college_info > a:hover {
+	background: #D422CE;
+	color: #fff;
+}
+
+//Average Ratings
+
+section.professor_averages {
+	clear: both;
+	background: #FFF7F7;
+	padding: 20px;
+	margin-top: 120px;
+	border-radius: 10px;
+}
+
+section.professor_averages > div {
+	width: 500px;
+	margin: 0 auto;
+}
+
+section.professor_averages > div > h1 {
+	font-weight: bold;
+	font-size: 20px;
+	display: block;
+	padding-bottom: 10px;
+}
+
+section.professor_averages > div > div {
+	float: left;
+	padding: 10px;
+	border-top: 3px solid #333;
+	border-left: 3px solid #333;
+	border-bottom: 3px solid #333;
+	height: 100px;
+	width: 100px;
+}
+
+section.professor_averages > div > div:nth-child(5) {
+	border-right: 3px solid #333;
+}
+
+section.professor_averages > div > div > h3 {
+	font-weight: bold;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+
+section.professor_averages > div > div > p.number {
+	font-weight: bold;
+	font-size: 40px;
+	text-align: center;
+	display: block;
+	padding-top: 20px;
+}
+
+section.professor_averages > div > div > p:not(.number) {
+	margin-top: 5px;
+	margin-left: 15px;
+}
+
+section.professor_averages > div > h5, section.all_college_avg > h5 {
+	clear: both;
+	display: block;
+	font-size: 14px;
+	padding-top: 7px;
+}
+
+//Ratings
+
+section.ratings {
+	padding: 10px 0 30px 0;
+	background: #FFF7F7;
+}

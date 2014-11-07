@@ -1,3 +1,5 @@
+<div class="filler_small"></div>
+
 <section class="professor_info">
 	<div class="professor_picture">
 		<img src="<%= professor.get("filepicker_url") %>">
@@ -7,11 +9,13 @@
   <p><a href="#/colleges/<%= professor.get("college_id") %>"><%= professor.get("college").name %></a></p>
 	
 	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
-</section>
 
-<% if (ratings.length > 0) { %>
-	<section class="professor_averages"></section>
-<% } %>
+
+	<% if (ratings.length > 0) { %>
+		<section class="professor_averages"></section>
+	<% } %>
+
+</section>
 
 <section class="ratings">
   <h1>Ratings</h1>
@@ -28,5 +32,7 @@
 	<div class="paginate">
 	</div>
 	
-	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
+	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="bottom_link">Rate This Professor</a>
 </section>
+
+<div class="filler_small"></div>

@@ -31,7 +31,10 @@ form.college_search > input {
 	border-radius: 10px;
 }
 
-section.colleges_list, section.professors_list, section.matches_list, section.user_ratings {
+section.colleges_list, 
+section.professors_list, 
+section.matches_list, 
+section.user_ratings {
 	padding: 10px 0 30px 0;
 	margin: 0 100px;
 	background: #FFF7F7;
@@ -40,7 +43,8 @@ section.colleges_list, section.professors_list, section.matches_list, section.us
 section.colleges_list > h1, 
 section.professors_list > h1, 
 section.matches_list > h1, 
-section.user_ratings > h1 {
+section.user_ratings > h1,
+section.ratings > h1 {
 	font-size: 32px;
 	font-weight: bold;
 	margin: 10px 0 20px 0;
@@ -50,14 +54,16 @@ section.user_ratings > h1 {
 article.colleges_list, 
 article.professors_list, 
 article.matches_list, 
-section.user_ratings > ul {
+section.user_ratings > ul,
+section.ratings > ul.all_ratings {
 	padding: 0 40px;
 }
 
 li.college > a, 
 li.professor > a, 
 li.match > a, 
-li.user_rating > a.rating_link {
+li.user_rating > a.rating_link,
+ul.all_ratings > li.rating {
 	padding: 10px 30px;
 	display: block;
 	border-top: 1px solid #ccc;
@@ -100,25 +106,87 @@ nav.professor_sidebar {
 	width: 260px;
 	padding: 20px;
 	float: left;
+	background: #D4DDB2;
+	border-radius: 10px;
+	height: 727px;
+	overflow: auto;
 }
 
-.professors_list > li {
+.professor_sidebar > h3 {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.professors_list > li > a {
 	padding: 10px;
+	border-top: 1px solid #aaa;
+	display: block;
+}
+
+.professors_list > li:last-child > a {
+	border-bottom: 1px solid #aaa;
+}
+
+.professors_list > li > a:hover {
+	background: #BFC7A0;
+}
+
+.professors_list > li > a > h4 {
+	font-weight: bold;
+}
+
+.professors_list > li > a > p {
+	font-size: 12px;
 }
 
 section.college_info {
 	width: 540px;
 	padding: 30px;
 	float: right;
+	background: #A9B966;
+	margin-bottom: 50px;
+	border-radius: 10px;
+	position: relative;
 }
+
+section.college_info > h1 {
+	font-weight: bold;
+	text-align: right;
+	font-size: 48px;
+}
+
+section.college_info > p {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+section.college_info > a {
+	padding: 20px 20px;
+	background: #ec26e5;
+	font-weight: bold;
+	color: #fff;
+	display: block;
+	border-radius: 5px;
+	width: 153px;
+	letter-spacing: 1px;
+	margin: 0 auto;
+}
+
+//Averages
 
 section.college_averages {
-	width: 540px;
 	padding: 30px;
-	float: right;
+	background: #FFF7F7;
+	border-radius: 10px;
+	margin-top: 20px;
 }
 
-section.college_averages > h1 {
+section.college_averages > div > h1 {
 	font-weight: bold;
 	margin: 10px;
 }
@@ -128,10 +196,28 @@ section.all_college_avg {
 	margin: 0 auto;
 }
 
-section.all_college_avg > div {
+section.all_college_avg > div:not(:nth-child(11)) {
 	float: left;
 	width: 200px;
-	border: 2px solid blue;
+	border-top: 3px solid #333;
+	border-left: 3px solid #333;
+	padding: 10px;
+}
+
+section.all_college_avg > div:nth-child(even) {
+	border-right: 3px solid #333;
+}
+
+section.all_college_avg > div:nth-child(9),
+section.all_college_avg > div:nth-child(10) {
+	border-bottom: 3px solid #333;
+	margin-bottom: 10px;
+}
+
+section.all_college_avg > div:nth-child(11) {
+	clear:both;
+	width: 200px;
+	border: 3px solid #333;
 	padding: 10px;
 }
 
@@ -140,10 +226,19 @@ section.all_college_avg > div > h3 {
 	font-size: 12px;
 }
 
+section.all_college_avg > div:nth-child(11) > h3 {
+	font-size: 16px;
+}
+
 section.all_college_avg > div > p {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: center;
+}
+
+section.all_college_avg > div:nth-child(11) > p {
+	margin-top: -5px;
+	display: block;
 }
 
 section.all_college_avg > h5 {
@@ -169,4 +264,3 @@ section.ratings li div {
 .paginate {
 	clear: both;
 }
-

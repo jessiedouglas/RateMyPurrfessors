@@ -61,9 +61,9 @@ RateMyPurrfessors.Views.ProfessorShow = Backbone.CompositeView.extend({
 		this.allPages = [];
 		var arrayPages = [];
 		
-		while (ratings.length > 10) {
-			arrayPages.push(ratings.slice(0, 10));
-			ratings = ratings.slice(10);
+		while (ratings.length > 5) {
+			arrayPages.push(ratings.slice(0, 5));
+			ratings = ratings.slice(5);
 		}
 		
 		arrayPages.push(ratings);
@@ -78,11 +78,11 @@ RateMyPurrfessors.Views.ProfessorShow = Backbone.CompositeView.extend({
 	
 	paginate: function () {
 		if (this.page !== this.allPages.length - 1) {
-			this.$("div.paginate").prepend('<a class="next" href="">Next')
+			this.$("div.paginate").prepend('<a class="next" href="">Next &#9654;')
 		}
 		
 		if (this.page !== 0) {
-			this.$("div.paginate").prepend('<a class="previous" href="">Prev')
+			this.$("div.paginate").prepend('<a class="previous" href="">&#9664; Prev')
 		}
 	},
 	
