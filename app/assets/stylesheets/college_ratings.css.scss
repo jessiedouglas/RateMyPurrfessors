@@ -5,9 +5,13 @@
 
 // New/Edit
 
+section.rating_form {
+	margin: 0 100px;
+}
+
 div.college_info {
-	width: 500px;
-	margin: 0 auto;
+	text-align: center;
+	margin: 30px 0 50px 0;
 }
 
 div.college_info > h1 {
@@ -16,9 +20,10 @@ div.college_info > h1 {
 }
 
 form.college_rating {
-	width: 800px;
+	width: 600px;
 	margin: 0 auto;
 	position: relative;
+	margin-bottom: 30px;
 }
 
 form.college_rating > div {
@@ -28,11 +33,13 @@ form.college_rating > div {
 	position: relative;
 	overflow: hidden;
 	width: 300px;
+	height: 60px;
 }
 
 form.college_rating > div.radio > label.radio {
 	display: block;
 	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 form.college_rating > div.radio > input:not(.hidden) {
@@ -49,40 +56,85 @@ form.college_rating > div.radio > label:not(.radio) {
 	position: absolute;
 	display: block;
 	background: orange;
-	width: 20px;
-	height: 20px;
-	border: 1px solid blue;
+	width: 40px;
+	height: 30px;
+	border: 1px solid #ccc;
 	cursor: pointer;
+	color: rgba(255, 255, 255, 0.5);
+	text-align: center;
+	font-size: 20px;
+	z-index: 10;
+//	text-shadow: 5px 5px 5px gray;
+}
+
+form.college_rating > div.radio > label:nth-child(4) {
+	left: 5px;
+	border-radius: 20px;
+	z-index: 5;
+	text-align: center;
+	padding-right: 20px;
+	padding-left: 5px;
 }
 
 form.college_rating > div.radio > label:nth-child(6) {
-	left: 30px;
-}
-
-form.college_rating > div.radio > label:nth-child(8) {
 	left: 50px;
 }
 
-form.college_rating > div.radio > label:nth-child(10) {
-	left: 70px;
-}
-
-form.college_rating > div.radio > label:nth-child(12) {
+form.college_rating > div.radio > label:nth-child(8) {
 	left: 90px;
 }
 
-//div.radio > input:checked ~ label {
-//	background: red;
-//}
+form.college_rating > div.radio > label:nth-child(10) {
+	left: 130px;
+}
+
+form.college_rating > div.radio > label:nth-child(12) {
+	left: 150px;
+	border-radius: 20px;
+	z-index: 5;
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 5px;
+}
 
 form.college_rating > div.radio > input:checked ~ label:not(.radio) {
-	background: #ddd;
+	background: #aaa;
 }
 
 form.college_rating > div.radio > input:checked + label:not(.radio) {
 	background: orange;
 }
 
+article.college_extra {
+	padding-top: 100px;
+}
+
+article.college_extra > div > label{
+	display: block;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+article.college_extra > div > textarea {
+	background: #fff;
+	height: 100px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	font-size: 14px;
+	width: 250px;
+}
+
 form.college_rating button {
-	
+	background: #7D9A00;
+	color: #fff;
+	padding: 15px 25px;
+	font-weight: bold;
+	border-radius: 10px;
+	letter-spacing: 1px;
+	margin-top: 50px;
+}
+
+form.college_rating button:hover {
+	background: #708B00;
 }
