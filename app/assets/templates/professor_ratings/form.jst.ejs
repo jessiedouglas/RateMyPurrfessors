@@ -1,179 +1,301 @@
-<form action="<%= action %>" method="POST">
+<form action="<%= action %>" method="POST" class="professor_rating group">
 	<input type="hidden" name="_method" value="<%= method %>">
 	
 	<input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
 	
 	<input type="hidden" name="professor_rating[professor_id]" value="<%= professor.get("id") %>">
 	
-	<label for="course_code">Course Code</label>
-	<input type="text" 
-			name="professor_rating[course_code]"
-			id="course_code"
-			placeholder="e.g., ECON101">
-			
-	<input type="checkbox"
-			name="professor_rating[online_class]"
-			id="online_class"
-			value="true">
-	<label for="online_class">This class was online</label>
+	<div class="course_code">
+		<label for="course_code">Course Code</label>
+		<input type="text" 
+				name="professor_rating[course_code]"
+				id="course_code"
+				placeholder="e.g., ECON101">
+	</div>
 	
-	<label>Helpfulness</label>
+	<div class="online_class">		
+		<input type="checkbox"
+				name="professor_rating[online_class]"
+				id="online_class"
+				value="true">
+		<label for="online_class">This class was online</label>
+	</div>
+	
+	
+	<div class="radio">
 		<input type="radio" 
 				name="professor_rating[helpfulness]" 
-				id="helpfulness_1" 
-				value="1">
-				<label for="helpfulness_1">no help at all</label>
+				class="hidden" 
+				checked="checked">
+		
+		<p class="radio">Helpfulness</p>
+			<input type="radio" 
+					name="professor_rating[helpfulness]" 
+					id="helpfulness_1" 
+					value="1">
+					<label for="helpfulness_1">&#9733;</label>
 			
 			<input type="radio" 
 					name="professor_rating[helpfulness]"
+					id="helpfulness_2"
 					value="2">
-					
+					<label for="helpfulness_2">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[helpfulness]"
+					id="helpfulness_3"
 					value="3">
-					
+					<label for="helpfulness_3">&#9733;</label>
+				
 			<input type="radio" 
-					name="professor_rating[helpfulness]" 
+					name="professor_rating[helpfulness]"
+					id="helpfulness_4"
 					value="4">
-					
+					<label for="helpfulness_4">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[helpfulness]" 
 					id="helpfulness_5" 
 					value="5">
-					<label for="helpfulness_5">goes out of the way to help</label>
+					<label for="helpfulness_5">&#9733;</label>
 					
-	<label>Clarity</label>
+			<!-- <div class="clarifications"> -->
+				<!-- <p class="clarificaton">No help at all</p>
+				<p class="clarificaton">You have to beg</p>
+				<p class="clarificaton">If you ask, help will come</p>
+				<p class="clarificaton">Most likely to help</p>
+				<p class="clarificaton">Saved my semester</p> -->
+			<!-- </div> -->
+	</div>
+			
+	<div class="radio">
 		<input type="radio" 
 				name="professor_rating[clarity]" 
-				id="clarity_1" 
-				value="1">
-				<label for="clarity_1">going to lectures was pointless</label>
+				class="hidden" 
+				checked="checked">
+						
+		<p class="radio">Clarity</p>
+			<input type="radio" 
+					name="professor_rating[clarity]" 
+					id="clarity_1" 
+					value="1">
+					<label for="clarity_1">&#9733;</label>
 			
 			<input type="radio" 
 					name="professor_rating[clarity]"
+					id="clarity_2"
 					value="2">
-					
+					<label for="clarity_2">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[clarity]"
+					id="clarity_3"
 					value="3">
-					
+					<label for="clarity_3">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[clarity]" 
+					id="clarity_4"
 					value="4">
-					
+					<label for="clarity_4">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[clarity]" 
 					id="clarity_5" 
 					value="5">
-					<label for="clarity_5">perfectly clear</label>
+					<label for="clarity_5">&#9733;</label>
 					
-	<label>Easiness</label>
+			<!-- <div class="clarifications">
+				<p class="clarity_1">Say what??</p>
+				<p class="clarity_2">Confusing</p>
+				<p class="clarity_3">Pretty clear</p>
+				<p class="clarity_4">Clear-cut</p>
+				<p class="clarity_5">Crystal</p>
+			</div> -->
+	</div>
+	
+	<div class="radio">	
 		<input type="radio" 
 				name="professor_rating[easiness]" 
-				id="easiness_1" 
-				value="1">
-				<label for="easiness_1">impossible to pass</label>
-			
-			<input type="radio" 
-					name="professor_rating[easiness]"
-					value="2">
-					
-			<input type="radio" 
-					name="professor_rating[easiness]"
-					value="3">
-					
+				class="hidden" 
+				checked="checked">
+				
+		<p class="radio">Easiness</p>
 			<input type="radio" 
 					name="professor_rating[easiness]" 
+					id="easiness_1" 
+					value="1">
+					<label for="easiness_1">&#9733;</label>
+		
+			<input type="radio" 
+					name="professor_rating[easiness]"
+					id="easiness_2"
+					value="2">
+					<label for="easiness_2">&#9733;</label>
+				
+			<input type="radio" 
+					name="professor_rating[easiness]"
+					id="easiness_3"
+					value="3">
+					<label for="easiness_3">&#9733;</label>
+				
+			<input type="radio" 
+					name="professor_rating[easiness]" 
+					id="easiness_4"
 					value="4">
-					
+					<label for="easiness_4">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[easiness]" 
 					id="easiness_5" 
 					value="5">
-					<label for="easiness_5">don't need to show up</label>
+					<label for="easiness_5">&#9733;</label>
 					
-	<input type="checkbox" 
-			name="professor_rating[taken_for_credit]" 
-			id="taken_for_credit"
-			value="false">
-	<label for="taken_for_credit">I did not take this course for credit</label>
+			<!-- <div class="clarifications">
+				<p class="easiness_1">Hardest thing I've ever done</p>
+				<p class="easiness_2">Makes you sweat</p>
+				<p class="easiness_3">The usual</p>
+				<p class="easiness_4">Easy A</p>
+				<p class="easiness_5">Show up and pass</p>
+			</div> -->
+	</div>
 	
-	<input type="checkbox" 
-			name="professor_rating[hotness]" 
-			id="hotness"
-			value="true">
-	<label for="hotness">ME-OW</label>
+	<div class="credit">				
+		<input type="checkbox" 
+				name="professor_rating[taken_for_credit]" 
+				id="taken_for_credit"
+				value="false">
+		<label for="taken_for_credit">I did not take this course for credit</label>
+	</div>
 	
-	<label for="comments">Comments</label>
-	<textarea name="professor_ratings[comments]"
-				id="comments"
-				placeholder="Now's the time to be more specific with your experience!">
-			</textarea>
-			
-	<input type="checkbox" 
-			name="professor_rating[attendance_is_mandatory]" 
-			id="attendance"
-			value="true">
-	<label for="attendance">Attendance was STRICTLY ENFORCED (i.e., part of the grade)</label>
+	<div class="hotness">
+		<input type="checkbox" 
+				name="professor_rating[hotness]" 
+				id="hotness"
+				value="true">
+		<label for="hotness">ME-OW</label>
+		<p class="cold_thermometer"></p>
+		<p class="hot_thermometer"></p>
+	</div>
 	
-	<label>Interest</label>
+	<div class="comments">
+		<label for="comments">Comments <span class="optional">(optional)</span></label>
+		<textarea name="professor_ratings[comments]"
+					id="comments"
+					placeholder="Now's the time to be more specific with your experience!">
+				</textarea>
+	</div>
+	
+	<div class="attendance">		
+		<input type="checkbox" 
+				name="professor_rating[attendance_is_mandatory]" 
+				id="attendance"
+				value="true">
+		<label for="attendance">Attendance was STRICTLY ENFORCED (i.e., part of the grade)</label>
+	</div>
+	
+	<div class="radio">
 		<input type="radio" 
 				name="professor_rating[interest]" 
-				id="interest_1" 
-				value="1">
-				<label for="interest_1">completely boring</label>
+				class="hidden" 
+				checked="checked">
+		
+		<p class="radio">Interest <span class="optional">(optional)</span></p>
+			<input type="radio" 
+					name="professor_rating[interest]" 
+					id="interest_1" 
+					value="1">
+					<label for="interest_1">&#9733;</label>
 			
 			<input type="radio" 
 					name="professor_rating[interest]"
+					id="interest_2"
 					value="2">
-					
+					<label for="interest_2">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[interest]"
+					id="interest_3"
 					value="3">
-					
+					<label for="interest_3">&#9733;</label>
+				
 			<input type="radio" 
-					name="professor_rating[interest]" 
+					name="professor_rating[interest]"
+					id="interest_4"
 					value="4">
-					
+					<label for="interest_4">&#9733;</label>
+				
 			<input type="radio" 
 					name="professor_rating[interest]" 
 					id="interest_5" 
 					value="5">
-					<label for="interest_5">RIVETING</label>
+					<label for="interest_5">&#9733;</label>
 					
-		<label>Textbook Use</label>
+			<!-- <div class="clarifications">
+				<p class="interest_1">Meh</p>
+				<p class="interest_2">Low</p>
+				<p class="interest_3">Sorta interested</p>
+				<p class="interest_4">Really into it</p>
+				<p class="interest_5">It's my life</p>
+			</div> -->
+		</div>
+		
+		<div class="radio">
 			<input type="radio" 
 					name="professor_rating[textbook_use]" 
-					id="textbook_use_1" 
-					value="1">
-					<label for="textbook_use_1">what textbook?</label>
+					class="hidden" 
+					checked="checked">
+						
+			<p class="radio">Textbook Use <span class="optional">(optional)</span></p>
+				<input type="radio" 
+						name="professor_rating[textbook_use]" 
+						id="textbook_use_1" 
+						value="1">
+						<label for="textbook_use_1">&#9733;</label>
 			
 				<input type="radio" 
 						name="professor_rating[textbook_use]"
+						id="textbook_use_2"
 						value="2">
-					
+						<label for="textbook_use_2">&#9733;</label>
+				
 				<input type="radio" 
 						name="professor_rating[textbook_use]"
+						id="textbook_use_3"
 						value="3">
-					
+						<label for="textbook_use_3">&#9733;</label>
+				
 				<input type="radio" 
 						name="professor_rating[textbook_use]" 
+						id="textbook_use_4"
 						value="4">
-					
+						<label for="textbook_use_4">&#9733;</label>
+				
 				<input type="radio" 
 						name="professor_rating[textbook_use]" 
 						id="textbook_use_5" 
 						value="5">
-						<label for="textbook_use_5">textbook essential to pass</label>
+						<label for="textbook_use_5">&#9733;</label>
 						
-		<label for="grade_received">Grade Received</label>
-		<select name="professor_rating[grade_received]"
-		  		id="grade_received">
-			<option value="">--Select--</option>
-			<% grades.forEach(function (grade) { %>
-				<option value="<%= grade %>"><%= grade %></option>
-			<% }); %>
-		</select>
+				<!-- <div class="clarifications">
+					<p class="textbook_use_1">What textbook?</p>
+					<p class="textbook_use_2">Barely cracked it open</p>
+					<p class="textbook_use_3">You need it sometimes</p>
+					<p class="textbook_use_4">It's this semester's must-have accessory</p>
+					<p class="textbook_use_5">Essential to passing</p>
+				</div> -->
+		</div>
+		
+		<div class="grade">				
+			<label for="grade_received">Grade Received</label>
+			<select name="professor_rating[grade_received]"
+			  		id="grade_received">
+				<option value="">--Select--</option>
+				<% grades.forEach(function (grade) { %>
+					<option value="<%= grade %>"><%= grade %></option>
+				<% }); %>
+			</select>
+		</div>
 		
 		<button>Submit</button>
 </form>

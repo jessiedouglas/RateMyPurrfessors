@@ -9,17 +9,20 @@ section.rating_form {
 	margin: 0 100px;
 }
 
-div.college_info {
+div.college_info,
+div.professor_info {
 	text-align: center;
 	margin: 30px 0 50px 0;
 }
 
-div.college_info > h1 {
+div.college_info > h1,
+div.professor_info > h1 {
 	font-weight: bold;
 	font-size: 24px;
 }
 
-form.college_rating {
+form.college_rating,
+form.professor_rating {
 	width: 600px;
 	margin: 0 auto;
 	position: relative;
@@ -36,23 +39,27 @@ form.college_rating > div {
 	height: 60px;
 }
 
-form.college_rating > div.radio > label.radio {
+form.college_rating > div.radio > label.radio,
+form.professor_rating > div.radio > p.radio {
 	display: block;
 	font-weight: bold;
 	margin-bottom: 10px;
 }
 
-form.college_rating > div.radio > input:not(.hidden) {
+form.college_rating > div.radio > input:not(.hidden), 
+form.professor_rating > div.radio > input:not(.hidden) {
 	display: block;
 	float: left;
 }
 
-form.college_rating > div.radio > input.hidden {
+form.college_rating > div.radio > input.hidden,
+form.professor_rating > div.radio > input.hidden {
 	position: absolute;
 	left: -200px;
 }
 
-form.college_rating > div.radio > label:not(.radio) {
+form.college_rating > div.radio > label:not(.radio),
+form.professor_rating > div.radio > label {
 	position: absolute;
 	display: block;
 	background: orange;
@@ -64,10 +71,10 @@ form.college_rating > div.radio > label:not(.radio) {
 	text-align: center;
 	font-size: 20px;
 	z-index: 10;
-//	text-shadow: 5px 5px 5px gray;
 }
 
-form.college_rating > div.radio > label:nth-child(4) {
+form.college_rating > div.radio > label:nth-child(4),
+form.professor_rating > div.radio > label:nth-child(4) {
 	left: 5px;
 	border-radius: 20px;
 	z-index: 5;
@@ -76,19 +83,23 @@ form.college_rating > div.radio > label:nth-child(4) {
 	padding-left: 5px;
 }
 
-form.college_rating > div.radio > label:nth-child(6) {
+form.college_rating > div.radio > label:nth-child(6),
+form.professor_rating > div.radio > label:nth-child(6) {
 	left: 50px;
 }
 
-form.college_rating > div.radio > label:nth-child(8) {
+form.college_rating > div.radio > label:nth-child(8),
+form.professor_rating > div.radio > label:nth-child(8) {
 	left: 90px;
 }
 
-form.college_rating > div.radio > label:nth-child(10) {
+form.college_rating > div.radio > label:nth-child(10),
+form.professor_rating > div.radio > label:nth-child(10) {
 	left: 130px;
 }
 
-form.college_rating > div.radio > label:nth-child(12) {
+form.college_rating > div.radio > label:nth-child(12),
+form.professor_rating > div.radio > label:nth-child(12) {
 	left: 150px;
 	border-radius: 20px;
 	z-index: 5;
@@ -97,11 +108,13 @@ form.college_rating > div.radio > label:nth-child(12) {
 	padding-right: 5px;
 }
 
-form.college_rating > div.radio > input:checked ~ label:not(.radio) {
+form.college_rating > div.radio > input:checked ~ label:not(.radio),
+form.professor_rating > div.radio > input:checked ~ label {
 	background: #aaa;
 }
 
-form.college_rating > div.radio > input:checked + label:not(.radio) {
+form.college_rating > div.radio > input:checked + label:not(.radio),
+form.professor_rating > div.radio > input:checked + label {
 	background: orange;
 }
 
@@ -115,7 +128,8 @@ article.college_extra > div > label{
 	margin-bottom: 10px;
 }
 
-article.college_extra > div > textarea {
+article.college_extra > div > textarea,
+div.comments > textarea {
 	background: #fff;
 	height: 100px;
 	margin-bottom: 20px;

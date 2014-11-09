@@ -36,3 +36,114 @@ p.large_hot_thermometer {
 	height: 70px;
 	background-size: 100% 100%;
 }
+
+form.professor_rating > div.radio {
+	float: left;
+	clear: both;
+	padding: 10px;
+	position: relative;
+	overflow: hidden;
+	width: 300px;
+	height: 80px;
+}
+
+//form.professor_rating > div.radio > p.clarification {
+//	display: none;
+//	position: absolute;
+//	top: 75px;
+//}
+//
+//form.professor_rating > div.radio > input:nth-child(4):checked ~ p.clarification:nth-child(13) {
+//	display: block;
+//}
+//
+//form.professor_rating > div.radio > input:nth-child(6):checked ~ p.clarification:nth-child(14) {
+//	display: block;
+//}
+//
+//form.professor_rating > div.radio > input:nth-child(8):checked ~ p.clarification:nth-child(15) {
+//	display: block;
+//}
+//
+//form.professor_rating > div.radio > input:nth-child(10):checked ~ p.clarification:nth-child(16) {
+//	display: block;
+//}
+//
+//form.professor_rating > div.radio > input:nth-child(12):checked ~ p.clarification:nth-child(17) {
+//	display: block;
+//}
+
+div.course_code {
+	float: left;
+}
+
+div.course_code > label {
+	font-weight: bold;
+	margin-bottom: 5px;
+	display: block;
+}
+
+div.course_code > input {
+	background: #fff;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	font-size: 14px;
+	width: 100px;
+	display: block;
+}
+
+div.online_class {
+	float: left;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+div.hotness {
+	width: 200px;
+	border: 2px solid green;
+	float: right;
+}
+
+div.hotness > label {
+	margin: 5px 5px 0 5px;
+}
+
+div.hotness > input {
+	margin-top: 7px;
+}
+
+div.hotness > p.cold_thermometer {
+	display: block;
+}
+
+div.hotness > p.hot_thermometer {
+	display: none;
+}
+
+div.hotness > input:checked ~ p.cold_thermometer {
+	display: none;
+}
+
+div.hotness > input:checked ~ p.hot_thermometer {
+	display: block;
+}
+
+div.hotness > input,
+div.hotness > label,
+div.hotness > p {
+	float: left;
+	display: block;
+}
+
+div.comments > label {
+	font-weight: bold;
+	margin-bottom: 5px;
+	display: block;
+}
+
+div.grade > label {
+	font-weight: bold;
+	margin-bottom: 5px;
+	display: block;
+}
