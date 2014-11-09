@@ -100,9 +100,10 @@ div.online_class {
 }
 
 div.hotness {
-	width: 200px;
-	border: 2px solid green;
-	float: right;
+	width: 300px;
+	position: absolute;
+	right: 0;
+	top: 80px;
 }
 
 div.hotness > label {
@@ -136,14 +137,53 @@ div.hotness > p {
 	display: block;
 }
 
+div.credit {
+	width: 300px;
+	position: absolute;
+	right: 0;
+	bottom: 400px;
+}
+
+div.comments {
+	width: 300px;
+	position: absolute;
+	right: 0;
+	bottom: 100px;
+}
+
 div.comments > label {
 	font-weight: bold;
 	margin-bottom: 5px;
 	display: block;
 }
 
+div.attendance {
+	width: 300px;
+	position: absolute;
+	right: 0;
+	bottom: 340px;
+}
+
+div.grade {
+	width: 300px;
+	position: absolute;
+	right: 0;
+	bottom: 270px;
+}
+
 div.grade > label {
 	font-weight: bold;
 	margin-bottom: 5px;
 	display: block;
+}
+
+form.professor_rating button {
+	background: #7D9A00;
+	color: #fff;
+	padding: 15px 25px;
+	font-weight: bold;
+	border-radius: 10px;
+	letter-spacing: 1px;
+	position: absolute;
+	bottom: 50px;
 }
