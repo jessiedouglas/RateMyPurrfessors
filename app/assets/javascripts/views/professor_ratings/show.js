@@ -1,7 +1,7 @@
 RateMyPurrfessors.Views.ProfessorRatingShow = Backbone.CompositeView.extend({
 	template: JST["professor_ratings/show"],
 	tagName: "li",
-	className: "rating",
+	className: "rating professor_rating",
 	
 	render: function () {
 		var renderedContent = this.template({

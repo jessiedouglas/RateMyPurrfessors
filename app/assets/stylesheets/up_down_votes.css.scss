@@ -1,3 +1,70 @@
 // Place all the styles related to the UpDownVotes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.up_down_votes {
+	position: absolute;
+	background: #D8E1B2;
+	border-radius: 5px;
+}
+
+li.professor_rating > div.up_down_votes {
+	left: 30px;
+	bottom: 10px;
+}
+
+li.college_rating > div.up_down_votes {
+	right: 30px;
+	bottom: 0;
+}
+
+div.vote_buttons {
+	float: left;
+	padding: 7px 0 7px 10px;
+}
+
+div.vote_buttons > h3 {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+a.upvote, a.downvote {
+	padding: 3px;
+	border-radius: 1px 3px 3px 3px;
+}
+
+a.upvote {
+	background: #FFADFF;
+}
+
+a.upvote:hover {
+	background: #FF75FF;
+};
+
+a.downvote {
+	background: #CCFFFF;
+}
+
+a.downvote:hover {
+	background: #66E6E6;
+}
+
+div.vote_buttons > p {
+	font-size: 12px;
+}
+
+div.vote_info {
+	font-size: 12px;
+	float: left;
+	margin-left: 20px;
+	padding: 7px 10px 7px 0;
+}
+
+a.undo {
+	font-size: 14px;
+	text-decoration: underline;
+}
+
+a.undo:hover {
+	color: maroon;
+}

@@ -4,12 +4,13 @@
 	<p>You <%= vote_value %> this post</p>
 	<a href="" class="undo">Undo</a>
 <% } else { %>
-	<a href="" class="upvote">&#xff0b;</a>
-	<a href="" class="downvote">&minus;</a>
+	<h3>Vote!</h3>
+	<a href="" class="upvote">&#10506;</a>
+	<a href="" class="downvote">&#10507;</a>
 <% } %>
 </div>
 
 <div class="vote_info">
-	<p><%= upvotes %> people found this helpful</p>
-	<p><%= downvotes %> people found this unhelpful</p>
+	<p><%= upvotes %> <%= upvotes === 1 ? "person" : "people" %> found this helpful</p>
+	<p><%= downvotes %> <%= downvotes === 1 ? "person" : "people" %> found this unhelpful</p>
 </div>

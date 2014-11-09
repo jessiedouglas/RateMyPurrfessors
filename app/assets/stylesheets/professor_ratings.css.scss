@@ -4,15 +4,15 @@
 
 p.cold_thermometer {
 	background: image-url("cold_thermometer.png") no-repeat;
-	width: 30px;
-	height: 30px;
+	width: 31px;
+	height: 31px;
 	background-size: 100% 100%;
 }
 
 p.hot_thermometer {
 	background: image-url("hot_thermometer.png") no-repeat;
-	width: 30px;
-	height: 30px;
+	width: 31px;
+	height: 31px;
 	background-size: 100% 100%;
 }
 
@@ -186,4 +186,88 @@ form.professor_rating button {
 	letter-spacing: 1px;
 	position: absolute;
 	bottom: 50px;
+}
+
+//SHOW
+
+ul.all_ratings > li.professor_rating {
+	height: 270px;
+}
+
+ul.all_ratings > li > div {
+	text-align: center;
+}
+
+ul.all_ratings > li > div:not(.up_down_votes) {
+	background: #ddd;
+	border-radius: 5px;
+	margin-right: 5px;
+	padding: 10px;
+}
+
+h1.rating_label {
+	font-weight: bold;
+	border-bottom: 1px solid #333;
+}
+
+div.out_of_5 {
+	width: 100px;
+	height: 50px;
+	margin-bottom: 20px;
+}
+
+p.number {
+	font-size: 30px;
+}
+
+ul.all_ratings > li > div:first-child {
+	height: 50px;
+}
+
+ul.all_ratings > li > div:first-child > h1 {
+	display: block;
+	margin-bottom: 5px;
+}
+
+ul.all_ratings > li > div:first-child > p:nth-child(3) {
+	font-size: 12px;
+}
+
+div.hotness_display {
+	margin-bottom: 20px;
+}
+
+ul.all_ratings > li > div.hotness_display > p {
+	margin: 0 auto;
+}
+
+div.more {
+	width: 220px;
+}
+
+div.more > p {
+	font-size: 14px;
+}
+
+div.more > span {
+	font-size: 12px;
+}
+
+div.rater_info {
+	height: 87px;
+}
+
+div.rater_info > p {
+	font-size: 14px;
+	padding: 5px 0;
+}
+
+div.comments_display {
+	width: 280px;
+	max-height: 100px;
+	overflow: auto;
+}
+
+div.comments_display > p {
+	font-size: 16px;
 }

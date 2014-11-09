@@ -153,3 +153,22 @@ form.college_rating button:hover,
 form.professor_rating button:hover {
 	background: #708B00;
 }
+
+
+//SHOW
+
+ul.all_ratings > li.college_rating {
+	height: 300px;
+	width: 700px;
+	padding-right: 100px;
+}
+
+ul.all_ratings > li.college_rating > div {
+	margin-bottom: 20px;
+}
+
+div.grad_year > p {
+	font-size: 14px;
+	display: block;
+	padding: 12px 0 7px 0;
+}

@@ -6,29 +6,29 @@
 	<% } %>
 </div>
 
-<div>
+<div class="out_of_5">
 	<h1 class="rating_label">Helpfulness</h1>
 	<p class="number"><%= rating.escape("helpfulness") %></p>
 </div>
 
-<div>
+<div class="out_of_5">
 	<h1 class="rating_label">Clarity</h1>
 	<p class="number"><%= rating.escape("clarity") %></p>
 </div>
 
-<div>
+<div class="out_of_5">
 	<h1 class="rating_label">Easiness</h1>
 	<p class="number"><%= rating.escape("easiness") %></p>
 </div>
 
-<% if (rating.get("comments")) { %>
-	<div>
-		<h1 class="rating_label">Comments</h1>
-		<p><%= rating.escape("comments") %></p>
+<% if (rating.get("interest")) { %>
+	<div class="out_of_5">
+		<h1 class="rating_label">Interest</h1>
+		<p class="number"><%= rating.escape("interest") %></p>
 	</div>
 <% } %>
 
-<div>
+<div class="hotness_display">
 	<h1 class="rating_label">Hotness</h1>
 	<% if (rating.get("hotness")) { %>
 		<p class="hot_thermometer"></p>
@@ -37,26 +37,19 @@
 	<% } %>
 </div>
 
-<% if (rating.get("interest")) { %>
-	<div>
-		<h1 class="rating_label">Interest</h1>
-		<p class="number"><%= rating.escape("interest") %></p>
-	</div>
-<% } %>
-
-<div>
+<div class="more">
 	<h1 class="rating_label">More</h1>
 	<% if (rating.get("attendance_is_mandatory")) { %>
-		<p>Attendance was MANDATORY (i.e., part of the grade)</p>
+		<p>Attendance was MANDATORY</p> <span>(i.e., part of the grade)</span>
 	<% } else { %>
-		<p>Attendance was NOT mandatory (i.e., not part of the grade)</p>
+		<p>Attendance was NOT mandatory</p> <span>(i.e., not part of the grade)</span>
 	<% } %>
 	<% if (rating.get("textbook_use")) { %>
-			<p>Textbook Use: <%= rating.escape("textbook_use") %> (1 -- never used, 5 -- essential)</p>
+			<p>Textbook Use: <%= rating.escape("textbook_use") %></p> <span>(1 -- never used, 5 -- essential)</span>
 	<% } %>
 </div>
 
-<div>
+<div class="rater_info">
 	<h1 class="rating_label">Rater Info</h1>
 	<% if (rating.get("grade_received") === "prefer not to say") { %>
 	<% } else if (rating.get("grade_received") === "Withdraw") { %>
@@ -73,5 +66,12 @@
 		<p>&#x2717; Course not taken for credit</p>
 	<% } %>
 </div>
+
+<% if (rating.get("comments")) { %>
+	<div class="comments_display">
+		<h1 class="rating_label">Comments</h1>
+		<p><%= rating.escape("comments") %></p>
+	</div>
+<% } %>
 
 <div class="up_down_votes"></div>

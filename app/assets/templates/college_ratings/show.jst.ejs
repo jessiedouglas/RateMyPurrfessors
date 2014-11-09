@@ -1,3 +1,5 @@
+<p></p>
+
 <div>
 	<h1 class="rating_label">Reputation</h1>
 	<p class="number"><%= rating.escape("reputation") %></p>
@@ -48,14 +50,15 @@
 	<p class="number"><%= rating.escape("happiness") %></p>
 </div>
 
-<div class="comments">
-	<h1 class="rating_label">Comments</h1>
-	<p class="number"><%= rating.escape("comments") %></p>
+
+<div class="grad_year">
+	<h1 class="rating_label">Rater Info</h1>
+	<p>Graduation Year: <%= rating.escape("graduation_year") %></p>
 </div>
 
-<div>
-	<h1 class="rating_label">Graduation Year of Rater</h1>
-	<p class="number"><%= rating.escape("graduation_year") %></p>
+<div class="comments_display">
+	<h1 class="rating_label">Comments</h1>
+	<p><%= rating.escape("comments") %></p>
 </div>
 
 <div class="up_down_votes"></div>

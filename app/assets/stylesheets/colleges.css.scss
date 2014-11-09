@@ -255,12 +255,31 @@ section.ratings li {
 	padding: 50px;
 }
 
-section.ratings li div {
+section.ratings > ul > li {
+	position: relative;
+}
+
+section.ratings > ul > li > div {
 	float: left;
-	border: 2px solid orange;
 	padding: 5px;
 }
 
 .paginate {
 	clear: both;
+}
+
+a.college_bottom_link {
+	padding: 20px 20px;
+	background: #ec26e5;
+	font-weight: bold;
+	color: #fff;
+	display: block;
+	border-radius: 5px;
+	width: 153px;
+	letter-spacing: 1px;
+	margin: 0 auto;
+}
+
+li.rating:last-child {
+	border-bottom: 1px solid #ccc;
 }
