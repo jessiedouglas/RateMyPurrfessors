@@ -16,11 +16,9 @@ class Api::ProfessorRatingsController < ApplicationController
     @rating = current_user.professor_ratings.new(professor_rating_params)
     
     if @rating.save
-      flash[:notices] = ["Rating saved!"]
-      redirect_to "#" + professor_path(@rating.professor_id)
+      render json: @rating
     else
-      flash[:errors] = @rating.errors.full_messages
-      redirect_to "#" + new_professor_professor_rating_path(@rating.professor_id)
+      render json: @rating.errors.full_messages
     end
   end
   
@@ -28,18 +26,15 @@ class Api::ProfessorRatingsController < ApplicationController
     @rating = ProfessorRating.find(params[:id])
     
     if @rating.update(professor_rating_params)
-      flash[:notices] = ["Rating updated!"]
-      redirect_to "#" + professor_path(@rating.professor_id)
+      render json: @rating
     else
-      flash[:errors] = @rating.errors.full_messages
-      redirect_to "#" + edit_professor_rating_path(@rating)
+      render json: @rating.errors.full_messages
     end
   end
   
   def destroy
     @rating = ProfessorRating.find(params[:id])
     @rating.destroy!
-    flash[:notices] = ["Rating deleted."]
     
     render json: {}
   end

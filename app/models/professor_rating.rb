@@ -22,8 +22,8 @@ class ProfessorRating < ActiveRecord::Base
           "none"
           ]
   
-  validates :professor, :rater, :course_code, :helpfulness, presence: true
-  validates :clarity, :easiness, :grade_received, presence: true
+  validates :professor, :rater, :grade_received, :course_code, presence: true
+  validates :clarity, :easiness, :helpfulness, inclusion: { in: [1, 2, 3, 4, 5], message: "can't be blank" }
   validates :professor_id, uniqueness: { scope: :rater_id, message: "has already been rated" } 
   validates :online_class, :taken_for_credit, :hotness, inclusion: { in: [true, false] }
   validates :attendance_is_mandatory, inclusion: { in: [true, false] }

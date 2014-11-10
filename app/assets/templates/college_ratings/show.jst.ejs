@@ -56,9 +56,11 @@
 	<p>Graduation Year: <%= rating.escape("graduation_year") %></p>
 </div>
 
-<div class="comments_display">
-	<h1 class="rating_label">Comments</h1>
-	<p><%= rating.escape("comments") %></p>
-</div>
+<% if (rating.get("comments")) {%>
+	<div class="comments_display">
+		<h1 class="rating_label">Comments</h1>
+		<p><%= rating.escape("comments") %></p>
+	</div>
+<% } %>
 
 <div class="up_down_votes"></div>

@@ -154,6 +154,19 @@ form.professor_rating button:hover {
 	background: #708B00;
 }
 
+//Errors
+
+ul.errors {
+	background: #FF6666;
+	width: 300px;
+	margin: 0 auto;
+	border-radius: 10px;
+	margin-bottom: 50px;
+}
+
+ul.errors > li {
+	padding: 10px;
+}
 
 //SHOW
 

@@ -17,11 +17,11 @@ class Api::ProfessorsController < ApplicationController
     @professor = Professor.new(professor_params)
 
     if @professor.save
-      flash[:notices] = ["Professor created!"]
-      redirect_to "#" + professor_path(@professor)
+      # redirect_to "#" + professor_path(@professor)
+      render json: @professor
     else
-      flash[:errors] = @professor.errors.full_messages
-      redirect_to "#/professors/new"
+      # redirect_to "#/professors/new"
+      render json: @professor.errors.full_messages
     end
   end
 
@@ -35,8 +35,7 @@ class Api::ProfessorsController < ApplicationController
   private
   def require_logged_in
     unless logged_in?
-      flash[:errors] = ["Must be logged in to create a professor ratings"]
-      redirect_to "#" + new_session_path
+      render json: "Must be logged in"
     end
   end
   

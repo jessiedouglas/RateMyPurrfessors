@@ -55,7 +55,7 @@
 	<% } else if (rating.get("grade_received") === "Withdraw") { %>
 		<p>Withdrew from course</p>
 	<% } else if (rating.get("grade_received") === "course not yet completed") { %>
-		<p>This rating was posted before the rater finished the course.</p>
+		<p>Course not yet finished</p>
 	<% } else { %>
 		<p>Grade Received: <%= rating.escape("grade_received") %></p>
 	<% } %>

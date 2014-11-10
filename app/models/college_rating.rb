@@ -1,7 +1,8 @@
 class CollegeRating < ActiveRecord::Base
-  validates :college, :rater, :reputation, :location, :opportunities, presence: true
-  validates :library, :grounds_and_common_areas, :internet, :food, presence: true
-  validates :clubs, :social, :happiness, :graduation_year, presence: true
+  validates :college, :rater, :graduation_year, presence: true
+  validates :reputation, :location, :internet, :food, inclusion: { in: [1, 2, 3, 4, 5], message: "can't be blank"}
+  validates :library, :grounds_and_common_areas, inclusion: { in: [1, 2, 3, 4, 5], message: "can't be blank"}
+  validates :clubs, :social, :happiness, :opportunities, inclusion: { in: [1, 2, 3, 4, 5], message: "can't be blank"}
   validates :college_id, uniqueness: { scope: :rater_id, message: "has already been rated" }
   
   belongs_to :college, inverse_of: :college_ratings

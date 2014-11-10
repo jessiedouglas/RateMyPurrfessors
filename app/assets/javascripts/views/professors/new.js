@@ -1,5 +1,6 @@
 RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 	template: JST["professors/new"],
+	errorsTemplate: JST["shared/errors"],
 	
 	events: {
 		"click a#photo": "filepicker",
@@ -59,39 +60,38 @@ RateMyPurrfessors.Views.ProfessorsNew = Backbone.View.extend({
 		var that = this;
 		
 		professor.set(form_attrs);
-		if (professor.save()) {
-			professor.fetch({
-				success: function (resp) {
-					that.$el.empty();
-					that.$el.append("<p>Professor added!");
+		
+		professor.save({}, {
+			success: this.respondToSave.bind(this)
+		});
+	},
+	
+	respondToSave: function (resp) {
+		if (resp.id) {
+			RateMyPurrfessors.router.navigate("#/professors/" + resp.id, true);
+		} else if (resp.get(0)) {
+			var iterating = true;
+			var i = 0;
+			var errors = [];
+			
+			while (iterating) {
+				if (resp.get(i)) {
+					errors.push(resp.get(i));
+					i++;
+				} else {
+					iterating = false
 				}
+			}
+			
+			var errorContent = this.errorsTemplate({
+				errors: errors
 			});
+			
+			this.$el.prepend(errorContent);
+			this.$("div.modal_background").remove();
+			this.$("div.confirm_modal").remove();
 		} else {
-			alert("OH NO")
+			alert("Something has gone terribly wrong :(")
 		}
-			// success: function () {
-// 				console.log("we did it")
-// 				RateMyPurrfessors.Routers.Router.navigate("/show/" + professor.get("id"));
-// 			},
-			// error: function (resp) {
-// 				debugger
-// 				that.$el.prepend('<ul class="errors">');
-//
-// 				if (!resp.attributes.first_name) {
-// 					that.$("ul.errors").append("<li>First Name can't be blank.");
-// 				}
-//
-// 				if (!resp.attributes.last_name) {
-// 					that.$("ul.errors").append("<li>Last Name can't be blank.");
-// 				}
-//
-// 				if (!resp.attributes.department) {
-// 					that.$("ul.errors").append("<li>Please select a department.");
-// 				}
-//
-// 				if (!resp.attributes.college_id) {
-// 					that.$("ul.errors").append("<li>Please select a college.");
-// 				}
-		// );
 	}
 });

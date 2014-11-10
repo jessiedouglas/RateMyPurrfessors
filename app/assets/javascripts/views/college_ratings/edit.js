@@ -22,9 +22,10 @@ RateMyPurrfessors.Views.CollegeRatingEdit = Backbone.CompositeView.extend({
 	
 	renderForm: function () {
 		var formView = new RateMyPurrfessors.Views.CollegeRatingsForm({
-			model: this.college,
+			model: this.model,
 			action: "api/college_ratings/" + this.model.get("id"),
-			method: "PUT"
+			method: "PUT",
+			college: this.college
 		});
 		
 		$("div.form").html(formView);

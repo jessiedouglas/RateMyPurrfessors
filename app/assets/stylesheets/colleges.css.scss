@@ -250,7 +250,7 @@ section.ratings {
 	position: relative;
 }
 
-section.ratings li {
+section.ratings li:not(.error) {
 	clear: both;
 	padding: 50px;
 }

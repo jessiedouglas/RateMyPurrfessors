@@ -31,9 +31,10 @@ RateMyPurrfessors.Views.ProfessorRatingEdit = Backbone.CompositeView.extend({
 	
 	renderForm: function () {
 		var formView = new RateMyPurrfessors.Views.ProfessorRatingsForm({
-			model: this.professor,
+			professor: this.professor,
 			action: "api/professor_ratings/" + this.model.get("id"),
-			method: "PUT"
+			method: "PUT",
+			model: this.model
 		});
 		
 		$("div.form").html(formView);
