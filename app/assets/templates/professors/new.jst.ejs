@@ -3,22 +3,22 @@
 <form>
   <label for="professor_first_name">First Name</label>
   <input type="text" 
-  		name="first_name" 
+  		name="professor[first_name]" 
   		id="professor_first_name">
 
   <label for="professor_middle_initial">Middle Initial <span class="optional">(optional)</span></label>
   <input type="text" 
-  		name="middle_initial" 
+  		name="professor[middle_initial]" 
   		id="professor_middle_initial"
   		size="1">
 
   <label for="professor_last_name">Last Name</label>
   <input type="text" 
-  		name="last_name" 
+  		name="professor[last_name]" 
   		id="professor_last_name">
 
   <label for="professor_department">Department</label>
-  <select name="department" id="professor_department">
+  <select name="professor[department]" id="professor_department">
     <option value="">--Select--</option>
     <% departments.forEach( function (department) { %>
       <option value="<%= department %>">
@@ -27,7 +27,7 @@
   </select>
 
   <label for="professor_college_id">College</label>
-  <select name="college_id" id="professor_college_id">
+  <select name="professor[college_id]" id="professor_college_id">
     <option value="">--Select--</option>
     <% colleges.each( function (college) { %>
       <option value="<%= college.get("id") %>">

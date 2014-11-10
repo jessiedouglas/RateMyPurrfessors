@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       resources :professor_ratings, only: [:create]
       collection do
         get 'search'
+        get 'is_valid'
       end
     end
   

@@ -3,7 +3,7 @@
 <section class="content group">
 	<h1>Log In</h1>
 
-	<form action="/api/session" method="POST">
+	<form action="/api/session" method="POST" class="log_in">
 	  <input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
 
 	  <label for="user_email">Email</label>
@@ -14,7 +14,7 @@
 	  <label for="user_password">Password</label>
 	  <input type="password" id="user_password" name="user[password]">
 
-	  <button>Log In</button>
+	  <button class="log_in">Log In</button>
 		
 		<a href="/auth/facebook"></a>
 	</form>

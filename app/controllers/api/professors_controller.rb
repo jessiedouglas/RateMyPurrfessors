@@ -32,6 +32,16 @@ class Api::ProfessorsController < ApplicationController
     render :index
   end
   
+  def is_valid
+    @professor = Professor.new(professor_params)
+    
+    if @professor.valid?
+      render json: @professor
+    else
+      render json: @professor.errors.full_messages
+    end
+  end
+  
   private
   def require_logged_in
     unless logged_in?

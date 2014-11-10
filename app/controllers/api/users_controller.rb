@@ -6,13 +6,10 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notices] = ["User created!"]
       login_user(@user)
-      
-      redirect_to "#" + user_path(current_user)
+      render json: @user
     else
-      flash.now[:errors] = @user.errors.full_messages
-      redirect_to "#" + new_user_path
+      render json: @user.errors.full_messages
     end
   end
 

@@ -8,10 +8,9 @@ class Api::SessionsController < ApplicationController
     
     if @user
       login_user(@user)
-      redirect_to "#" + user_path(@user)
+      render json: @user
     else
-      flash.now[:errors] = ["Incorrect email/password combination"]
-      redirect_to "#" + new_session_url
+      render json: ["Incorrect email/password combination"]
     end
   end
 
