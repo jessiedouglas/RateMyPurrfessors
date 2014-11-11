@@ -3,9 +3,13 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 	
 	editTemplate: JST["users/edit"],
 	
+	errorsTemplate: JST["shared/errors"],
+	
+	passwordTemplate: JST["users/password_edit"],
+	
 	initialize: function () {
 		this.collection = new RateMyPurrfessors.Collections.MixedRatings(this.model.get("all_ratings"));
-		this.listenTo(this.model, "sync change update", this.render);
+		this.listenTo(this.model, "sync", this.render);
 		this.listenTo(this.collection, "delete remove", this.render);
 		this.page = 0;
 	},
@@ -14,9 +18,12 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 		"click a.edit_user": "userEdit",
 		"click a.delete_rating": "ratingDestroy",
 		"click a.update_user": "userUpdate",
+		"click a.cancel_update": "cancelUpdate",
+		"click a.password_change": "passwordForm",
+		"click a.password_reset": "changePassword",
+		"click a.password_cancel": "cancelPassword",
 		"click a.next": "nextPage",
 		"click a.previous": "previousPage",
-		"click a.cancel_update": "cancelUpdate"
 	},
 	
 	render: function () {
@@ -48,37 +55,22 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 	
 	userUpdate: function (event) {
 		event.preventDefault();
+		this.$("ul.errors").remove();
 		
-		var password_inputs = this.$("input#user_password");
+		var form_attrs = this.$("form.user_edit").serializeJSON();
 		
-		if ($(password_inputs[0]).val() !== $(password_inputs[1]).val()) {
-			this.$("ul.errors").empty();
-			this.$("ul.errors").append('<p class="errors">Passwords do not match</p>');
-		} else {
-			var attrs = {
-				name: this.$("input#user_name").val(),
-				password: $(password_inputs[0]).val()
-			}
-			
-			if (!this.hasUpdateErrors(attrs)) {
-				if (this.$("input#user_email").val()) {
-					attrs.email = this.$("input#user_email").val()
-				}
-				
-				if (this.$("select#user_college_id").val()) {
-					attrs.college_id = this.$("select#user_college_id").val();
-				}
-				
-				this.model.save(attrs);
-			} else {
-				var errors = this.hasUpdateErrors(attrs);
-				this.$("ul.errors").empty();
-				
-				errors.forEach(function (error) {
-					this.$("ul.errors").append('<li>' + error + '</li>');
-				});
-			}
-		}
+		this.model.save(form_attrs.user, {
+			patch: true,
+			error: this.respondToSave.bind(this)
+		});
+	},
+	
+	respondToSave: function (resp, data) {
+		var errorsContent = this.errorsTemplate({
+			errors: data.responseJSON
+		});
+		
+		this.$("form.user_edit").prepend(errorsContent);
 	},
 	
 	cancelUpdate: function (event) {
@@ -97,22 +89,47 @@ RateMyPurrfessors.Views.UserShow = Backbone.View.extend({
 		
 		this.$("section.info").append('<a href="" class="edit_user">Edit my info');
 		
-	}, 
+	},
 	
-	hasUpdateErrors: function (attrs) {
-		var errors = [];
+	passwordForm: function (event) {
+		event.preventDefault();
+		this.$("a.password_change").addClass("hidden");
 		
-		for (var attr in attrs) {
-			if (!attrs[attr]) {
-				errors.push(attr + " is missing");
-			}
+		var passwordContent = this.passwordTemplate({
+			user: this.model
+		});
+		
+		this.$("form.user_edit").append(passwordContent);
+	},
+	
+	changePassword: function (event) {
+		event.preventDefault();
+		this.$("ul.error").remove();
+		
+		var passwords = this.$("input.user_password");
+		
+		if ($(passwords[0]).val() !== $(passwords[1]).val()) {
+			var errorsContent = this.errorsTemplate({
+				errors: ["Passwords don't match"]
+			});
+			
+			this.$("form.user_edit").prepend(errorsContent);
+		} else {
+			var form_attrs = this.$("form.password_edit").serializeJSON();
+			this.model.save(form_attrs, {
+				patch: true,
+				error: this.respondToSave.bind(this)
+			})
 		}
+	},
+	
+	cancelPassword: function (event) {
+		event.preventDefault();
 		
-		if (errors.length === 0) {
-			return false;
-		}
+		this.$("ul.errors").remove();
+		this.$("form.password_edit").remove();
 		
-		return errors;
+		this.$("a.password_change").removeClass("hidden");
 	},
 	
 	ratingDestroy: function (event) {

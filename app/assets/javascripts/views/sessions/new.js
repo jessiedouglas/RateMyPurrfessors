@@ -3,7 +3,8 @@ RateMyPurrfessors.Views.SessionNew = Backbone.View.extend({
 	errorsTemplate: JST["shared/errors"],
 	
 	events: {
-		"click button.log_in": "logIn"
+		"click button.log_in": "logIn",
+		"click button.demo": "loginDemo"
 	},
 	
 	render: function () {
@@ -18,30 +19,41 @@ RateMyPurrfessors.Views.SessionNew = Backbone.View.extend({
 		this.$("ul.errors").remove();
 		
 		var form_attrs = this.$("form.log_in").serializeJSON();
+		var that = this;
 		
 		$.ajax({
 			url: "api/session",
 			method: "POST",
 			data: form_attrs,
-			success: this.respondToCreate.bind(this)
+			success: function (resp) {
+				Backbone.history.navigate("#/users/" + resp.id, {trigger: true});
+			},
+			error: function () {
+				var errorsContent = that.errorsTemplate({
+					errors: ["Incorrect email/password combination"]
+				});
+				
+				that.$("form.log_in").prepend(errorsContent);
+			}
 		});
 	},
 	
-	respondToCreate: function (resp) {
-		if (Array.isArray(resp)) {
-			var errorsContent = this.errorsTemplate({
-				errors: resp
-			});
-			
-			this.$("form.log_in").prepend(errorsContent)
-		} else if (resp.id) {
-			RateMyPurrfessors.router.navigate("#/users/" + resp.id, true);
-		} else {
-			var errorsContent = this.errorsTemplate({
-				errors: ["Something went wrong. Try again."]
-			});
-			
-			this.$("form.log_in").prepend(errorsContent)
-		}
+	loginDemo: function (event) {
+		event.preventDefault();
+		
+		var form_attrs = { user: {
+							email: "demo@demo.com",
+							password: "demodemo"
+						}}
+		
+		$.ajax({
+			url: "api/session",
+			method: "POST",
+			data: form_attrs,
+			success: function (resp) {
+				debugger
+				Backbone.history.navigate("#/users/" + resp.id, {trigger: true})
+			}
+		});
 	}
 });

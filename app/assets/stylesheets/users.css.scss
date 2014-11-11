@@ -43,14 +43,15 @@ section.info > a.edit_user {
 form.user_edit {
 	width: 400px;
 	position: relative;
+	padding-bottom: 40px;
 }
 
-form.user_edit > label {
+form.user_edit label {
 	display: block;
 	font-weight: bold;
 }
 
-form.user_edit > input {
+form.user_edit input {
 	width: 300px;
 	margin-bottom: 7px;
 	background: rgba(255, 255, 255, 0.5);
@@ -63,9 +64,10 @@ form.user_edit > a.update_user {
 	width: 37px;
 	font-weight: bold;
 	border-radius: 5px;
-	margin-top: 10px;
+	bottom: 0;
 	margin-left: 10px;
 	background: #ddd;
+	position: absolute;
 }
 
 form.user_edit > a.cancel_update {
@@ -80,8 +82,41 @@ form.user_edit > a.cancel_update {
 	left: 100px;
 }
 
-form.user_edit > a.update_user:hover, form.user_edit > a.cancel_update:hover {
+form.user_edit > a.update_user:hover, 
+form.user_edit > a.cancel_update:hover,
+a.password_reset:hover,
+a.password_cancel:hover {
 	background: #ccc;
+}
+
+a.password_change {
+	display: block;
+	text-decoration: underline;
+	font-size: 14px;
+}
+
+a.hidden {
+	display: none;
+}
+
+form.password_edit {
+	padding: 20px 30px 20px 20px;
+	background: #398239;
+	border-radius: 10px;
+	margin: 20px 0;
+}
+
+a.password_reset,
+a.password_cancel {
+	display: block;
+	float: left;
+	padding: 7px 10px;
+	width: 47px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 14px;
+	background: #ddd;
+	margin: 10px 20px 0 20px;
 }
 
 //Ratings

@@ -28,10 +28,10 @@ class Api::UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
-      render json: {}
+      render json: @user
     else
-      flash.now[:errors] = @user.errors.full_messages
-      render json: {}
+      puts @user.errors.full_messages
+      render json: @user.errors.full_messages, status: 422
     end
   end
 

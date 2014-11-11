@@ -1,5 +1,3 @@
-<ul class="errors"></ul>
-
 <h1>Edit my info</h1>
 
 <form class="user_edit">
@@ -9,10 +7,17 @@
       name="user[name]"
       value="<%= user.get("name") %>">
 
-  <label for="user_email">Email</label>
+	<% disabled = (user.get("email") === "demo@demo.com") ? "disabled" : "" %>
+  <label for="user_email">
+		Email
+		<% if (disabled) { %>
+			<span class="optional">Disabled for demo user</span>
+		<% } %>
+	</label>
   <input type="email"
       id="user_email"
       name="user[email]"
+			<%= disabled %>
       value="<%= user.get("email") %>">
 
 
@@ -26,16 +31,8 @@
     <% }); %>
   </select>
 
-  <label for="user_password">Password</label>
-  <input type="password"
-      id="user_password"
-      name="user[password]">
-			
-  <label for="user_password">Confirm Password</label>
-  <input type="password"
-      id="user_password"
-      name="user[password]">
-
+	<a href="" class="password_change">Change Password</a>
+ 
   <a href="" class="update_user">Save</a>
 	
 	<a href="" class="cancel_update">Cancel</a>
