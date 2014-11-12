@@ -4,6 +4,7 @@ RateMyPurrfessors.Views.ProfessorsIndex = Backbone.CompositeView.extend({
 	},
 	
 	template: JST["professors/index"],
+	errorsTemplate: JST["shared/errors"],
 	
 	events: {
 		"keyup #match": "search",
@@ -57,7 +58,6 @@ RateMyPurrfessors.Views.ProfessorsIndex = Backbone.CompositeView.extend({
 			this.allPages = this.pagesList(professors);
 		}
 		
-		// var collection = new RateMyPurrfessors.Collections.Professors(professors);
 		var resultsView = new RateMyPurrfessors.Views.SearchResults({
 			type: "professors",
 			collection: this.allPages[this.page]
@@ -128,12 +128,21 @@ RateMyPurrfessors.Views.ProfessorsIndex = Backbone.CompositeView.extend({
 	
 	newProfessor: function (event) {
 		event.preventDefault();
+		this.$("ul.errors").remove();
 		
-		this.newProfessorSubview = new RateMyPurrfessors.Views.ProfessorsNew();
+		if (RateMyPurrfessors.currentUser.get("id")) {
+			this.newProfessorSubview = new RateMyPurrfessors.Views.ProfessorsNew();
 		
-		this.$("div.new_professor").empty();
+			this.$("div.new_professor").empty();
 		
-		this.addSubview("div.new_professor", this.newProfessorSubview);
+			this.addSubview("div.new_professor", this.newProfessorSubview);
+		} else {
+			var errorsContent = this.errorsTemplate({
+				errors: ["Please log in to create a professor"]
+			});
+			
+			this.$("div.new_professor").prepend(errorsContent);
+		}
 	},
 	
 	cancelNew: function (event) {

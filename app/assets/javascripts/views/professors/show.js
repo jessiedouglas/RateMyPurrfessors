@@ -8,7 +8,8 @@ RateMyPurrfessors.Views.ProfessorShow = Backbone.CompositeView.extend({
 	
 	events: {
 		"click a.next": "nextPage",
-		"click a.previous": "previousPage"
+		"click a.previous": "previousPage",
+		"click a.new_professor_rating": "checkUser"
 	},
 	
 	render: function () {
@@ -98,5 +99,16 @@ RateMyPurrfessors.Views.ProfessorShow = Backbone.CompositeView.extend({
 		
 		this.page -= 1;
 		this.render();
-	} 
+	},
+	
+	checkUser: function (event) {
+		event.preventDefault();
+		
+		if (RateMyPurrfessors.currentUser.get("id")) {
+			Backbone.history.navigate("#/professors/" + this.model.get("id") + "/professor_ratings/new", {trigger: true});
+		} else {
+			this.$("a.new_professor_rating").html("Please log in");
+			this.$("a.new_professor_rating").css("background", "#ff0000");
+		}
+	}
 });

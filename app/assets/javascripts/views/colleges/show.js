@@ -7,7 +7,8 @@ RateMyPurrfessors.Views.CollegeShow = Backbone.CompositeView.extend({
 	
 	events: {
 		"click a.next": "nextPage",
-		"click a.previous": "previousPage"
+		"click a.previous": "previousPage",
+		"click a.new_college_rating": "checkUser"
 	},
 	
 	render: function () {
@@ -94,5 +95,16 @@ RateMyPurrfessors.Views.CollegeShow = Backbone.CompositeView.extend({
 		
 		this.page -= 1;
 		this.render();
-	} 
+	},
+	
+	checkUser: function (event) {
+		event.preventDefault();
+		
+		if (RateMyPurrfessors.currentUser.get("id")) {
+			Backbone.history.navigate("#/colleges/" + this.model.get("id") + "/college_ratings/new", {trigger: true});
+		} else {
+			this.$("a.new_college_rating").html("Please log in");
+			this.$("a.new_college_rating").css("background", "#ff0000");
+		}
+	}
 });

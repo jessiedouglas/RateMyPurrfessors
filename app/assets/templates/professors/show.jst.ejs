@@ -8,7 +8,7 @@
   <p><%= professor.escape("department") %> Department</p>
   <p><a href="#/colleges/<%= professor.get("college_id") %>"><%= professor.get("college").name %></a></p>
 	
-	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new">Rate This Professor</a>
+	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="new_professor_rating">Rate This Professor</a>
 
 
 	<% if (ratings.length > 0) { %>
@@ -32,7 +32,9 @@
 	<div class="paginate">
 	</div>
 	
-	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="bottom_link">Rate This Professor</a>
+	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="bottom_link new_professor_rating">
+		Rate This Professor
+	</a>
 </section>
 
 <div class="filler_small"></div>
