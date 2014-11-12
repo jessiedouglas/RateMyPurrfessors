@@ -1,0 +1,28 @@
+<div class="logo"><a href="#"></a></div>
+
+<div class="nav_search">
+	<form action="#/search" method="GET">
+		<input type="search" name="match" placeholder="Search by college, professor, or department">
+		<button>GO!</button>
+	</form>
+</div>
+
+<div class="right_nav">
+  <% if (user.get("id")) { %>
+    <button class="user_nav">Hi, <%= user.escape("name") %></button>
+    <ul class="user_dropdown">
+      <li>
+				<a href="#/users/<%= user.get("id") %>">My Account</a>
+      </li>
+      <li>
+				<form action="api/session" method="POST">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr("content") %>">
+					<input type="submit" value="Log Out">
+        </form>
+      </li>
+    </ul>
+  <% } else { %>
+		<a href="#/session/new" class="user_nav">Log In/Sign Up</a>
+  <% } %>
+</div>

@@ -44,7 +44,8 @@ RateMyPurrfessors.Views.UsersNew = Backbone.View.extend({
 	
 	respondToCreate: function (resp) {
 		if (resp.id) {
-			RateMyPurrfessors.router.navigate("#/users/" + resp.id);
+			RateMyPurrfessors.currentUser.set(resp);
+			Backbone.history.navigate("#/users/" + resp.id);
 		} else if (Array.isArray(resp)) {
 			var errorsContent = this.errorsTemplate({
 				errors: resp

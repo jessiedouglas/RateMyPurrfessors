@@ -26,6 +26,7 @@ RateMyPurrfessors.Views.SessionNew = Backbone.View.extend({
 			method: "POST",
 			data: form_attrs,
 			success: function (resp) {
+				RateMyPurrfessors.currentUser.set(resp);
 				Backbone.history.navigate("#/users/" + resp.id, {trigger: true});
 			},
 			error: function () {
@@ -51,7 +52,7 @@ RateMyPurrfessors.Views.SessionNew = Backbone.View.extend({
 			method: "POST",
 			data: form_attrs,
 			success: function (resp) {
-				debugger
+				RateMyPurrfessors.currentUser.set(resp);
 				Backbone.history.navigate("#/users/" + resp.id, {trigger: true})
 			}
 		});

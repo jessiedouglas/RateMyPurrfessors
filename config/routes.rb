@@ -28,11 +28,7 @@ Rails.application.routes.draw do
     get "search", as: "search", to: "root#search"
     
     resources :users, only: [:create, :show, :update]
-    resource :session, only: :create do
-      # collection do
-#         get 'is_valid'
-#       end
-    end
+    resource :session, only: [:create, :destroy]
     
     resources :colleges, only: [:index, :show] do
       resources :college_ratings, only: [:create]
