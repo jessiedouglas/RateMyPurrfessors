@@ -22,7 +22,8 @@ class Professor < ActiveRecord::Base
                 "Prey Biology",
                 "Psycatogy",
                 "Sleeping",
-                "Textiles (Yarn Studies)"
+                "Textiles (Yarn Studies)",
+                "Other"
                 ]
 
   validates :first_name, :last_name, :college_id, :department, presence: true
