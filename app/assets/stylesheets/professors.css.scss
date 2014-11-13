@@ -195,6 +195,7 @@ section.professor_info > div.professor_picture {
 	width: 200px;
 	border: 5px solid black;
 	float: left;
+	margin-bottom: 20px;
 }
 
 div.professor_picture > img {
@@ -207,6 +208,8 @@ section.professor_info > h1 {
 	font-size: 48px;
 	display: block;
 	float: right;
+	width: 400px;
+	text-align: right;
 }
 
 section.professor_info > p {
@@ -224,10 +227,10 @@ section.professor_info > a {
 	display: block;
 	border-radius: 5px;
 	width: 172px;
-	position: absolute;
 	letter-spacing: 1px;
-	right: 100px;
-	top: 160px;
+	margin: 0 auto;
+	margin-top: 20px;
+	clear: both;
 }
 
 a.bottom_link {
@@ -253,7 +256,7 @@ section.professor_averages {
 	clear: both;
 	background: #FFF7F7;
 	padding: 20px;
-	margin-top: 120px;
+	margin-top: 20px;
 	border-radius: 10px;
 }
 

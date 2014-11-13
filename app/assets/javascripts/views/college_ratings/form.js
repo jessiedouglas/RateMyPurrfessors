@@ -3,6 +3,7 @@ RateMyPurrfessors.Views.CollegeRatingsForm = Backbone.View.extend({
 		this.action = options.action;
 		this.method = options.method;
 		this.college = options.college;
+		this.cancelUrl = options.cancelUrl;
 	},
 	
 	template: JST["college_ratings/form"],	
@@ -17,7 +18,8 @@ RateMyPurrfessors.Views.CollegeRatingsForm = Backbone.View.extend({
 			college: this.college,
 			action: this.action,
 			method: this.method,
-			gradYears: RateMyPurrfessors.gradYears
+			gradYears: RateMyPurrfessors.gradYears,
+			cancelUrl: this.cancelUrl
 		});
 		
 		this.$el.html(renderedContent);

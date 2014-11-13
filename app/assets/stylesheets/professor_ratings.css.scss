@@ -188,6 +188,23 @@ form.professor_rating button {
 	bottom: 50px;
 }
 
+form.professor_rating > a.cancel {
+	background: #D63333;
+	color: #fff;
+	padding: 15px 25px;
+	font-weight: bold;
+	border-radius: 10px;
+	letter-spacing: 1px;
+	position: absolute;
+	bottom: 50px;
+	right: 40px;
+}
+
+form.professor_rating > a.cancel:hover {
+	background: #CC0000;
+}
+
+
 //SHOW
 
 ul.all_ratings > li.professor_rating {
@@ -264,7 +281,7 @@ div.rater_info > p {
 }
 
 div.comments_display {
-	width: 280px;
+	width: 220px;
 	max-height: 100px;
 	overflow: auto;
 }

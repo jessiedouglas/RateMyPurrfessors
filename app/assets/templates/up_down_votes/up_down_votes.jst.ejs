@@ -1,5 +1,7 @@
 <div class="vote_buttons">
-<% if (has_already_voted_on) { %>
+<% if (!user.get("id")) { %>
+	<p><a href="#/session/new" class="login">Log in</a> to rate this post!</p>
+<% } else if (has_already_voted_on) { %>
 	<% var vote_value = has_already_voted_on === 1 ? "upvoted" : "downvoted" %>
 	<p>You <%= vote_value %> this post</p>
 	<a href="" class="undo">Undo</a>

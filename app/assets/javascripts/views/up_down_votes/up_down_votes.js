@@ -19,7 +19,8 @@ RateMyPurrfessors.Views.UpDownVotes = Backbone.View.extend({
 		var renderedContent = this.template({
 			upvotes: this.upvotes,
 			downvotes: this.downvotes,
-			has_already_voted_on: this.has_already_voted_on
+			has_already_voted_on: this.has_already_voted_on,
+			user: RateMyPurrfessors.currentUser
 		});
 		this.$el.html(renderedContent);
 		

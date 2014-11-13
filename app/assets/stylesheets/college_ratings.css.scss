@@ -154,6 +154,21 @@ form.professor_rating button:hover {
 	background: #708B00;
 }
 
+form.college_rating > a.cancel {
+	background: #D63333;
+	color: #fff;
+	padding: 15px 25px;
+	font-weight: bold;
+	border-radius: 10px;
+	letter-spacing: 1px;
+	margin-top: 50px;
+	margin-left: 20px;
+}
+
+form.college_rating > a.cancel:hover {
+	background: #CC0000;
+}
+
 //Errors
 
 ul.errors {

@@ -3,6 +3,7 @@ RateMyPurrfessors.Views.ProfessorRatingsForm = Backbone.View.extend({
 		this.action = options.action;
 		this.method = options.method;
 		this.professor = options.professor;
+		this.cancelUrl = options.cancelUrl;
 	},
 	
 	template: JST["professor_ratings/form"],
@@ -17,7 +18,8 @@ RateMyPurrfessors.Views.ProfessorRatingsForm = Backbone.View.extend({
 			professor: this.professor,
 			action: this.action,
 			method: this.method,
-			grades: RateMyPurrfessors.grades
+			grades: RateMyPurrfessors.grades,
+			cancelUrl: this.cancelUrl
 		});
 		
 		this.$el.html(renderedContent);
