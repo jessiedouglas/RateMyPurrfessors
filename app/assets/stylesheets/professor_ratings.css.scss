@@ -108,25 +108,30 @@ div.hotness {
 
 div.hotness > label {
 	margin: 5px 5px 0 5px;
+	font-weight: bold;
 }
 
 div.hotness > input {
 	margin-top: 7px;
 }
 
-div.hotness > p.cold_thermometer {
+div.hotness > p.cold_thermometer,
+div.hotness > p.not_hot {
 	display: block;
 }
 
-div.hotness > p.hot_thermometer {
+div.hotness > p.hot_thermometer,
+div.hotness > p.totally_hot {
 	display: none;
 }
 
-div.hotness > input:checked ~ p.cold_thermometer {
+div.hotness > input:checked ~ p.cold_thermometer,
+div.hotness > input:checked ~ p.not_hot {
 	display: none;
 }
 
-div.hotness > input:checked ~ p.hot_thermometer {
+div.hotness > input:checked ~ p.hot_thermometer,
+div.hotness > input:checked ~ p.totally_hot {
 	display: block;
 }
 
