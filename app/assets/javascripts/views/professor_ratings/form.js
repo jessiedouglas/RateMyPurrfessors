@@ -10,7 +10,11 @@ RateMyPurrfessors.Views.ProfessorRatingsForm = Backbone.View.extend({
 	errorsTemplate: JST["shared/errors"],
 	
 	events: {
-		"click button": "saveRating"
+		"click button": "saveRating",
+		"click div.interest > label": "interestNvm",
+		"click div.textbook > label": "textbookNvm",
+		"click div.interest > p > label.nvm": "removeInterestNvm",
+		"click div.textbook > p > label.nvm": "removeTextbookNvm",
 	},
 	
 	render: function () {
@@ -85,5 +89,21 @@ RateMyPurrfessors.Views.ProfessorRatingsForm = Backbone.View.extend({
 		} else {
 			alert("Something has gone terribly wrong :(")
 		}
-	}
+	},
+	
+	interestNvm: function (event) {
+		this.$("div.interest > p > label").addClass("show");
+	},
+	
+	textbookNvm: function (event) {
+		this.$("div.textbook > p > label").addClass("show");
+	},
+	
+	removeInterestNvm: function (event) {
+		this.$("div.interest > p > label").removeClass("show");
+	},
+	
+	removeTextbookNvm: function (event) {
+		this.$("div.textbook > p > label").removeClass("show");
+	},
 });

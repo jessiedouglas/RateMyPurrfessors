@@ -182,6 +182,22 @@ div.grade > label {
 	display: block;
 }
 
+div.radio > p > label.nvm {
+	font-size: 12px;
+	text-decoration: underline;
+	color: orange;
+	cursor: pointer;
+	display: none;
+}
+
+div.radio > p > label.show {
+	display: inline-block;
+}
+
+div.radio > p > label.nvm:hover {
+	color: #CC5200;
+}
+
 form.professor_rating button {
 	background: #7D9A00;
 	color: #fff;

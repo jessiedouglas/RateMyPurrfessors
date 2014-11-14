@@ -196,13 +196,15 @@
 		<label for="attendance">Attendance was STRICTLY ENFORCED (i.e., part of the grade)</label>
 	</div>
 	
-	<div class="radio">
+	<div class="radio interest">
 		<input type="radio" 
 				name="professor_rating[interest]" 
+				id="interest_hidden"
 				class="hidden" 
 				checked="checked">
 		
-		<p class="radio">Interest <span class="optional">(optional)</span></p>
+		<p class="radio">Interest <span class="optional">(optional)</span> <label for="interest_hidden" class="nvm">Nvm</label></p>
+		
 			<input type="radio" 
 					name="professor_rating[interest]" 
 					id="interest_1" 
@@ -242,13 +244,17 @@
 			</div> -->
 		</div>
 		
-		<div class="radio">
+		<div class="radio textbook">
 			<input type="radio" 
 					name="professor_rating[textbook_use]" 
+					id="textbook_hidden"
 					class="hidden" 
 					checked="checked">
 						
-			<p class="radio">Textbook Use <span class="optional">(optional)</span></p>
+			<p class="radio">Textbook Use <span class="optional">(optional)</span>
+				 <label for="textbook_hidden" class="nvm">Nvm</label>
+		  </p>
+			
 				<input type="radio" 
 						name="professor_rating[textbook_use]" 
 						id="textbook_use_1" 
