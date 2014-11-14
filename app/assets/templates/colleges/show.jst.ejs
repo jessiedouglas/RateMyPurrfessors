@@ -19,8 +19,12 @@
 <section class="college_info group">
   <h1><%= college.escape("name") %></h1>
   <p><%= college.escape("location") %></p>
-	<a href="#/colleges/<%= college.get("id") %>/college_ratings/new" class="new_college_rating">Rate This College</a> 
-
+	
+	<% if (hasAlreadyRated) { %>
+		<a href="#/college_ratings/<%= hasAlreadyRated %>/edit">Edit My Rating</a>
+	<% } else { %>
+		<a href="#/colleges/<%= college.get("id") %>/college_ratings/new" class="new_college_rating">Rate This College</a> 
+	<% } %>
 
 	<% if (ratings.length > 0) { %>
 		<section class="college_averages"></section>
@@ -39,9 +43,13 @@
 	<div class="paginate">
 	</div>
 
-  <a href="#/colleges/<%= college.get("id") %>/college_ratings/new" class="college_bottom_link new_college_rating">
-		Rate This College
-	</a> 
+	<% if (hasAlreadyRated) { %>
+		<a href="#/college_ratings/<%= hasAlreadyRated %>/edit" class="college_bottom_link">Edit My Rating</a>
+	<% } else { %>
+	  <a href="#/colleges/<%= college.get("id") %>/college_ratings/new" class="college_bottom_link new_college_rating">
+			Rate This College
+		</a> 
+	<% } %> 
 </section>
 
 <div class="filler_small"></div>

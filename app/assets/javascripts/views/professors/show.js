@@ -22,7 +22,8 @@ RateMyPurrfessors.Views.ProfessorShow = Backbone.CompositeView.extend({
 		
 			var renderedContent = this.template({
 				professor: this.model,
-				ratings: this.allPages[this.page]
+				ratings: this.allPages[this.page],
+				hasAlreadyRated: this.hasAlreadyRated()
 			});
 		
 			this.$el.html(renderedContent);
@@ -109,6 +110,28 @@ RateMyPurrfessors.Views.ProfessorShow = Backbone.CompositeView.extend({
 		} else {
 			this.$("a.new_professor_rating").html("Please log in");
 			this.$("a.new_professor_rating").css("background", "#ff0000");
+		}
+	},
+	
+	hasAlreadyRated: function () {
+		var ratings = this.model.professorRatings();
+		var raterIds = [];
+		
+		ratings.each(function (rating) {
+			raterIds.push(rating.get("rater_id"));
+		});
+		
+		var currentId = RateMyPurrfessors.currentUser.get("id");
+		
+		if (currentId) {
+			if (raterIds.indexOf(currentId) === -1) {
+				return false;
+			} else {
+				var rating = ratings.at(raterIds.indexOf(currentId));
+				return rating.get("id");
+			}
+		} else {
+			return false;
 		}
 	}
 });

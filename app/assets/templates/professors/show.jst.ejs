@@ -12,9 +12,12 @@
 	<% if (ratings.length > 0) { %>
 		<section class="professor_averages"></section>
 	<% } %>
-
-	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="new_professor_rating">Rate This Professor</a>
 	
+	<% if (hasAlreadyRated) { %>
+		<a href="#/professor_ratings/<%= hasAlreadyRated %>/edit">Edit My Rating</a>
+	<% } else { %>
+		<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="new_professor_rating">Rate This Professor</a>
+	<% } %>
 </section>
 
 <section class="ratings">
@@ -32,9 +35,13 @@
 	<div class="paginate">
 	</div>
 	
-	<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="bottom_link new_professor_rating">
-		Rate This Professor
-	</a>
+	<% if (hasAlreadyRated) { %>
+		<a href="#/professor_ratings/<%= hasAlreadyRated %>/edit" class="bottom_link">Edit My Rating</a>
+	<% } else { %>
+		<a href="#/professors/<%= professor.get("id") %>/professor_ratings/new" class="bottom_link new_professor_rating">
+			Rate This Professor
+		</a>
+	<% } %>
 </section>
 
 <div class="filler_small"></div>
