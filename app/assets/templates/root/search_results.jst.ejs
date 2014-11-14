@@ -4,11 +4,13 @@
     <li class="match">
 			<% if (result.get("type") === "college") { %>
         <a href="#/colleges/<%= result.get("id") %>">
+					<div class="college_icon"></div>
           <h3><%= result.escape("name") %></h3>
           <p><%= result.escape("location") %></p>
         </a>
 			<% } else { %>
         <a href="#/professors/<%= result.get("id") %>">
+					<div class="professor_icon"></div>
           <h3><%= result.escape("name") %></h3>
           <p> <%= result.escape("department") %> Department at
             <%= result.get("college").name %></p>

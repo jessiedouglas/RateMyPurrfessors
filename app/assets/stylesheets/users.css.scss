@@ -193,3 +193,22 @@ li.no_ratings > a.user_professor_search {
 li.no_ratings > a.user_professor_search:hover {
 	background: #8CAE00;
 }
+
+div.professor_icon {
+	background: image-url("icon-tight.png") no-repeat;
+	background-size: 100% 100%;
+	width: 30px;
+	height: 30px;
+	display: block;
+	float: left;
+	margin-right: 20px;
+}
+
+div.college_icon {
+	background: image-url("college.png") no-repeat;
+	background-size: 100% 100%;
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-right: 20px;
+}

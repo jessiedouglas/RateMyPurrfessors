@@ -30,6 +30,7 @@
 				<li class="user_rating">
 					<% if (rating.get("type") === "professor_rating") { %>
 						<a href="#/professors/<%= rating.get("professor_id") %>" class="rating_link">
+							<div class="professor_icon"></div>
 							<h3><%= rating.get("professor").name %></h3>
 							<p><%= rating.get("professor").department %> Department at <%= rating.get("professor").college.name %></p>
 						</a>
@@ -37,6 +38,7 @@
 						<a href="" class="delete_rating" data-id="<%= rating.get("id") %>" data-type="professor_rating">Delete</a>
 					<% } else { %>
 						<a href="#/colleges/<%= rating.get("college_id") %>" class="rating_link">
+							<div class="college_icon"></div>
 							<h3><%= rating.get("college").name %></h3> 
 							<p><%= rating.get("college").location %></p>
 						</a>
