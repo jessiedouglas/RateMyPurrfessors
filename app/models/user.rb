@@ -27,6 +27,11 @@ class User < ActiveRecord::Base
     foreign_key: :rater_id,
     inverse_of: :rater,
     dependent: :destroy
+    
+  has_many :up_down_votes,
+    foreign_key: :voter_id,
+    inverse_of: :voter,
+    dependent: :destroy
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
