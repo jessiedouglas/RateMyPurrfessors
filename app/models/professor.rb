@@ -16,7 +16,7 @@ class Professor < ActiveRecord::Base
                 "Meowdern Art",
                 "Meowndarin Chinese",
                 "Meowsic",
-                "Meowthmatics",
+                "Meowthematics",
                 "Pawlitical Science",
                 "Predator Biology",
                 "Prey Biology",
@@ -26,7 +26,7 @@ class Professor < ActiveRecord::Base
                 "Other"
                 ]
 
-  validates :first_name, :last_name, :college_id, :department, presence: true
+  validates :first_name, :last_name, :college, :department, presence: true
   validates :college_id, uniqueness: { scope: [
                                             :first_name,
                                             :last_name,
