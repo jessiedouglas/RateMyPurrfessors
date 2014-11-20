@@ -1,4 +1,5 @@
-== README
+README
+=====
 
 [Live Demo](www.ratemypurrfessors.com)
 
@@ -18,3 +19,5 @@ Features:
 * Facebook authentication
 
 * Use of FilePicker to upload photos and PgSearch for basic and multivariate searches
+* Rspec tests for model validations using FactoryGirl
+* Rspec integration tests using Capybara
