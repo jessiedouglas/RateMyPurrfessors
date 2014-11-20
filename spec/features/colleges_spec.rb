@@ -88,13 +88,38 @@ feature "college show page" do
 end
 
 feature "professor index page" do
-  it "exists"
+  before(:each) do
+    create(:college, name: "Harvard")
+    create(:college, name: "Princeton")
+    
+    visit colleges_url
+  end
   
-  it "has a search bar"
+  it "exists" do
+    expect(page).to have_content "All Colleges"
+  end
   
-  it "lists all colleges"
+  it "has a search bar" do
+    find("input#match")
+  end
   
-  it "search redirects to same page"
+  it "lists all colleges" do
+    expect(page).to have_content "Harvard"
+    expect(page).to have_content "Princeton"
+  end
   
-  it "displays only searched-for colleges"
+  it "search redirects to same page" do
+    fill_in "College Search", with: "Harv"
+    click_on "Go!"
+    
+    expect(page).to have_content "Colleges that match"
+  end
+  
+  it "displays only searched-for colleges" do
+    fill_in "College Search", with: "Harv"
+    click_on "Go!"
+    
+    expect(page).to have_content "Harvard"
+    expect(page).to_not have_content "Princeton"
+  end
 end

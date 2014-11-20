@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_logged_in, only: [:show, :edit, :update]
   before_filter :require_logged_out, only: [:new, :create]
+  before_filter :require_same_user, only: [:edit, :update]
 
   def new
     @user = User.new()
@@ -53,5 +54,12 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :college_id)
+  end
+  
+  def require_same_user
+    unless current_user.id == params[:id].to_i
+      flash[:errors] = ["You can only edit your own info"]
+      redirect_to user_url(current_user)
+    end
   end
 end

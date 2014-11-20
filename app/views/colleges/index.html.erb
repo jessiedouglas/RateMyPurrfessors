@@ -1,17 +1,12 @@
 <form action="<%= search_colleges_url %>" method="GET" class="college_search">
-  <label for="match">Search</label>
+  <label for="match">College Search</label>
   <input type="search" id="match" name="match" placeholder="Search by name or location">
 
-  <button>Search</button>
+  <button>Go!</button>
 </form>
 
 <section class="colleges_list">
   <h1><%= @header_text %></h1>
-
-	<div class="paginate">
-		<%= link_to_previous_page @colleges, 'Prev' %>
-		<%= link_to_next_page @colleges, 'Next' %>
-	</div>
 
   <ul>
     <% if @colleges.length > 0 %>
@@ -27,9 +22,4 @@
       <li class="no_college">There are no colleges matching that search :(</li>
     <% end %>
   </ul>
-	
-	<div class="paginate">
-		<%= link_to_previous_page @colleges, 'Prev' %>
-		<%= link_to_next_page @colleges, 'Next' %>
-	</div>
 </section>

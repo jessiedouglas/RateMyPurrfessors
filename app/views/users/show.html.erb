@@ -36,7 +36,11 @@
 				</li>
 			<% end %>
 		<% else %>
-			<li>You have no ratings :(</li>
+			<li>
+				You have no ratings :(
+				<a href="<%= professors_url %>">Rate a Professor</a>
+				<a href="<%= colleges_url %>">Rate a College</a>
+			</li>
 		<% end %>
 	</ul>
 </section>

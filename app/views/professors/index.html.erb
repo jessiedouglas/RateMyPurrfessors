@@ -14,11 +14,6 @@
   </p>
 
   <h1><%= @header_text %></h1>
-
-	<div class="paginate">
-		<%= link_to_previous_page @professors, 'Prev' %>
-		<%= link_to_next_page @professors, 'Next' %>
-	</div>
 	
   <ul>
     <% if @professors.length > 0 %>
@@ -36,8 +31,4 @@
     <% end %>
   </ul>
 	
-	<div class="paginate">
-		<%= link_to_previous_page @professors, 'Prev' %>
-		<%= link_to_next_page @professors, 'Next' %>
-	</div>
 </section>

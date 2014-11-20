@@ -151,8 +151,10 @@ feature "college rating new/edit page" do
     end
     
     it "doesn't allow a user to edit a rating they didn't create" do
-      rating = create(:college_rating)
-      user = create(:user, email: "user2@example.com")
+      user = create(:user, email: "email@email.com")
+      rating = create(:college_rating, rater: user)
+      
+      sign_up_as_hello_world
       visit edit_college_rating_url(rating)
       expect(page).to_not have_content "Edit Rating"
     end

@@ -109,14 +109,14 @@ feature "the sign in process" do
     visit new_session_url
     fill_in "user[password]", with: "Password"
     click_on("Log In")
-    expect(page).to have_content "Incorrect email/password combination"
+    expect(page).to_not have_content "Edit my info"
   end
   
   it "requires password" do
     visit new_session_url
     fill_in "user[email]", with: "hi@hi.com"
     click_on("Log In")
-    expect(page).to have_content "Incorrect email/password combination"
+    expect(page).to_not have_content "Edit my info"
   end
   
   it "requires correct email/password combination" do

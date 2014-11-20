@@ -150,13 +150,37 @@ feature "new professor page" do
 end
 
 feature "professor index page" do
-  it "exists"
+  before(:each) do
+    create(:professor, first_name: "Bob", last_name: "Jones")
+    create(:professor, first_name: "Joe", last_name: "Smith")
+    
+    visit professors_url
+  end
   
-  it "has a search bar"
+  it "exists" do
+    expect(page).to have_content "All Professors"
+  end
   
-  it "lists all professors"
+  it "has a search bar" do
+    find("#match")
+  end
   
-  it "search redirects to same page"
+  it "lists all professors" do
+    expect(page).to have_content "Bob Jones"
+    expect(page).to have_content "Joe Smith"
+  end
   
-  it "displays only searched-for professors"
+  it "search redirects to same page" do
+    fill_in "Professor Search", with: "Bob"
+    click_on "Go!"
+    expect(page).to have_content "Professors that match"
+  end
+  
+  it "displays only searched-for professors" do
+    fill_in "Professor Search", with: "Bob"
+    click_on "Go!"
+    
+    expect(page).to have_content "Bob Jones"
+    expect(page).to_not have_content "Joe Smith"
+  end
 end
